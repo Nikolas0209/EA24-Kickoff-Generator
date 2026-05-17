@@ -8,7 +8,7 @@ async function getKickoffCollection(){
  return db.collection('kickoff-history');
 };
 
-router.get('/', async (req,res) => {
+router.get('/', async (req, res) => {
  try{
   const { type } = req.query;
 
@@ -44,6 +44,20 @@ router.post('/', async (req, res) => {
  // res.status(500).json({error: 'The kickoff history can not be reached'})
  console.log(error);
  res.status(500).json({error: error.message});
+ }
+});
+
+router.delete('/', async (req, res) => {
+ try{
+  const history = await getKickoffCollection();
+  const deleteAllData = await history.deleteMany({});
+
+  res.status(200).json({
+    message: 'All kickoffs deleted successfully',
+    deletedCount: deleteAllData.deletedCount
+  });
+ }catch(error){
+  res.status(500).json({error: 'Can not delete all history. Please try again later.'});
  }
 });
 
