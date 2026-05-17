@@ -8,6 +8,24 @@ async function getKickoffCollection(){
  return db.collection('kickoff-history');
 };
 
+router.get('/', async (req,res) => {
+ try{
+  const { type } = req.query;
+
+  let query = {};
+  if(type){
+    query.type = type;
+  }
+ 
+  const history = await getKickoffCollection();
+  const kickoffHistory = await history.find(query).toArray();
+
+  res.status(200).json({kickoffHistory});
+ }catch(error){
+  res.status(500).json({error: 'The kickoff history can not be reached.'})
+ }
+});
+
 router.post('/', async (req, res) => {
  try{
   const {homeTeam, awayTeam, type } = req.body;
