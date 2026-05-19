@@ -23,28 +23,25 @@ router.get('/', async (req, res) => {
 
   res.status(200).json({kickoffHistory});
  }catch(error){
-  res.status(500).json({error: 'The kickoff history can not be reached.'})
+  res.status(500).json({error: 'Failed to fetch kickoff history'})
  }
 });
 
 router.post('/', async (req, res) => {
  try{
   const {homeTeam, awayTeam, type } = req.body;
-  ///let history = await getCollection('kickoff-history');
   const history = await getKickoffCollection();
 
   if(!homeTeam || !awayTeam || !type){
-   return res.status(400).json({error: 'Missing required kickoff data.'});
-  }
+   return res.status(400).json({error: 'Missing required kickoff data'})
+  };
 
   const kickoff = { homeTeam, awayTeam, type };
   await history.insertOne(kickoff);
 
   res.status(201).json({kickoff});
  } catch(error){
- // res.status(500).json({error: 'The kickoff history can not be reached'})
- console.log(error);
- res.status(500).json({error: error.message});
+  res.status(500).json({error: 'Failed to create kickoff'});
  }
 });
 
@@ -58,7 +55,7 @@ router.delete('/', async (req, res) => {
     deletedCount: deleteAllData.deletedCount
   });
  }catch(error){
-  res.status(500).json({error: 'Can not delete all history. Please try again later.'});
+  res.status(500).json({error: 'Failed to delete kickoff history'});
  }
 });
 
@@ -71,8 +68,7 @@ router.delete('/:id', async (req,res) => {
   const deleteOneKickoff =  await history.deleteOne({_id: kickoffIdObject});
 
   if(!deleteOneKickoff.deletedCount){
-    res.status(404).json({error:'The kickoff could not be found'});
-    return
+    return res.status(404).json({error:'The kickoff could not be found'})
   };
 
   res.status(200).json({
@@ -80,7 +76,7 @@ router.delete('/:id', async (req,res) => {
    deletedCount: deleteOneKickoff.deletedCount
   });
  } catch(error){
-  res.status(500).json({error: 'Kickoff can not be deleted.'});
+  res.status(500).json({error: 'Kickoff could not be deleted'});
  }
 });
 
