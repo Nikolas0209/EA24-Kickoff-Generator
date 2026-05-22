@@ -35,14 +35,8 @@ import { mls } from './leagues/mls.js';
 import { ligaProfesionaldeFutbol } from './leagues/ligaProfesionalDeFutbol.js';
 
 async function seedClubs(){
-  let db;
   try{
-    db = await connectDB();
-    if(!db){
-      console.log('Database connection failed.');
-      return;
-    } 
-
+    const db = await connectDB();
     const clubs = db.collection('clubs');
 
     const docs = [
@@ -85,17 +79,15 @@ async function seedClubs(){
     for (const doc of docs){
       await clubs.replaceOne(
         {club: doc.club},
-        doc,
+        doc,                  //replaces the old doc with this one
         {upsert: true}
       );
     };    
-  } catch(err){
-    console.error('Seeding failed:', err);
-  } finally {
-    if(db){
-      await db.client.close();
-      console.log('Database connection closed');
-    }
+
+    console.log('Seeded clubs successfully!');
+  }catch(err){
+    console.error('Seeding clubs failed:', err);
+  }finally {
     process.exit(0);
   }
 }

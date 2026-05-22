@@ -1,14 +1,8 @@
 import { connectDB } from "../db.js";
 
 async function seedCountries(){
-  let db;
   try{
-    db = await connectDB();
-    if(!db){
-      console.log('Database connection failed.');
-      return;
-    }
-
+    const db = await connectDB();
     const countries = db.collection('countries');
 
     const docs = [
@@ -20,7 +14,7 @@ async function seedCountries(){
       {
         country: 'Spain',
         stars: 5,
-        logo: '/contryLogos/spain'
+        logo: '/countryLogos/spain'
       },
       {
         country: 'Italy',
@@ -105,7 +99,7 @@ async function seedCountries(){
       {
         country: 'Wales',
         stars: 3.5,
-        logo: '/contryLogos/wales'
+        logo: '/countryLogos/wales'
       },
       {
         country: 'Republic of Ireland',
@@ -154,12 +148,8 @@ async function seedCountries(){
 
     console.log('Seeded countries successfully!');
   } catch(err){
-    console.error('Seeding failed:', err);
+    console.error('Countries seeding failed:', err);
   } finally {
-    if(db){
-      await db.client.close(); // close connection safely
-      console.log('Database connection closed');
-    }
     process.exit(0);
   }
 }
