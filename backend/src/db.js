@@ -14,11 +14,12 @@ export async function connectDB(){
     }
 
     await client.connect();
-    console.log('Connect to the MangooDB');
+    console.log('Connect to MongoDB');
 
     db = client.db('EAkickoffGenerator');
     return db;
   } catch(error){
-    console.log(error);
+    console.error('Backend connection failed', error);
+    throw error;
   }
-}
+};

@@ -29,7 +29,7 @@ router.get('/', async (req, res) => {
 
 router.post('/', async (req, res) => {
  try{
-  const {homeTeam, awayTeam, type } = req.body;
+  const { homeTeam, awayTeam, type } = req.body;
   const history = await getKickoffCollection();
 
   if(!homeTeam || !awayTeam || !type){
