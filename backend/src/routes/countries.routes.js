@@ -9,7 +9,7 @@ router.get('/', async (req, res) => {
     const teams = await getCollection('countries');
     const homeTeam = getRandomTeam(teams);
 
-    const availableTeams = teams.filter(team => team._id !== homeTeam._id);
+    const availableTeams = teams.filter(team => team._id.toString() !== homeTeam._id.toString());
     const awayTeam = availableTeams[Math.floor(Math.random() * availableTeams.length)]; 
 
     const kickOffTeams = {
@@ -38,7 +38,7 @@ router.get('/ratings', async (req, res) => {
      team.stars >= minRating && team.stars <= maxRating 
     );
 
-    let eligibleAwayTeams = teamRating.filter(team => team._id !== homeTeam._id);
+    let eligibleAwayTeams = teamRating.filter(team => team._id.toString() !== homeTeam._id.toString());
 
     if(eligibleAwayTeams.length === 0){
       eligibleAwayTeams = teamRating;
@@ -69,3 +69,5 @@ router.get('/random-team', async (req, res) => {
 });
 
 export default router;
+
+//one more route needs to be added
