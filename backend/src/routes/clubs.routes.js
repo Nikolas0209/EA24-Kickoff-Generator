@@ -10,8 +10,7 @@ router.get('/', async (req, res) => {
   try{
     const { competition, league, homeLeague, awayLeague } = req.query; 
     let teams = await getCollection('clubs');
-
-    teams = applyFilters(teams, {competition,league});
+    teams = applyFilters(teams, {competition, league});
 
     if(homeLeague && awayLeague){
       let teamsHome = teams.filter(team => team.league === homeLeague);
@@ -74,9 +73,13 @@ router.get('/club-ratings', async (req, res) => {
 
 router.get('/random-team/reroll', async (req, res) => {
   try{
-   const { competition, league } = req.query;
+   const { competition, league, excludeTeamId } = req.query;
    let teams = await getCollection('clubs');
-   teams = applyFilters(teams, { competition,league })
+   teams = applyFilters(teams, { competition,league });
+
+   if(excludeTeamId){
+    teams = teams.filter(team => team._id.toString() !== excludeTeamId)
+   }
   
    if(teams.length < 2){
     return res.status(400).json({error: 'Not enough teams'});
@@ -92,18 +95,21 @@ router.get('/random-team/reroll', async (req, res) => {
 
 router.get('/club-ratings/reroll', async (req, res) => {
   try{
-    const { baseTeamId } = req.query;
-     
-    const teams = await getCollection('clubs');
+    const { baseTeamId, excludeTeamId } = req.query;
+    let teams = await getCollection('clubs');
   
-    if(teams.length < 2){
-     return res.status(400).json({error: 'Not enough teams'});
-    }
-
-    const baseTeam = teams.find(team =>team._id.equals(baseTeamId));
+    const baseTeam = teams.find(team => team._id.equals(baseTeamId));
    
     if(!baseTeam){
       return res.status(404).json({error: 'Base team not found'});
+    }
+
+    if(excludeTeamId){
+      teams = teams.filter(team => team._id.toString() !== excludeTeamId)
+    }
+
+    if(teams.length < 2){
+     return res.status(400).json({error: 'Not enough teams'});
     }
 
     const newTeam = getRandomTeamByRating(teams, baseTeam);
@@ -115,3 +121,4 @@ router.get('/club-ratings/reroll', async (req, res) => {
 });
 
 export default router;
+
