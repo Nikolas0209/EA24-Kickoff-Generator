@@ -1,6 +1,7 @@
 import express from 'express';
 import getCollection from '../utils/getCollection.js';
 import getRandomTeam from '../utils/getRandomTeam.js';
+import getRandomTeamByRating from '../utils/getRandomTeamByRating.js';
 
 const router = express.Router();
 
@@ -23,28 +24,16 @@ router.get('/', async (req, res) => {
   }
 });
 
-router.get('/ratings', async (req, res) => {
+router.get('/country-ratings', async (req, res) => {
   try{
     const teams = await getCollection('countries');
+
+    if(teams.length < 2){
+      return res.status(400).json({error: 'Not enough teams'})
+    }
+
     const homeTeam = getRandomTeam(teams);
-
-    const getAllRatings = teams.map(team => team.stars);
-    const lowestStarsTeam = Math.min(...getAllRatings);
-
-    const maxRating = homeTeam.stars + 1;
-    const minRating = Math.max(homeTeam.stars - 1, lowestStarsTeam);
-
-    const teamRating = teams.filter(team => 
-     team.stars >= minRating && team.stars <= maxRating 
-    );
-
-    let eligibleAwayTeams = teamRating.filter(team => !team._id.equals(homeTeam._id));
-
-    if(eligibleAwayTeams.length === 0){
-      eligibleAwayTeams = teamRating;
-    };
-
-    const awayTeam = eligibleAwayTeams[Math.floor(Math.random() * eligibleAwayTeams.length)];
+    const awayTeam = getRandomTeamByRating(teams, homeTeam);
 
     const kickOffTeams = {
       homeTeam,
@@ -57,7 +46,7 @@ router.get('/ratings', async (req, res) => {
   }
 });
 
-router.get('/random-team', async (req, res) => {
+router.get('/random-team/reroll', async (req, res) => {
   try{
     const teams = await getCollection('countries');
     const randomTeam = getRandomTeam(teams);
