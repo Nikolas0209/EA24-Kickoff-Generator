@@ -8,8 +8,9 @@ function getRandomTeamByRating(teams, baseTeam){
   const minRating = Math.max(baseTeam.stars - 1, lowestStarsTeam);
 
   const teamRating = teams.filter(team => team.stars >= minRating && team.stars <= maxRating);
+  const excludeId = baseTeam._id;
 
-  return getRandomTeam(teamRating, baseTeam._id);
+  return getRandomTeam(teamRating, excludeId);
 };
 
 export default getRandomTeamByRating;

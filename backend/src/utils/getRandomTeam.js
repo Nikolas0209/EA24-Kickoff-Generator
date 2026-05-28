@@ -7,7 +7,7 @@ function getRandomTeam (teams, excludeId){
 
   const index = Math.floor(Math.random() * t.length);
   const selectedTeam = t[index];
-
+ 
   return selectedTeam;
 }
 
