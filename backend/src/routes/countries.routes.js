@@ -8,6 +8,11 @@ const router = express.Router();
 router.get('/', async (req, res) => {
   try{
     const teams = await getCollection('countries');
+
+    if(teams.length < 2){
+      return res.status(400).json({error: 'Not enough teams'})
+    }
+
     const homeTeam = getRandomTeam(teams);
 
     const availableTeams = teams.filter(team => !team._id.equals(homeTeam._id));
@@ -49,6 +54,11 @@ router.get('/country-ratings', async (req, res) => {
 router.get('/random-team/reroll', async (req, res) => {
   try{
     const teams = await getCollection('countries');
+ 
+    if(teams.length < 1){
+      return res.status(400).json({error: 'Not enough teams'})
+    }
+
     const randomTeam = getRandomTeam(teams);
 
     res.status(200).json({team: randomTeam});

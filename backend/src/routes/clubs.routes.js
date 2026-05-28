@@ -77,7 +77,7 @@ router.get('/random-team/reroll', async (req, res) => {
    let teams = await getCollection('clubs');
    teams = applyFilters(teams, { competition,league });
 
-   if(teams.length < 2){
+   if(teams.length < 1){
     return res.status(400).json({error: 'Not enough teams'});
    }
 
@@ -100,7 +100,7 @@ router.get('/club-ratings/reroll', async (req, res) => {
       return res.status(404).json({error: 'Base team not found'});
     }
 
-    if(teams.length < 2){
+    if(teams.length < 1){
      return res.status(400).json({error: 'Not enough teams'});
     }
 
