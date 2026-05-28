@@ -18,8 +18,8 @@ router.get('/', async (req, res) => {
     query.type = type;
   }
  
-  const history = await getKickoffCollection();
-  const kickoffHistory = await history.find(query).toArray();
+  const collection = await getKickoffCollection();
+  const kickoffHistory = await collection.find(query).toArray();
 
   res.status(200).json({kickoffHistory});
  }catch(error){
@@ -30,14 +30,14 @@ router.get('/', async (req, res) => {
 router.post('/', async (req, res) => {
  try{
   const { homeTeam, awayTeam, type } = req.body;
-  const history = await getKickoffCollection();
+  const collection = await getKickoffCollection();
 
   if(!homeTeam || !awayTeam || !type){
    return res.status(400).json({error: 'Missing required kickoff data'})
   };
 
   const kickoff = { homeTeam, awayTeam, type };
-  await history.insertOne(kickoff);
+  await collection.insertOne(kickoff);
 
   res.status(201).json({kickoff});
  } catch(error){
@@ -47,8 +47,8 @@ router.post('/', async (req, res) => {
 
 router.delete('/', async (req, res) => {
  try{
-  const history = await getKickoffCollection();
-  const deleteAllData = await history.deleteMany({});
+  const collection = await getKickoffCollection();
+  const deleteAllData = await collection.deleteMany({});
 
   res.status(200).json({
     message: 'All kickoffs deleted successfully',
@@ -61,11 +61,11 @@ router.delete('/', async (req, res) => {
 
 router.delete('/:id', async (req,res) => {
  try{
-  const history = await getKickoffCollection();
+  const collection = await getKickoffCollection();
   const kickoffId = req.params.id;
  
   const kickoffIdObject = new ObjectId(kickoffId);
-  const deleteOneKickoff =  await history.deleteOne({_id: kickoffIdObject});
+  const deleteOneKickoff =  await collection.deleteOne({_id: kickoffIdObject});
 
   if(!deleteOneKickoff.deletedCount){
     return res.status(404).json({error:'The kickoff could not be found'})
