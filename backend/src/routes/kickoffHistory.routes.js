@@ -23,7 +23,7 @@ router.get('/', async (req, res) => {
 
   res.status(200).json({kickoffHistory});
  }catch(error){
-  res.status(500).json({error: 'Failed to fetch kickoff history'})
+  res.status(500).json({error: 'Failed to fetch kick-off history'})
  }
 });
 
@@ -33,7 +33,7 @@ router.post('/', async (req, res) => {
   const collection = await getKickoffCollection();
 
   if(!homeTeam || !awayTeam || !type){
-   return res.status(400).json({error: 'Missing required kickoff data'})
+   return res.status(400).json({error: 'Missing required kick-off data'})
   };
 
   const kickoff = {
@@ -46,7 +46,7 @@ router.post('/', async (req, res) => {
 
   res.status(201).json({kickoff});
  } catch(error){
-  res.status(500).json({error: 'Failed to create kickoff'});
+  res.status(500).json({error: 'Failed to create kick-off'});
  }
 });
 
@@ -60,7 +60,7 @@ router.delete('/', async (req, res) => {
     deletedCount: deleteAllData.deletedCount
   });
  }catch(error){
-  res.status(500).json({error: 'Failed to delete kickoff history'});
+  res.status(500).json({error: 'Failed to delete kick-off history'});
  }
 });
 
@@ -70,14 +70,14 @@ router.delete('/:id', async (req,res) => {
   const kickoffId = req.params.id;
 
   if(!ObjectId.isValid(kickoffId)){
-    return res.status(400).json({ error: 'Invalid kickoff id format' })
+    return res.status(400).json({ error: 'Invalid kick-off id format' })
   }
  
   const kickoffIdObject = new ObjectId(kickoffId);
   const deleteOneKickoff =  await collection.deleteOne({_id: kickoffIdObject});
 
   if(!deleteOneKickoff.deletedCount){
-    return res.status(404).json({error:'The kickoff could not be found'})
+    return res.status(404).json({error:'The kick-off could not be found'})
   };
 
   res.status(200).json({
@@ -85,7 +85,7 @@ router.delete('/:id', async (req,res) => {
    deletedCount: deleteOneKickoff.deletedCount
   });
  } catch(error){
-  res.status(500).json({error: 'Kickoff could not be deleted'});
+  res.status(500).json({error: 'The kick-off could not be deleted'});
  }
 });
 

@@ -59,9 +59,9 @@ router.get('/random-team/reroll', async (req, res) => {
       return res.status(400).json({error: 'Not enough teams'})
     }
 
-    const randomTeam = getRandomTeam(teams);
+    const newTeam = getRandomTeam(teams);
 
-    res.status(200).json({team: randomTeam});
+    res.status(200).json({team: newTeam});
   } catch(error){
     res.status(500).json({error: 'The kick-off could not be generated'});
   }
@@ -84,12 +84,10 @@ router.get('/country-ratings/reroll', async (req, res) => {
 
   const newTeam = getRandomTeamByRating(teams, baseTeam);
 
-  res.status(200).json({newTeam});
+  res.status(200).json({team: newTeam});
  } catch(error){
   res.status(500).json({error: 'The kick-off could not be generated'});
  }
 });
 
 export default router;
-
-//one more route needs to be added

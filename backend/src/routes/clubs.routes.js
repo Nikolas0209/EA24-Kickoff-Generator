@@ -83,7 +83,7 @@ router.get('/random-team/reroll', async (req, res) => {
 
    const newTeam = getRandomTeam(teams, excludeId);
 
-   res.status(200).json({newTeam});
+   res.status(200).json({team: newTeam});
   }catch(error){
     res.status(500).json({error: 'The kick-off could not be generated'});
   }
@@ -92,7 +92,7 @@ router.get('/random-team/reroll', async (req, res) => {
 router.get('/club-ratings/reroll', async (req, res) => {
   try{
     const { baseTeamId } = req.query;
-    let teams = await getCollection('clubs');
+    const teams = await getCollection('clubs');
   
     const baseTeam = teams.find(team => team._id.equals(baseTeamId));
    
@@ -106,9 +106,9 @@ router.get('/club-ratings/reroll', async (req, res) => {
 
     const newTeam = getRandomTeamByRating(teams, baseTeam);
 
-    res.status(200).json({newTeam});
+    res.status(200).json({team: newTeam});
   } catch(error){
-   res.status(500).json({error: 'The kickoff could not be generated'});
+   res.status(500).json({error: 'The kick-off could not be generated'});
   }
 });
 
