@@ -25,7 +25,7 @@ router.get('/', async (req, res) => {
 
     res.status(200).json(kickOffTeams);
   } catch(error){
-    res.status(500).json({error: 'The kick-off could not be generated.'});
+    res.status(500).json({error: 'The kick-off could not be generated'});
   }
 });
 
@@ -47,7 +47,7 @@ router.get('/country-ratings', async (req, res) => {
 
     res.status(200).json(kickOffTeams);
   }catch(error){
-    res.status(500).json({error: 'The kick-off could not be generated.'});
+    res.status(500).json({error: 'The kick-off could not be generated'});
   }
 });
 
@@ -63,8 +63,31 @@ router.get('/random-team/reroll', async (req, res) => {
 
     res.status(200).json({team: randomTeam});
   } catch(error){
-    res.status(500).json({error: 'The kick-off could not be generated.'});
+    res.status(500).json({error: 'The kick-off could not be generated'});
   }
+});
+
+router.get('/country-ratings/reroll', async (req, res) => {
+ try{
+  const { baseTeamId } = req.query;
+  const teams = await getCollection('countries');
+
+  const baseTeam = teams.find(team => team._id.equals(baseTeamId));
+
+  if(!baseTeam){
+   return res.status(404).json({error: 'Base team not found'})
+  }
+
+  if(teams.length < 1){
+   return res.status(400).json({error: 'Not enough teams'})
+  }
+
+  const newTeam = getRandomTeamByRating(teams, baseTeam);
+
+  res.status(200).json({newTeam});
+ } catch(error){
+  res.status(500).json({error: 'The kick-off could not be generated'});
+ }
 });
 
 export default router;
