@@ -36,7 +36,12 @@ router.post('/', async (req, res) => {
    return res.status(400).json({error: 'Missing required kickoff data'})
   };
 
-  const kickoff = { homeTeam, awayTeam, type };
+  const kickoff = {
+   homeTeam, 
+   awayTeam, 
+   type, 
+   createdAt: new Date()
+  };
   await collection.insertOne(kickoff);
 
   res.status(201).json({kickoff});
@@ -63,6 +68,10 @@ router.delete('/:id', async (req,res) => {
  try{
   const collection = await getKickoffCollection();
   const kickoffId = req.params.id;
+
+  if(!ObjectId.isValid(kickoffId)){
+    return res.status(400).json({ error: 'Invalid kickoff id format' })
+  }
  
   const kickoffIdObject = new ObjectId(kickoffId);
   const deleteOneKickoff =  await collection.deleteOne({_id: kickoffIdObject});
