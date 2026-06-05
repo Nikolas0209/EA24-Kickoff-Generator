@@ -1,0 +1,65 @@
+body{
+  font-family: arial;
+  margin: 0;
+  min-height: 100vh;
+  background-image: url('../defaultBackground.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.header-div{
+  display: flex;
+  justify-content: space-between;
+  background-color: black;
+  padding-top: 15px;
+  padding-bottom: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.header-section-1,
+.header-section-2,
+.header-section-3{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 3px;
+  padding: 3px;
+  height: 40px;
+}
+
+.header-section-1, .header-section-3{
+  background-color: white;
+}
+
+.header-section-1{
+  background-color: white;
+  border-radius: 3px;
+  padding: 3px;
+  width: 200px;
+}
+
+.game-logo, .ball{
+  height: 100%;
+  width: auto
+}
+
+.header-section-2{
+  width: 200px;
+}
+
+.title{
+  color: white;
+  font-size: 25px;
+  text-wrap: nowrap;
+}
+ 
+.header-section-3{
+  width: 40px;
+  margin-left: 150px;
+}
+
+
+
+
