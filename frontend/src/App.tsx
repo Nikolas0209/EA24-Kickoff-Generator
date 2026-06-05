@@ -19,6 +19,14 @@ function App() {
         <img src={ball} className="ball"/>
       </div>
      </header>
+     <div className="main-buttons-div">
+      <button className="kickoff-button">
+        Generate International Kick-off
+      </button>
+      <button className="kickoff-button">
+        Generate Club Kick-off
+      </button>
+     </div>
     </>
   )
 }
