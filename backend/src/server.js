@@ -3,12 +3,14 @@ import countriesRoutes from './routes/countries.routes.js';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import clubRoutes from './routes/clubs.routes.js';
-import kickoffHistoryRoutes from './routes/kickoffHistory.routes.js'
+import kickoffHistoryRoutes from './routes/kickoffHistory.routes.js';
+import cors from 'cors';
 
 const app = express();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+app.use(cors({origin: "http://localhost:5173"}));
 app.use(express.json());
 app.use('/countries', countriesRoutes);
 app.use('/clubs', clubRoutes);
