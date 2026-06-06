@@ -9,9 +9,14 @@ function InternationalKickoff(){
  }
 
  return(
-  <div>
-   <button onClick={navigatePage}>Go Back</button>
-  </div>
+  <>
+   <div className="go-back-button-container">
+    <button className="go-back-button" onClick={navigatePage}>
+      Go Back
+    </button>
+   </div>
+  </>
+ 
  )
 }
 
