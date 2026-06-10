@@ -9,132 +9,152 @@ async function seedCountries(){
       {
         country: 'Argentina',
         stars: 5,
-        logo: '/countryLogos/argentina'
+        logo: '/assets/countryLogos/argentina.svg'
       },
       {
         country: 'Spain',
         stars: 5,
-        logo: '/countryLogos/spain'
+        logo: '/assets/countryLogos/spain.svg'
       },
       {
         country: 'Italy',
         stars: 5,
-        logo: '/countryLogos/italy'
+        logo: '/assets/countryLogos/italy.svg'
       },
       {
         country: 'The Netherlands',
         stars: 4.5,
-        logo: '/countryLogos/the_netherlands'
+        logo: '/assets/countryLogos/the_netherlands.svg'
       },
       {
         country: 'Belgium',
         stars: 4.5,
-        logo: '/countryLogos/belgium'
+        logo: '/assets/countryLogos/belgium.svg'
       },
       {
         country: 'Croatia',
         stars: 4.5,
-        logo: '/countryLogos/croatia'
+        logo: '/assets/countryLogos/croatia.svg'
       },
       {
         country: 'Denmark',
         stars: 4.5,
-        logo: '/countryLogos/denmark'
+        logo: '/assets/countryLogos/denmark.svg'
       },
       {
         country: 'Poland',
         stars: 4,
-        logo: '/countryLogos/poland'
+        logo: '/assets/countryLogos/poland.svg'
       },
       {
         country: 'Morocco',
         stars: 4,
-        logo: '/countryLogos/morocco'
+        logo: '/assets/countryLogos/morocco.svg'
       },
       {
         country: 'Mexico',
         stars: 4,
-        logo: '/countryLogos/mexico'
+        logo: '/assets/countryLogos/mexico.svg'
       },
       {
         country: 'Norway',
         stars: 4,
-        logo: '/countryLogos/norway'
+        logo: '/assets/countryLogos/norway.svg'
       },
       {
         country: 'Ghana',
         stars: 4,
-        logo: '/countryLogos/ghana'
+        logo: '/assets/countryLogos/ghana.svg'
       },
       {
         country: 'Sweden',
         stars: 4,
-        logo: '/countryLogos/sweden'
+        logo: '/assets/countryLogos/sweden.svg'
       },
       {
         country: 'Czech Republic',
         stars: 4,
-        logo: '/countryLogos/czech_republic'
+        logo: '/assets/countryLogos/czech_republic.svg'
       },
       {
         country: 'Ukraine',
         stars: 4,
-        logo: '/countryLogos/ukraine'
+        logo: '/assets/countryLogos/ukraine.svg'
       },
       {
         country: 'Scotland',
         stars: 4,
-        logo: '/countryLogos/scotland'
+        logo: '/assets/countryLogos/scotland.svg'
       },
       {
         country: 'United States',
         stars: 4,
-        logo: '/countryLogos/usa'
+        logo: '/assets/countryLogos/usa.svg'
       },
       {
         country: 'Hungary',
         stars: 3.5,
-        logo: '/countryLogos/hungary'
+        logo: '/assets/countryLogos/hungary.svg'
       },
       {
         country: 'Wales',
         stars: 3.5,
-        logo: '/countryLogos/wales'
+        logo: '/assets/countryLogos/wales.svg'
       },
       {
         country: 'Republic of Ireland',
         stars: 3.5,
-        logo: '/countryLogos/republic_of_ireland'
+        logo: '/assets/countryLogos/republic_of_ireland.svg'
       },
       {
         country: 'Iceland',
         stars: 3.5,
-        logo: '/countryLogos/iceland'
+        logo: '/assets/countryLogos/iceland.svg'
       },
       {
         country: 'Romania',
         stars: 3.5,
-        logo: '/countryLogos/romania'
+        logo: '/assets/countryLogos/romania.svg'
       },
       {
         country: 'Finland',
         stars: 3,
-        logo: '/countryLogos/finland'
+        logo: '/assets/countryLogos/finland.svg'
       },
       {
         country: 'Northern Ireland',
         stars: 3,
-        logo: '/countryLogos/northern_ireland'
+        logo: '/assets/countryLogos/northern_ireland.svg'
       },
       {
         country: 'Qatar',
         stars: 2.5,
-        logo: '/countryLogos/qatar'
+        logo: '/assets/countryLogos/qatar.svg'
       },
       {
         country: 'New Zealand',
         stars: 2.5,
-        logo: '/countryLogos/new_zealand'
+        logo: '/assets/countryLogos/new_zealand.svg'
+      },
+      {
+        country: 'Germany',
+        stars: 5,
+        logo: '/assets/countryLogos/germany.svg'
+      },
+      {
+        country: 'Portugal',
+        stars: 5,
+        logo: '/assets/countryLogos/portugal.svg'
+      },
+      {
+        country: 'France',
+        stars: 5,
+        logo: '/assets/countryLogos/france.svg'
+      },
+      {
+      country: 'England',
+      stars: 5,
+      logo: '/assets/countryLogos/england.svg'
       }
     ];
 

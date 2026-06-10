@@ -10,11 +10,11 @@ const app = express();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+app.use('/assets', express.static(path.join(__dirname, 'assets')));
 app.use(cors({origin: "http://localhost:5173"}));
 app.use(express.json());
 app.use('/countries', countriesRoutes);
 app.use('/clubs', clubRoutes);
-app.use('/assets', express.static(path.join(__dirname, 'assets')));
 app.use('/kickoff-history', kickoffHistoryRoutes);
  
 app.listen(3000, () => {
