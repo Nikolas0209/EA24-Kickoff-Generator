@@ -22,3 +22,48 @@
 .go-back-button:active{
   box-shadow: 0px 7px 15px rgb(70, 70, 70);
 }
+
+.kickoff-container{
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  color: white;
+  margin-top: 90px;
+}
+
+.kickoff-team{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  backdrop-filter: blur(3px);
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.5)
+}
+
+.kickoff-center{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 250px;
+}
+
+.country-image-container{
+ padding-top: 15px;
+}
+
+.country-image{
+  max-width: 200px;
+  max-height: 200px;
+  width: 200px;
+  height: 200px;
+  object-fit: contain;
+  display: block;
+}
+
+.country-name{
+  font-weight: bold;
+}
+
+.rating-container{
+  padding-top: 10px;
+}
