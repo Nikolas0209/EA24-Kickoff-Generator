@@ -73,12 +73,12 @@ function InternationalKickoff(){
     countriesKickoff && (
      <div className="kickoff-container" key={countriesKickoff.homeTeam._id}>
        <div className="kickoff-team">
-         <div>
-          <p>Internationals</p>
+         <div className="subtitle-div">
+          <p className="kickoff-subtitle">INTERNATIONALS</p>
          </div>
          <div className="country-image-container">
           <img src={`http://localhost:3000${countriesKickoff.homeTeam.logo}`} 
-           className="country-image" alt="" />
+           className="country-image" alt="Club Logo" />
          </div>
          <div className="rating-container">
            <img src={starRatings[countriesKickoff.homeTeam.stars]} 
@@ -92,12 +92,12 @@ function InternationalKickoff(){
        </div>
      <div className="kickoff-center">Hello</div>
      <div className="kickoff-team">
-       <div>
-        <p>Internationals</p>
+       <div className="subtitle-div">
+        <p className="kickoff-subtitle">INTERNATIONALS</p>
        </div>
        <div className="country-image-container">
         <img src={`http://localhost:3000${countriesKickoff.awayTeam.logo}`}
-         className="country-image" alt="" />
+         className="country-image" alt="Club Logo" />
        </div>
        <div className="rating-container">
          <img src={starRatings[countriesKickoff.awayTeam.stars]} 

@@ -62,8 +62,19 @@
 
 .country-name{
   font-weight: bold;
+  padding-top: 10px;
+  font-size: 23px;
 }
 
 .rating-container{
-  padding-top: 10px;
+  padding-top: 20px;
+}
+
+.subtitle-div{
+  border-bottom: 1px solid white;
+}
+
+.kickoff-subtitle{
+  font-size: 20px;
+  font-weight: bold;
 }
