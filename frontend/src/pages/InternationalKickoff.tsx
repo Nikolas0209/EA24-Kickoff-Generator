@@ -67,7 +67,12 @@ function InternationalKickoff(){
            </p>
          </div>
        </div>
-     <div className="kickoff-center">Hello</div>
+
+     <div className="kickoff-center">
+      <button className="generate-button">GENERATE</button>
+      <button className="submit-button">Submit Kickoff</button>
+     </div>
+
      <div className="kickoff-team">
        <div className="subtitle-div">
         <p className="kickoff-subtitle">INTERNATIONALS</p>
