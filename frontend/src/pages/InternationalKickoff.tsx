@@ -66,34 +66,44 @@ function InternationalKickoff(){
             {countriesKickoff.homeTeam.country}
            </p>
          </div>
+        </div>
+       
+
+       <div className="kickoff-center">
+        <button className="generate-button">GENERATE</button>
+        <button className="submit-button">Submit Kickoff</button>
        </div>
 
-     <div className="kickoff-center">
-      <button className="generate-button">GENERATE</button>
-      <button className="submit-button">Submit Kickoff</button>
+       <div className="kickoff-team">
+         <div className="subtitle-div">
+           <p className="kickoff-subtitle">INTERNATIONALS</p>
+         </div>
+         <div className="country-image-container">
+           <img src={`http://localhost:3000${countriesKickoff.awayTeam.logo}`}
+             className="country-image" alt="Club Logo" />
+         </div>
+         <div className="rating-container">
+           <img src={starRatings[countriesKickoff.awayTeam.stars]} 
+             alt={countriesKickoff.awayTeam.stars.toString()} />
+         </div>
+         <div className="club-name-container">
+           <p className="country-name">
+            {countriesKickoff.awayTeam.country}
+           </p>
+         </div>
+       </div>
      </div>
-
-     <div className="kickoff-team">
-       <div className="subtitle-div">
-        <p className="kickoff-subtitle">INTERNATIONALS</p>
-       </div>
-       <div className="country-image-container">
-        <img src={`http://localhost:3000${countriesKickoff.awayTeam.logo}`}
-         className="country-image" alt="Club Logo" />
-       </div>
-       <div className="rating-container">
-         <img src={starRatings[countriesKickoff.awayTeam.stars]} 
-           alt={countriesKickoff.awayTeam.stars.toString()} />
-       </div>
-       <div className="club-name-container">
-         <p className="country-name">
-          {countriesKickoff.awayTeam.country}
-        </p>
-      </div>
-    </div>
-   </div>
       )
      }
+
+     <div className="reroll-div">
+       <button className="reroll-button">
+        Reroll team
+       </button>
+       <button className="reroll-button">
+         Reroll team
+       </button>
+     </div>
   </>
  )
 }
