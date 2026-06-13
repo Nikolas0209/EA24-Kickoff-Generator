@@ -16,10 +16,22 @@ type InternationalKickoff = {
   awayTeam: Team
 }
 
+type RerollTeam = {
+  team: Team
+}
 
 function InternationalKickoff(){
  const navigate = useNavigate();
  const [countriesKickoff, setCountriesKickoff] = useState<InternationalKickoff>();
+ 
+ const fetchOneCountry = async (excludeId: string): Promise<RerollTeam> => {
+  try{
+    const response = await axios.get(`http://localhost:3000/countries/random-team/reroll?baseTeamId=${excludeId}`);
+    return response.data;
+  } catch(error){
+    console.log('Could not fetch a new team', error);
+  }
+};
  
  useEffect(() => {
    const fetchInternationalKickoff = async (): Promise<void> => {
@@ -36,6 +48,26 @@ function InternationalKickoff(){
 
  const navigatePage = (): void => {
   navigate('/')
+ } 
+
+ const rerollHome = async (): Promise<void> => {
+   const excludeId = countriesKickoff.awayTeam._id;
+   const country = await fetchOneCountry(excludeId);
+    
+   setCountriesKickoff((prev) => ({
+    ...prev,
+    homeTeam: country.team    
+ }))
+ }
+
+ const rerollAway = async (): Promise<void> => {
+  const excludeId = countriesKickoff.homeTeam._id;
+  const country = await fetchOneCountry(excludeId);
+
+  setCountriesKickoff((prev) => ({
+    ...prev,
+    awayTeam: country.team
+  }))
  }
 
  return(
@@ -59,7 +91,8 @@ function InternationalKickoff(){
          </div>
          <div className="rating-container">
            <img src={starRatings[countriesKickoff.homeTeam.stars]} 
-             alt={countriesKickoff.homeTeam.stars.toString()} />
+              alt={countriesKickoff.homeTeam.stars.toString()}
+              />
          </div>
          <div className="club-name-container">
            <p className="country-name">
@@ -97,10 +130,10 @@ function InternationalKickoff(){
      }
 
      <div className="reroll-div">
-       <button className="reroll-button">
+       <button className="reroll-button" onClick={rerollHome}>
         Reroll team
        </button>
-       <button className="reroll-button">
+       <button className="reroll-button" onClick={rerollAway}>
          Reroll team
        </button>
      </div>
