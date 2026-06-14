@@ -33,22 +33,22 @@ function InternationalKickoff(){
   }
 };
  
- useEffect(() => {
-   const fetchInternationalKickoff = async (): Promise<void> => {
-    try{
-     const response = await axios.get('http://localhost:3000/countries');
-     setCountriesKickoff(response.data);
-    } catch(error){
-     console.log('Could not fetch the Internationals', error)
-    }
-   }
+const fetchInternationalKickoff = async (): Promise<void> => {
+  try{
+   const response = await axios.get('http://localhost:3000/countries');
+   setCountriesKickoff(response.data);
+  } catch(error){
+   console.log('Could not fetch the Internationals', error)
+  }
+};
 
-   fetchInternationalKickoff();
+ useEffect(() => {
+  fetchInternationalKickoff()
  }, []);
 
  const navigatePage = (): void => {
   navigate('/')
- } 
+ };
 
  const rerollHome = async (): Promise<void> => {
    const excludeId = countriesKickoff.awayTeam._id;
@@ -58,7 +58,7 @@ function InternationalKickoff(){
     ...prev,
     homeTeam: country.team    
  }))
- }
+ };
 
  const rerollAway = async (): Promise<void> => {
   const excludeId = countriesKickoff.homeTeam._id;
@@ -68,7 +68,7 @@ function InternationalKickoff(){
     ...prev,
     awayTeam: country.team
   }))
- }
+ };
 
  return(
   <>
@@ -103,7 +103,9 @@ function InternationalKickoff(){
        
 
        <div className="kickoff-center">
-        <button className="generate-button">GENERATE</button>
+        <button className="generate-button" onClick={fetchInternationalKickoff}>
+          GENERATE
+        </button>
         <button className="submit-button">Submit Kickoff</button>
        </div>
 
