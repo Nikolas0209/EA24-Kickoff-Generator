@@ -20,9 +20,16 @@ type RerollTeam = {
   team: Team
 }
 
+enum KickoffType {
+  INTERNATIONAL = 'international',
+  CLUB = 'club'
+}
+
 function InternationalKickoff(){
  const navigate = useNavigate();
  const [countriesKickoff, setCountriesKickoff] = useState<InternationalKickoff>();
+ const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
+ const [submitKickoff, setSubmitKickoff] = useState<InternationalKickoff>();
  
  const fetchOneCountry = async (excludeId: string): Promise<RerollTeam> => {
   try{
@@ -45,6 +52,16 @@ const fetchInternationalKickoff = async (): Promise<void> => {
  useEffect(() => {
   fetchInternationalKickoff()
  }, []);
+
+ useEffect(() => {
+  if(!isSubmitted) return;
+
+  const timer = setTimeout (() => {
+    setIsSubmitted(false);
+  }, 3000)
+
+  return () => clearTimeout(timer)
+ }, [isSubmitted]);
 
  const navigatePage = (): void => {
   navigate('/')
@@ -70,6 +87,23 @@ const fetchInternationalKickoff = async (): Promise<void> => {
   }))
  };
 
+ const isSubmittedButton = async(): Promise<void> => {
+  if(isSubmitted) return;
+ 
+  try{
+    const response = await axios.post('http://localhost:3000/kickoff-history?homeTeam', {
+      homeTeam: countriesKickoff.homeTeam,
+      awayTeam: countriesKickoff.awayTeam,
+      type: KickoffType.INTERNATIONAL
+    }) 
+  
+    setSubmitKickoff(response.data);
+    setIsSubmitted(true);
+  } catch(error){
+    console.log('The kikcoff could not be submitted', error)
+  } 
+ };
+
  return(
   <>
    <div className="go-back-button-container">
@@ -91,8 +125,7 @@ const fetchInternationalKickoff = async (): Promise<void> => {
          </div>
          <div className="rating-container">
            <img src={starRatings[countriesKickoff.homeTeam.stars]} 
-              alt={countriesKickoff.homeTeam.stars.toString()}
-              />
+              alt={countriesKickoff.homeTeam.stars.toString()} />
          </div>
          <div className="club-name-container">
            <p className="country-name">
@@ -106,7 +139,9 @@ const fetchInternationalKickoff = async (): Promise<void> => {
         <button className="generate-button" onClick={fetchInternationalKickoff}>
           GENERATE
         </button>
-        <button className="submit-button">Submit Kickoff</button>
+        <button className="submit-button" onClick={isSubmittedButton}>
+          {isSubmitted ? 'Submitted' : 'Submit Kickoff'}
+        </button>
        </div>
 
        <div className="kickoff-team">
