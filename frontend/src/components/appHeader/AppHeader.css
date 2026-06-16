@@ -1,0 +1,114 @@
+.header-div{
+  display: flex;
+  justify-content: space-between;
+  background-color: black;
+  padding-top: 15px;
+  padding-bottom: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  position: relative;
+}
+
+.header-section-1,
+.header-section-2,
+.header-section-3{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 3px;
+  padding: 3px;
+  height: 40px;
+}
+
+.header-section-1, .header-section-3{
+  background-color: white;
+}
+
+.header-section-1{
+  border-radius: 3px;
+  padding: 3px;
+  width: 200px;
+}
+
+.game-logo, .ball{
+  height: 100%;
+  width: auto;
+  object-fit: contain;
+}
+
+.header-section-2{
+  width: 200px;
+}
+
+.title{
+  color: white;
+  font-size: 25px;
+  text-wrap: nowrap;
+}
+ 
+.header-section-3{
+  width: 40px;
+  margin-left: 150px;
+}
+
+.kickoff-history-tooltip-div{
+  position: absolute;
+  top: 70px;
+  right: 50px;
+  background-color: black;
+  border: solid 1px white;
+  border-radius: 5px;
+  padding: 8px 10px;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.2s ease;
+}
+
+.kickoff-history-tooltip{
+  color: white;
+  font-size: 13px;
+  margin: 0px;
+}
+
+.header-section-3:hover .kickoff-history-tooltip-div{
+  opacity: 1;
+}
+
+.header-section-3 button {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+
+}
+
+.rotating-class{
+ animation: spin 0.8s linear;
+}
+
+@keyframes spin{
+  from{
+   transform: rotate(0deg);
+  } 
+  to{
+   transform: rotate(360deg);
+  }
+}
+
+.disable-history-button{
+  pointer-events: none;
+}
+
+.dim-ball-img{
+  opacity: 0.5;
+}
+
+.header-section-3:hover .hide-tooltip{
+  opacity: 0;
+}

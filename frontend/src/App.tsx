@@ -1,21 +1,18 @@
 import './App.css';
-import AppHeader from './pages/AppHeader';
+import AppHeader from './components/appHeader/AppHeader';
 import HomePage from './pages/HomePage';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import InternationalKickoff from './pages/InternationalKickoff';
 
 function App(){
  return (
-  <>
-   <AppHeader/>
-   
-   <BrowserRouter>
+  <BrowserRouter>
+    <AppHeader />
     <Routes>
-     <Route path='/' element={<HomePage />}/>
-     <Route path='/countries' element={<InternationalKickoff />}/>
+      <Route path='/' element={<HomePage />} />
+      <Route path='/countries' element={<InternationalKickoff />} />
     </Routes>
-   </BrowserRouter>
-  </>
+  </BrowserRouter>
  )
 }
 
