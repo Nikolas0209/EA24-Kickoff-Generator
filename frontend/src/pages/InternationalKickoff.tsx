@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { starRatings } from '../data/starRatings'; 
 
-type Team = {
+export type Team = {
   _id: string,
   country: string,
   stars: number,
@@ -20,7 +20,7 @@ type RerollTeam = {
   team: Team
 }
 
-enum KickoffType {
+export enum KickoffType {
   INTERNATIONAL = 'international',
   CLUB = 'club'
 }
@@ -29,7 +29,6 @@ function InternationalKickoff(){
  const navigate = useNavigate();
  const [countriesKickoff, setCountriesKickoff] = useState<InternationalKickoff>();
  const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
- const [submitKickoff, setSubmitKickoff] = useState<InternationalKickoff>();
  
  const fetchOneCountry = async (excludeId: string): Promise<RerollTeam> => {
   try{
@@ -91,16 +90,15 @@ const fetchInternationalKickoff = async (): Promise<void> => {
   if(isSubmitted) return;
  
   try{
-    const response = await axios.post('http://localhost:3000/kickoff-history?homeTeam', {
-      homeTeam: countriesKickoff.homeTeam,
-      awayTeam: countriesKickoff.awayTeam,
-      type: KickoffType.INTERNATIONAL
-    }) 
+   await axios.post('http://localhost:3000/kickoff-history?homeTeam', {
+     homeTeam: countriesKickoff.homeTeam,
+     awayTeam: countriesKickoff.awayTeam,
+     type: KickoffType.INTERNATIONAL
+   }) 
   
-    setSubmitKickoff(response.data);
     setIsSubmitted(true);
   } catch(error){
-    console.log('The kikcoff could not be submitted', error)
+    console.log('The kickoff could not be submitted', error)
   } 
  };
 

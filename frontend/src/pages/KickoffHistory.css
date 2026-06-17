@@ -1,0 +1,24 @@
+.go-back-button-container{
+  margin-top: 20px;
+  margin-left: 20px;
+ }
+ 
+ .go-back-button{
+  cursor: pointer;
+  background-color: black;
+  color: white;
+  border-radius: 5px;
+  border: solid 1px white;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 10px;
+  transition: transform 0.1s ease;
+ }
+ 
+ .go-back-button:hover{
+   transform: scale(1.05);
+ }
+ 
+ .go-back-button:active{
+   box-shadow: 0px 7px 15px rgb(70, 70, 70);
+ }
