@@ -1,25 +1,27 @@
 import { useEffect, useState } from 'react';
 import './KickoffHistory.css';
-import type { Team } from './InternationalKickoff';
 import { KickoffType } from './InternationalKickoff';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import dayjs from 'dayjs';
 
 type Kickoff = {
-  homeTeam: Team,
-  awayTeam: Team,
-  type: KickoffType
+  homeTeam: string,
+  awayTeam: string,
+  type: KickoffType,
+  _id: string,
+  createdAt: string
 }
 
 function KickoffHistory(){
-  const [kickoffHistory, setKickoffHistory] = useState <Kickoff[]>();
+  const [kickoffHistory, setKickoffHistory] = useState <Kickoff[]>([]);
   const navigate = useNavigate();
 
   useEffect(() => {
     const fetchKickoffHistory = async (): Promise<void> => {
       try{
         const response = await axios.get('http://localhost:3000/kickoff-history');
-        setKickoffHistory(response.data);
+        setKickoffHistory(response.data.kickoffHistory);
       } catch(error){
         console.log('Kickoff history could not be fetched.', error)
       }  
@@ -53,22 +55,23 @@ function KickoffHistory(){
           Go Back
         </button>
       </div>
-     
-            <div className="kickoff-history-div">
-            <div className="kickoff-history-title-div">
-              <p className="kickoff-history-title">
-                All Matches:
-              </p>
-              <button onClick={deleteAllButton}>Delete</button>
-            </div>
-            <div className="kickoff-history-list">
-                <p>kickoff</p>
-                <p>date</p>
-                <button>Delete</button>
-            </div>
-          </div>
-        
-     
+      <div className="kickoff-history-div">
+        <div className="kickoff-history-title-div">
+           <p className="kickoff-history-title">
+             All Matches:
+           </p>
+           <button onClick={deleteAllButton}>Delete</button>
+        </div>
+        {kickoffHistory.map(kickoff => {
+          return( 
+            <div className="kickoff-history-list"  key={kickoff._id}>
+             <p>{`${kickoff.homeTeam} - ${kickoff.awayTeam}`}</p>
+             <p>{dayjs(kickoff.createdAt).format('DD/MM/YYYY')}</p>
+             <button>Delete</button>
+            </div>   
+            )
+          })}
+      </div>
     </>
   )
 };
