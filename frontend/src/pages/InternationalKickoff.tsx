@@ -91,8 +91,8 @@ const fetchInternationalKickoff = async (): Promise<void> => {
  
   try{
    await axios.post('http://localhost:3000/kickoff-history?homeTeam', {
-     homeTeam: countriesKickoff.homeTeam,
-     awayTeam: countriesKickoff.awayTeam,
+     homeTeam: countriesKickoff.homeTeam.country,
+     awayTeam: countriesKickoff.awayTeam.country,
      type: KickoffType.INTERNATIONAL
    }) 
   

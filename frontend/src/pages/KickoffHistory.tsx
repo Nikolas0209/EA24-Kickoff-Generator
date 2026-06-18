@@ -12,7 +12,7 @@ type Kickoff = {
 }
 
 function KickoffHistory(){
-  const [kickoffHistory, setKickoffHistory] = useState <Kickoff>();
+  const [kickoffHistory, setKickoffHistory] = useState <Kickoff[]>();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -36,6 +36,14 @@ function KickoffHistory(){
     }
   };
 
+  const deleteAllButton = async(): Promise<void> => {
+    try{
+     const response = await axios.delete('http://localhost:3000/kickoff-history');
+     setKickoffHistory(response.data)
+    } catch(error){
+      console.log('Could not delete all data', error)
+    }
+  }
 
 
   return(
@@ -45,19 +53,22 @@ function KickoffHistory(){
           Go Back
         </button>
       </div>
-      <div className="kickoff-history-div">
-        <div className="kickoff-history-title-div">
-          <p className="kickoff-history-title">
-            All Matches:
-          </p>
-          <button>Delete</button>
-        </div>
-        <div className="kickoff-history-list">
-            <p>Kickoff</p>
-            <p>date</p>
-            <button>Delete</button>
-        </div>
-      </div>
+     
+            <div className="kickoff-history-div">
+            <div className="kickoff-history-title-div">
+              <p className="kickoff-history-title">
+                All Matches:
+              </p>
+              <button onClick={deleteAllButton}>Delete</button>
+            </div>
+            <div className="kickoff-history-list">
+                <p>kickoff</p>
+                <p>date</p>
+                <button>Delete</button>
+            </div>
+          </div>
+        
+     
     </>
   )
 };
