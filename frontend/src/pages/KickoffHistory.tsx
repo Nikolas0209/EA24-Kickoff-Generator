@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import './InternationalKickoff.css';
+import './KickoffHistory.css';
 import type { Team } from './InternationalKickoff';
 import { KickoffType } from './InternationalKickoff';
 import axios from 'axios';
@@ -36,12 +36,27 @@ function KickoffHistory(){
     }
   };
 
+
+
   return(
     <>
       <div className="go-back-button-container">
         <button className="go-back-button" onClick={navigatePage}>
           Go Back
         </button>
+      </div>
+      <div className="kickoff-history-div">
+        <div className="kickoff-history-title-div">
+          <p className="kickoff-history-title">
+            All Matches:
+          </p>
+          <button>Delete</button>
+        </div>
+        <div className="kickoff-history-list">
+            <p>Kickoff</p>
+            <p>date</p>
+            <button>Delete</button>
+        </div>
       </div>
     </>
   )

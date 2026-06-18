@@ -22,3 +22,39 @@
  .go-back-button:active{
    box-shadow: 0px 7px 15px rgb(70, 70, 70);
  }
+
+ .kickoff-history-div{
+   margin-top: 50px;
+   color: white; 
+   max-width: 1000px;
+   width: 80%;
+   margin: 0 auto;
+ }
+
+ .kickoff-history-title-div{
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(3px);
+  padding: 7px 10px;
+  border-radius: 10px;
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+ }
+
+ .kickoff-history-title{
+  font-weight: bold;
+  font-size: 20px;
+ }
+
+ .kickoff-history-list{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(3px);
+  font-size: 17px;
+  padding: 7px 10px;
+  border-radius: 10px;
+  margin-top: 20px;
+ }
