@@ -59,7 +59,7 @@ function KickoffHistory(){
   return(
     <>
       <div className="go-back-button-container">
-        <button className="go-back-button" onClick={navigatePage}>
+        <button onClick={navigatePage}>
           Go Back
         </button>
       </div>
@@ -68,19 +68,29 @@ function KickoffHistory(){
            <p className="kickoff-history-title">
              All Matches:
            </p>
-           <button onClick={deleteAllButton}>Delete</button>
+           <button onClick={deleteAllButton}>
+            Delete All
+           </button>
         </div>
-        {kickoffHistory.map(kickoff => {
-          return( 
-            <div className="kickoff-history-list" key={kickoff._id}>
-              <p>{`${kickoff.homeTeam} - ${kickoff.awayTeam}`}</p>
-              <p>{dayjs(kickoff.createdAt).format('DD/MM/YYYY')}</p>
-              <button onClick={() => deleteOneButton(kickoff._id)}>
-                Delete
-              </button>
-            </div>   
-            )
-          })}
+        <div className="kickoff-list-wrapper">
+         {kickoffHistory.map(kickoff => {
+           return( 
+             <div className="kickoff-history-list" key={kickoff._id}>
+               <div className="kickoff-team-div">
+                 <p className="kickoff">
+                   {`${kickoff.homeTeam} - ${kickoff.awayTeam}`}
+                 </p>
+               </div>
+               <div className="kickoff-date-div">
+                 <p>{dayjs(kickoff.createdAt).format('DD/MM/YYYY')}</p>
+               </div>
+               <button onClick={() => deleteOneButton(kickoff._id)}>
+                  Delete
+               </button>
+             </div>   
+             )
+           })}
+         </div>
       </div>
     </>
   )

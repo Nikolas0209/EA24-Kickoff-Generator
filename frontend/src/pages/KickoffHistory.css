@@ -3,7 +3,7 @@
   margin-left: 20px;
  }
  
- .go-back-button{
+ button{
   cursor: pointer;
   background-color: black;
   color: white;
@@ -15,11 +15,11 @@
   transition: transform 0.1s ease;
  }
  
- .go-back-button:hover{
+ button:hover{
    transform: scale(1.05);
  }
  
- .go-back-button:active{
+ button:active{
    box-shadow: 0px 7px 15px rgb(70, 70, 70);
  }
 
@@ -28,7 +28,7 @@
    color: white; 
    max-width: 1000px;
    width: 80%;
-   margin: 0 auto;
+   margin: 0 auto; 
  }
 
  .kickoff-history-title-div{
@@ -44,7 +44,7 @@
 
  .kickoff-history-title{
   font-weight: bold;
-  font-size: 20px;
+  font-size: 25px;
  }
 
  .kickoff-history-list{
@@ -57,4 +57,25 @@
   padding: 7px 10px;
   border-radius: 10px;
   margin-top: 20px;
+ 
+ }
+
+ .kickoff{
+  padding-left: 20px;
+  font-size: 20px;
+ }
+
+ .kickoff-list-wrapper{
+  overflow-y: auto;
+  height: 400px;
+  margin-top: 30px;
+ }
+
+ .kickoff-team-div{
+  width: 400px;
+ }
+
+ .kickoff-date-div{
+  width: 300px;
+  font-size: 20px;
  }
