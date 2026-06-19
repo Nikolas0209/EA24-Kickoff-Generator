@@ -40,13 +40,21 @@ function KickoffHistory(){
 
   const deleteAllButton = async(): Promise<void> => {
     try{
-     const response = await axios.delete('http://localhost:3000/kickoff-history');
-     setKickoffHistory(response.data)
+     await axios.delete('http://localhost:3000/kickoff-history');
+     setKickoffHistory([]);
     } catch(error){
       console.log('Could not delete all data', error)
     }
   }
 
+  const deleteOneButton = async(id:string): Promise<void> => {
+    try{
+      await axios.delete(`http://localhost:3000/kickoff-history/${id}`);
+      setKickoffHistory(prev => prev.filter(kickoff => kickoff._id !== id)); 
+    } catch(error){
+     console.log('The kickoff could not be deleted', error);
+    }
+  }
 
   return(
     <>
@@ -64,10 +72,12 @@ function KickoffHistory(){
         </div>
         {kickoffHistory.map(kickoff => {
           return( 
-            <div className="kickoff-history-list"  key={kickoff._id}>
-             <p>{`${kickoff.homeTeam} - ${kickoff.awayTeam}`}</p>
-             <p>{dayjs(kickoff.createdAt).format('DD/MM/YYYY')}</p>
-             <button>Delete</button>
+            <div className="kickoff-history-list" key={kickoff._id}>
+              <p>{`${kickoff.homeTeam} - ${kickoff.awayTeam}`}</p>
+              <p>{dayjs(kickoff.createdAt).format('DD/MM/YYYY')}</p>
+              <button onClick={() => deleteOneButton(kickoff._id)}>
+                Delete
+              </button>
             </div>   
             )
           })}
