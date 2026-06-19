@@ -53,12 +53,9 @@ router.post('/', async (req, res) => {
 router.delete('/', async (req, res) => {
  try{
   const collection = await getKickoffCollection();
-  const deleteAllData = await collection.deleteMany({});
+  await collection.deleteMany({});
 
-  res.status(200).json({
-    message: 'All kickoffs deleted successfully',
-    deletedCount: deleteAllData.deletedCount
-  });
+  res.status(204).send();
  }catch(error){
   res.status(500).json({error: 'Failed to delete kick-off history'});
  }
@@ -80,10 +77,7 @@ router.delete('/:id', async (req,res) => {
     return res.status(404).json({error:'The kick-off could not be found'})
   };
 
-  res.status(200).json({
-   message: 'Kickoff deleted successfully',
-   deletedCount: deleteOneKickoff.deletedCount
-  });
+  res.status(204).send();
  } catch(error){
   res.status(500).json({error: 'The kick-off could not be deleted'});
  }
