@@ -66,6 +66,15 @@ const fetchInternationalKickoff = async (): Promise<void> => {
   navigate('/')
  };
 
+ const generateKickOff = async (): Promise<void> => {
+  try{
+    await fetchInternationalKickoff();
+    setIsSubmitted(false);
+  } catch(error){
+    console.log('Could not generate a new kickoff', error)
+  }
+ }
+
  const rerollHome = async (): Promise<void> => {
    const excludeId = countriesKickoff.awayTeam._id;
    const country = await fetchOneCountry(excludeId);
@@ -90,7 +99,7 @@ const fetchInternationalKickoff = async (): Promise<void> => {
   if(isSubmitted) return;
  
   try{
-   await axios.post('http://localhost:3000/kickoff-history?homeTeam', {
+   await axios.post('http://localhost:3000/kickoff-history', {
      homeTeam: countriesKickoff.homeTeam.country,
      awayTeam: countriesKickoff.awayTeam.country,
      type: KickoffType.INTERNATIONAL
@@ -134,7 +143,7 @@ const fetchInternationalKickoff = async (): Promise<void> => {
        
 
        <div className="kickoff-center">
-        <button className="generate-button" onClick={fetchInternationalKickoff}>
+        <button className="generate-button" onClick={generateKickOff}>
           GENERATE
         </button>
         <button className="submit-button" onClick={isSubmittedButton}>
