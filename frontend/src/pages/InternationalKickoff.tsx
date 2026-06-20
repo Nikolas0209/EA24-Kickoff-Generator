@@ -1,14 +1,13 @@
 import './InternationalKickoff.css';
-import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { starRatings } from '../data/starRatings';
 import { KickoffType } from '../enums/kickoffType.enum';
 import type { Kickoff } from '../types/kickoff.type';
 import type { RerollTeam } from '../types/rerollTeam.type';
+import BackNavigationButton from '../components/ui/BackNavigationButton';
 
 function InternationalKickoff(){
- const navigate = useNavigate();
  const [countriesKickoff, setCountriesKickoff] = useState<Kickoff>();
  const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
  
@@ -43,10 +42,6 @@ const fetchInternationalKickoff = async (): Promise<void> => {
 
   return () => clearTimeout(timer)
  }, [isSubmitted]);
-
- const navigatePage = (): void => {
-  navigate('/')
- };
 
  const generateKickOff = async (): Promise<void> => {
   try{
@@ -95,14 +90,9 @@ const fetchInternationalKickoff = async (): Promise<void> => {
 
  return(
   <>
-   <div className="go-back-button-container">
-    <button className="go-back-button" onClick={navigatePage}>
-      Go Back
-    </button>
-   </div>
-     
-   {
-    countriesKickoff && (
+   <BackNavigationButton/>
+  
+   {countriesKickoff && (
      <div className="kickoff-container" key={countriesKickoff.homeTeam._id}>
        <div className="kickoff-team">
          <div className="subtitle-div">

@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react';
 import './KickoffHistory.css';
 import type { Kickoff } from '../types/kickoff.type';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
 import dayjs from 'dayjs';
+import BackNavigationButton from '../components/ui/BackNavigationButton';
 
 type HistoryKickoff = {
   homeTeam: string,
@@ -15,7 +15,6 @@ type HistoryKickoff = {
 
 function KickoffHistory(){
   const [kickoffHistory, setKickoffHistory] = useState <HistoryKickoff[]>([]);
-  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchKickoffHistory = async (): Promise<void> => {
@@ -29,14 +28,6 @@ function KickoffHistory(){
 
     fetchKickoffHistory();
   }, []);
-
-  const navigatePage = (): void => {
-    if(window.history.length > 1){
-      navigate(-1)
-    } else {
-      navigate('/')
-    }
-  };
 
   const deleteAllButton = async(): Promise<void> => {
     try{
@@ -57,43 +48,40 @@ function KickoffHistory(){
   }
 
   return(
-    <>
-      <div className="go-back-button-container">
-        <button onClick={navigatePage}>
-          Go Back
-        </button>
-      </div>
-      <div className="kickoff-history-div">
-        <div className="kickoff-history-title-div">
-           <p className="kickoff-history-title">
-             All Matches:
-           </p>
-           <button onClick={deleteAllButton}>
-            Delete All
-           </button>
+   <>
+     <BackNavigationButton />
+
+     <div className="kickoff-history-div">
+       <div className="kickoff-history-title-div">
+         <p className="kickoff-history-title">
+           All Matches:
+         </p>
+         <button onClick={deleteAllButton}>
+           Delete All
+         </button>
+       </div>
+       <div className="kickoff-list-wrapper">
+        {kickoffHistory.map(kickoff => {
+          return( 
+            <div className="kickoff-history-list" key={kickoff._id}>
+              <div className="kickoff-team-div">
+                <p className="kickoff">
+                  {`${kickoff.homeTeam} - ${kickoff.awayTeam}`}
+                </p>
+              </div>
+              <div className="kickoff-date-div">
+                <p>{dayjs(kickoff.createdAt).format('DD/MM/YYYY')}</p>
+              </div>
+              <div className="delete-one-btn-div">
+               <button onClick={() => deleteOneButton(kickoff._id)}>
+                  Delete
+               </button>
+              </div>
+            </div>   
+            )
+          })}
         </div>
-        <div className="kickoff-list-wrapper">
-         {kickoffHistory.map(kickoff => {
-           return( 
-             <div className="kickoff-history-list" key={kickoff._id}>
-               <div className="kickoff-team-div">
-                 <p className="kickoff">
-                   {`${kickoff.homeTeam} - ${kickoff.awayTeam}`}
-                 </p>
-               </div>
-               <div className="kickoff-date-div">
-                 <p>{dayjs(kickoff.createdAt).format('DD/MM/YYYY')}</p>
-               </div>
-               <div className="delete-one-btn-div">
-                <button onClick={() => deleteOneButton(kickoff._id)}>
-                   Delete
-                </button>
-               </div>
-             </div>   
-             )
-           })}
-         </div>
-      </div>
+      </div>    
     </>
   )
 };

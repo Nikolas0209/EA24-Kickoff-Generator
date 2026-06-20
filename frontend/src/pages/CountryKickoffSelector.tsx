@@ -1,5 +1,6 @@
 import './HomePage.css';
 import { useNavigate } from 'react-router-dom';
+import BackNavigationButton from '../components/ui/BackNavigationButton';
 
 function CountryKickoffSelector(){
  const navigate = useNavigate();
@@ -13,6 +14,9 @@ function CountryKickoffSelector(){
  }
  
  return(
+  <>
+   <BackNavigationButton/>
+
    <div className="main-buttons-div">
     <button className="kickoff-button" onClick={navigateRandomKickoff}>
       Random Kick-off 
@@ -21,6 +25,7 @@ function CountryKickoffSelector(){
       Ratings Mode Kick-off
     </button>  
    </div>
+  </>
   )
 }
 
