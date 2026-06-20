@@ -1,20 +1,20 @@
 import { useEffect, useState } from 'react';
 import './KickoffHistory.css';
-import { KickoffType } from './InternationalKickoff';
+import type { Kickoff } from '../types/kickoff.type';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import dayjs from 'dayjs';
 
-type Kickoff = {
+type HistoryKickoff = {
   homeTeam: string,
   awayTeam: string,
-  type: KickoffType,
+  type: Kickoff,
   _id: string,
   createdAt: string
 }
 
 function KickoffHistory(){
-  const [kickoffHistory, setKickoffHistory] = useState <Kickoff[]>([]);
+  const [kickoffHistory, setKickoffHistory] = useState <HistoryKickoff[]>([]);
   const navigate = useNavigate();
 
   useEffect(() => {

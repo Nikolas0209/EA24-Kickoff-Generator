@@ -2,32 +2,14 @@ import './InternationalKickoff.css';
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { starRatings } from '../data/starRatings'; 
-
-export type Team = {
-  _id: string,
-  country: string,
-  stars: number,
-  logo: string
-}
-
-type InternationalKickoff = {
-  homeTeam: Team,
-  awayTeam: Team
-}
-
-type RerollTeam = {
-  team: Team
-}
-
-export enum KickoffType {
-  INTERNATIONAL = 'international',
-  CLUB = 'club'
-}
+import { starRatings } from '../data/starRatings';
+import { KickoffType } from '../enums/kickoffType.enum';
+import type { Kickoff } from '../types/kickoff.type';
+import type { RerollTeam } from '../types/rerollTeam.type';
 
 function InternationalKickoff(){
  const navigate = useNavigate();
- const [countriesKickoff, setCountriesKickoff] = useState<InternationalKickoff>();
+ const [countriesKickoff, setCountriesKickoff] = useState<Kickoff>();
  const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
  
  const fetchOneCountry = async (excludeId: string): Promise<RerollTeam> => {
@@ -71,9 +53,9 @@ const fetchInternationalKickoff = async (): Promise<void> => {
     await fetchInternationalKickoff();
     setIsSubmitted(false);
   } catch(error){
-    console.log('Could not generate a new kickoff', error)
+    console.log('The kickoff could not be generated', error)
   }
- }
+ };
 
  const rerollHome = async (): Promise<void> => {
    const excludeId = countriesKickoff.awayTeam._id;
