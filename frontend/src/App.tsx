@@ -4,6 +4,7 @@ import HomePage from './pages/HomePage';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import InternationalKickoff from './pages/InternationalKickoff';
 import KickoffHistory from './pages/KickoffHistory';
+import CountryKickoffSelector from './pages/CountryKickoffSelector';
 
 function App(){
  return (
@@ -11,7 +12,8 @@ function App(){
     <AppHeader />
     <Routes>
       <Route path='/' element={<HomePage />} />
-      <Route path='/countries' element={<InternationalKickoff />} />
+      <Route path='/countries' element={<CountryKickoffSelector />} />
+      <Route path='/countries-random' element={<InternationalKickoff />} />
       <Route path='/kickoff-history' element={<KickoffHistory />} />
     </Routes>
   </BrowserRouter>
