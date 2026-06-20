@@ -166,7 +166,7 @@ const fetchInternationalKickoff = async (): Promise<void> => {
 
      <div className="reroll-div">
        <button className="reroll-button" onClick={rerollHome}>
-        Reroll team
+         Reroll team
        </button>
        <button className="reroll-button" onClick={rerollAway}>
          Reroll team

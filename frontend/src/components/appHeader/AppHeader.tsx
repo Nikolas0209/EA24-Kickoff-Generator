@@ -40,12 +40,12 @@ function AppHeader(){
         className={`${isKickoffHistoryPage ? 'disable-history-button' : ""}`}>
         <img src={ball} 
          className={`ball ${isRotating ? 'rotating-class' : ""} ${isKickoffHistoryPage ? 'dim-ball-img' : ""}`}/>
-        <div className={`kickoff-history-tooltip-div ${isKickoffHistoryPage ? 'hide-tooltip' : ''}`}> 
+      </button>
+      <div className={`kickoff-history-tooltip-div ${isKickoffHistoryPage ? 'hide-tooltip' : ''}`}> 
           <p className="kickoff-history-tooltip">
             Kickoff History
           </p>
         </div>
-      </button>
      </div>   
    </header> 
  )

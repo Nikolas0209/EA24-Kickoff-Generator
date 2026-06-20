@@ -21,7 +21,7 @@ function KickoffHistory(){
     const fetchKickoffHistory = async (): Promise<void> => {
       try{
         const response = await axios.get('http://localhost:3000/kickoff-history');
-        setKickoffHistory(response.data.kickoffHistory);
+        setKickoffHistory(response.data);
       } catch(error){
         console.log('Kickoff history could not be fetched.', error)
       }  
@@ -84,9 +84,11 @@ function KickoffHistory(){
                <div className="kickoff-date-div">
                  <p>{dayjs(kickoff.createdAt).format('DD/MM/YYYY')}</p>
                </div>
-               <button onClick={() => deleteOneButton(kickoff._id)}>
-                  Delete
-               </button>
+               <div className="delete-one-btn-div">
+                <button onClick={() => deleteOneButton(kickoff._id)}>
+                   Delete
+                </button>
+               </div>
              </div>   
              )
            })}

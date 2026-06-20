@@ -68,10 +68,12 @@
   color: white;
   font-size: 13px;
   margin: 0px;
+  white-space: nowrap;
 }
 
 .header-section-3:hover .kickoff-history-tooltip-div{
   opacity: 1;
+  white-space: nowrap;
 }
 
 .header-section-3 button {
@@ -85,7 +87,6 @@
   justify-content: center;
   height: 100%;
   width: 100%;
-
 }
 
 .rotating-class{
