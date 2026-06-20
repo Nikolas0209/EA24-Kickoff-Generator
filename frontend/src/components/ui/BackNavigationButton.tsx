@@ -14,7 +14,7 @@ function BackNavigationButton(){
 
   return(
     <div className="go-back-button-container">
-     <button onClick={navigatePage}>
+     <button className="go-back-button" onClick={navigatePage}>
        Go Back
      </button>
    </div>

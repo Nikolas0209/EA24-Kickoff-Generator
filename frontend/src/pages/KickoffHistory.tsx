@@ -56,7 +56,7 @@ function KickoffHistory(){
          <p className="kickoff-history-title">
            All Matches:
          </p>
-         <button onClick={deleteAllButton}>
+         <button className="delete-button" onClick={deleteAllButton}>
            Delete All
          </button>
        </div>
@@ -73,8 +73,9 @@ function KickoffHistory(){
                 <p>{dayjs(kickoff.createdAt).format('DD/MM/YYYY')}</p>
               </div>
               <div className="delete-one-btn-div">
-               <button onClick={() => deleteOneButton(kickoff._id)}>
-                  Delete
+               <button className="delete-button"
+                  onClick={() => deleteOneButton(kickoff._id)}>
+                    Delete
                </button>
               </div>
             </div>   

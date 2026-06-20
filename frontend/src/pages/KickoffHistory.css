@@ -1,4 +1,4 @@
-button{
+.delete-button{
  cursor: pointer;
  background-color: black;
  color: white;
@@ -10,11 +10,11 @@ button{
  transition: transform 0.1s ease;
 }
  
-button:hover{
+.delete-button:hover{
  transform: scale(1.05);
 }
  
-button:active{
+.delete-button:active{
  box-shadow: 0px 7px 15px rgb(70, 70, 70);
 }
 
