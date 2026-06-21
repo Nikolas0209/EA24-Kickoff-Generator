@@ -6,19 +6,15 @@ import { KickoffType } from '../enums/kickoffType.enum';
 import type { RerollTeam } from '../types/rerollTeam.type';
 import BackNavigationButton from '../components/ui/BackNavigationButton';
 import { useKickoff } from '../hooks/useKickoff';
+import { getRequest } from '../api/getRequest';
 
 function InternationalKickoff(){
  const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
 
- const { kickoff,setKickoff, fetchKickoff } = useKickoff('http://localhost:3000/countries');
+ const { kickoff, setKickoff, fetchKickoff } = useKickoff('http://localhost:3000/countries');
  
- const fetchOneCountry = async (excludeId: string): Promise<RerollTeam> => {
-  try{
-    const response = await axios.get(`http://localhost:3000/countries/random-team/reroll?baseTeamId=${excludeId}`);
-    return response.data;
-  } catch(error){
-    console.log('Could not fetch a new team', error);
-  }
+ const fetchOneCountry = async (excludeId: string) => {
+  return getRequest<RerollTeam>(`http://localhost:3000/countries/random-team/reroll?baseTeamId=${excludeId}`);
  };
  
  useEffect(() => {
@@ -40,17 +36,17 @@ function InternationalKickoff(){
   }
  };
 
- const rerollHome = async (): Promise<void> => {
-   const excludeId = kickoff.awayTeam._id;
-   const country = await fetchOneCountry(excludeId);
-    
-   setKickoff((prev) => ({
+ const rerollHome = async(): Promise<void> => {
+  const excludeId = kickoff.awayTeam._id;
+  const country = await fetchOneCountry(excludeId);
+  
+  setKickoff((prev) => ({
     ...prev,
-    homeTeam: country.team    
- }))
+    homeTeam: country.team   
+  }))
  };
 
- const rerollAway = async (): Promise<void> => {
+ const rerollAway = async(): Promise<void> => {
   const excludeId = kickoff.homeTeam._id;
   const country = await fetchOneCountry(excludeId);
 

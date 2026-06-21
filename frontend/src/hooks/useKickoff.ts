@@ -3,7 +3,7 @@ import axios from "axios";
 import type { Kickoff } from "../types/kickoff.type";
 
 export function useKickoff (url: string){
-  const [kickoff, setKickoff] = useState<Kickoff>();
+  const [kickoff, setKickoff] = useState<Kickoff | null>(null);
 
   const fetchKickoff = useCallback(async () => {
     try {
