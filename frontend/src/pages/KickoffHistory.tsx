@@ -19,7 +19,7 @@ function KickoffHistory(){
   useEffect(() => {
     const fetchKickoffHistory = async (): Promise<void> => {
       try{
-        const response = await axios.get('http://localhost:3000/kickoff-history');
+        const response = await axios.get('/api/kickoff-history');
         setKickoffHistory(response.data);
       } catch(error){
         console.log('Kickoff history could not be fetched.', error)
@@ -31,7 +31,7 @@ function KickoffHistory(){
 
   const deleteAllButton = async(): Promise<void> => {
     try{
-     await axios.delete('http://localhost:3000/kickoff-history');
+     await axios.delete('/api/kickoff-history');
      setKickoffHistory([]);
     } catch(error){
       console.log('Could not delete all data', error)
@@ -40,7 +40,7 @@ function KickoffHistory(){
 
   const deleteOneButton = async(id:string): Promise<void> => {
     try{
-      await axios.delete(`http://localhost:3000/kickoff-history/${id}`);
+      await axios.delete(`/api/kickoff-history/${id}`);
       setKickoffHistory(prev => prev.filter(kickoff => kickoff._id !== id)); 
     } catch(error){
      console.log('The kickoff could not be deleted', error);

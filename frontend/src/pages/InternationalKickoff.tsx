@@ -11,10 +11,10 @@ import { getRequest } from '../api/getRequest';
 function InternationalKickoff(){
  const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
 
- const { kickoff, setKickoff, fetchKickoff } = useKickoff('http://localhost:3000/countries');
+ const { kickoff, setKickoff, fetchKickoff } = useKickoff('/api/countries');
  
  const fetchOneCountry = async (excludeId: string) => {
-  return getRequest<RerollTeam>(`http://localhost:3000/countries/random-team/reroll?baseTeamId=${excludeId}`);
+  return getRequest<RerollTeam>(`/api/countries/random-team/reroll?baseTeamId=${excludeId}`);
  };
  
  useEffect(() => {
@@ -60,7 +60,7 @@ function InternationalKickoff(){
   if(isSubmitted) return;
  
   try{
-   await axios.post('http://localhost:3000/kickoff-history', {
+   await axios.post('/api/kickoff-history', {
      homeTeam: kickoff.homeTeam.country,
      awayTeam: kickoff.awayTeam.country,
      type: KickoffType.INTERNATIONAL
@@ -83,7 +83,7 @@ function InternationalKickoff(){
           <p className="kickoff-subtitle">INTERNATIONALS</p>
          </div>
          <div className="country-image-container">
-          <img src={`http://localhost:3000${kickoff.homeTeam.logo}`} 
+          <img src={`${kickoff.homeTeam.logo}`} 
            className="country-image" alt="Club Logo" />
          </div>
          <div className="rating-container">
@@ -112,7 +112,7 @@ function InternationalKickoff(){
            <p className="kickoff-subtitle">INTERNATIONALS</p>
          </div>
          <div className="country-image-container">
-           <img src={`http://localhost:3000${kickoff.awayTeam.logo}`}
+           <img src={`${kickoff.awayTeam.logo}`}
              className="country-image" alt="Club Logo" />
          </div>
          <div className="rating-container">
