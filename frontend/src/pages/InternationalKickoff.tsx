@@ -37,6 +37,7 @@ function InternationalKickoff(){
  };
 
  const rerollHome = async(): Promise<void> => {
+  setIsSubmitted(false);
   const excludeId = kickoff.awayTeam._id;
   const country = await fetchOneCountry(excludeId);
   
@@ -47,6 +48,7 @@ function InternationalKickoff(){
  };
 
  const rerollAway = async(): Promise<void> => {
+  setIsSubmitted(false);
   const excludeId = kickoff.homeTeam._id;
   const country = await fetchOneCountry(excludeId);
 
@@ -83,7 +85,7 @@ function InternationalKickoff(){
           <p className="kickoff-subtitle">INTERNATIONALS</p>
          </div>
          <div className="country-image-container">
-          <img src={`${kickoff.homeTeam.logo}`} 
+          <img src={kickoff.homeTeam.logo}
            className="country-image" alt="Club Logo" />
          </div>
          <div className="rating-container">
@@ -97,7 +99,6 @@ function InternationalKickoff(){
          </div>
         </div>
        
-
        <div className="kickoff-center">
         <button className="generate-button" onClick={generateKickOff}>
           GENERATE
@@ -112,7 +113,7 @@ function InternationalKickoff(){
            <p className="kickoff-subtitle">INTERNATIONALS</p>
          </div>
          <div className="country-image-container">
-           <img src={`${kickoff.awayTeam.logo}`}
+           <img src={kickoff.awayTeam.logo}
              className="country-image" alt="Club Logo" />
          </div>
          <div className="rating-container">
