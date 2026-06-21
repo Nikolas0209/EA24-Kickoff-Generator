@@ -4,7 +4,7 @@ import BackNavigationButton from '../components/ui/BackNavigationButton';
 
 function CountryKickoffSelector(){
  const navigate = useNavigate();
-
+ 
  const navigateRandomKickoff = ():void => {
   navigate('/countries-random')
  };
@@ -21,7 +21,7 @@ function CountryKickoffSelector(){
     <button className="kickoff-button" onClick={navigateRandomKickoff}>
       Random Kick-off 
     </button>
-    <button className="kickoff-button">
+    <button className="kickoff-button" onClick={navigateRatingsMode}>
       Ratings Mode Kick-off
     </button>  
    </div>

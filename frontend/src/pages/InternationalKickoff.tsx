@@ -3,13 +3,14 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { starRatings } from '../data/starRatings';
 import { KickoffType } from '../enums/kickoffType.enum';
-import type { Kickoff } from '../types/kickoff.type';
 import type { RerollTeam } from '../types/rerollTeam.type';
 import BackNavigationButton from '../components/ui/BackNavigationButton';
+import { useKickoff } from '../hooks/useKickoff';
 
 function InternationalKickoff(){
- const [countriesKickoff, setCountriesKickoff] = useState<Kickoff>();
  const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
+
+ const { kickoff,setKickoff, fetchKickoff } = useKickoff('http://localhost:3000/countries');
  
  const fetchOneCountry = async (excludeId: string): Promise<RerollTeam> => {
   try{
@@ -18,21 +19,8 @@ function InternationalKickoff(){
   } catch(error){
     console.log('Could not fetch a new team', error);
   }
-};
+ };
  
-const fetchInternationalKickoff = async (): Promise<void> => {
-  try{
-   const response = await axios.get('http://localhost:3000/countries');
-   setCountriesKickoff(response.data);
-  } catch(error){
-   console.log('Could not fetch the Internationals', error)
-  }
-};
-
- useEffect(() => {
-  fetchInternationalKickoff()
- }, []);
-
  useEffect(() => {
   if(!isSubmitted) return;
 
@@ -45,7 +33,7 @@ const fetchInternationalKickoff = async (): Promise<void> => {
 
  const generateKickOff = async (): Promise<void> => {
   try{
-    await fetchInternationalKickoff();
+    await fetchKickoff();
     setIsSubmitted(false);
   } catch(error){
     console.log('The kickoff could not be generated', error)
@@ -53,20 +41,20 @@ const fetchInternationalKickoff = async (): Promise<void> => {
  };
 
  const rerollHome = async (): Promise<void> => {
-   const excludeId = countriesKickoff.awayTeam._id;
+   const excludeId = kickoff.awayTeam._id;
    const country = await fetchOneCountry(excludeId);
     
-   setCountriesKickoff((prev) => ({
+   setKickoff((prev) => ({
     ...prev,
     homeTeam: country.team    
  }))
  };
 
  const rerollAway = async (): Promise<void> => {
-  const excludeId = countriesKickoff.homeTeam._id;
+  const excludeId = kickoff.homeTeam._id;
   const country = await fetchOneCountry(excludeId);
 
-  setCountriesKickoff((prev) => ({
+  setKickoff((prev) => ({
     ...prev,
     awayTeam: country.team
   }))
@@ -77,8 +65,8 @@ const fetchInternationalKickoff = async (): Promise<void> => {
  
   try{
    await axios.post('http://localhost:3000/kickoff-history', {
-     homeTeam: countriesKickoff.homeTeam.country,
-     awayTeam: countriesKickoff.awayTeam.country,
+     homeTeam: kickoff.homeTeam.country,
+     awayTeam: kickoff.awayTeam.country,
      type: KickoffType.INTERNATIONAL
    }) 
   
@@ -92,23 +80,23 @@ const fetchInternationalKickoff = async (): Promise<void> => {
   <>
    <BackNavigationButton/>
   
-   {countriesKickoff && (
-     <div className="kickoff-container" key={countriesKickoff.homeTeam._id}>
+   {kickoff && (
+     <div className="kickoff-container" key={kickoff.homeTeam._id}>
        <div className="kickoff-team">
          <div className="subtitle-div">
           <p className="kickoff-subtitle">INTERNATIONALS</p>
          </div>
          <div className="country-image-container">
-          <img src={`http://localhost:3000${countriesKickoff.homeTeam.logo}`} 
+          <img src={`http://localhost:3000${kickoff.homeTeam.logo}`} 
            className="country-image" alt="Club Logo" />
          </div>
          <div className="rating-container">
-           <img src={starRatings[countriesKickoff.homeTeam.stars]} 
-              alt={countriesKickoff.homeTeam.stars.toString()} />
+           <img src={starRatings[kickoff.homeTeam.stars]} 
+              alt={kickoff.homeTeam.stars.toString()} />
          </div>
          <div className="club-name-container">
            <p className="country-name">
-            {countriesKickoff.homeTeam.country}
+            {kickoff.homeTeam.country}
            </p>
          </div>
         </div>
@@ -128,16 +116,16 @@ const fetchInternationalKickoff = async (): Promise<void> => {
            <p className="kickoff-subtitle">INTERNATIONALS</p>
          </div>
          <div className="country-image-container">
-           <img src={`http://localhost:3000${countriesKickoff.awayTeam.logo}`}
+           <img src={`http://localhost:3000${kickoff.awayTeam.logo}`}
              className="country-image" alt="Club Logo" />
          </div>
          <div className="rating-container">
-           <img src={starRatings[countriesKickoff.awayTeam.stars]} 
-             alt={countriesKickoff.awayTeam.stars.toString()} />
+           <img src={starRatings[kickoff.awayTeam.stars]} 
+             alt={kickoff.awayTeam.stars.toString()} />
          </div>
          <div className="club-name-container">
            <p className="country-name">
-            {countriesKickoff.awayTeam.country}
+            {kickoff.awayTeam.country}
            </p>
          </div>
        </div>
