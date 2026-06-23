@@ -1,13 +1,13 @@
 import './InternationalKickoff.css';
-import { useState } from 'react';
 import BackNavigationButton from '../components/ui/BackNavigationButton';
 import { useKickoff } from '../hooks/useKickoff';
 import TeamCard from '../components/ui/TeamCard';
 import RerollTeam from '../components/ui/RerollTeam';
 import KickoffActions from '../components/ui/KickoffActions';
+import type { SubmitMatch } from '../types/submitMatch.type';
 
-function InternationalKickoff(){
- const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
+
+function InternationalKickoff({ isSubmitted, setIsSubmitted }: SubmitMatch){
  const { kickoff, setKickoff, fetchKickoff } = useKickoff('/api/countries');
  
  return(
@@ -18,7 +18,8 @@ function InternationalKickoff(){
      <div className="kickoff-container" key={kickoff.homeTeam._id}>
        <TeamCard team={kickoff.homeTeam}/>
        
-       <KickoffActions isSubmitted={isSubmitted} setIsSubmitted={setIsSubmitted} kickoff={kickoff} fetchKickoff={fetchKickoff}/>
+       <KickoffActions isSubmitted={isSubmitted} setIsSubmitted={setIsSubmitted} kickoff={kickoff}
+        fetchKickoff={fetchKickoff}/>
 
        <TeamCard team={kickoff.awayTeam}/>
      </div>
