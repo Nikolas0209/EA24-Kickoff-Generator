@@ -6,10 +6,10 @@ import type { Kickoff } from '../../types/kickoff.type';
 type Props = {
   setIsSubmitted: React.Dispatch<React.SetStateAction<boolean>>;
   setKickoff: React.Dispatch<React.SetStateAction<Kickoff | null>>;
-  team: Kickoff;
+  kickoff: Kickoff;
 }
 
-function RerollTeam({ setIsSubmitted, setKickoff, team }: Props){
+function RerollTeam({ setIsSubmitted, setKickoff, kickoff }: Props){
 
  const fetchOneCountry = async (excludeId: string) => {
     return getRequest<TeamReroll>(`/api/countries/random-team/reroll?baseTeamId=${excludeId}`);
@@ -17,7 +17,7 @@ function RerollTeam({ setIsSubmitted, setKickoff, team }: Props){
 
  const rerollHome = async(): Promise<void> => {
   setIsSubmitted(false);
-  const excludeId = team.awayTeam._id;
+  const excludeId = kickoff.awayTeam._id;
   const country = await fetchOneCountry(excludeId);
   
   setKickoff((prev) => ({
@@ -28,7 +28,7 @@ function RerollTeam({ setIsSubmitted, setKickoff, team }: Props){
 
  const rerollAway = async(): Promise<void> => {
   setIsSubmitted(false);
-  const excludeId = team.homeTeam._id;
+  const excludeId = kickoff.homeTeam._id;
   const country = await fetchOneCountry(excludeId);
 
   setKickoff((prev) => ({
