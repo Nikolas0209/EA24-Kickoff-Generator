@@ -1,12 +1,12 @@
 import './InternationalKickoff.css';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { starRatings } from '../data/starRatings';
 import { KickoffType } from '../enums/kickoffType.enum';
 import type { RerollTeam } from '../types/rerollTeam.type';
 import BackNavigationButton from '../components/ui/BackNavigationButton';
 import { useKickoff } from '../hooks/useKickoff';
 import { getRequest } from '../api/getRequest';
+import TeamCard from '../components/ui/TeamCard';
 
 function InternationalKickoff(){
  const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
@@ -80,24 +80,7 @@ function InternationalKickoff(){
 
    {kickoff && (
      <div className="kickoff-container" key={kickoff.homeTeam._id}>
-       <div className="kickoff-team">
-         <div className="subtitle-div">
-          <p className="kickoff-subtitle">INTERNATIONALS</p>
-         </div>
-         <div className="country-image-container">
-          <img src={kickoff.homeTeam.logo}
-           className="country-image" alt="Club Logo" />
-         </div>
-         <div className="rating-container">
-           <img src={starRatings[kickoff.homeTeam.stars]} 
-              alt={kickoff.homeTeam.stars.toString()} />
-         </div>
-         <div className="club-name-container">
-           <p className="country-name">
-            {kickoff.homeTeam.country}
-           </p>
-         </div>
-        </div>
+       <TeamCard team={kickoff.homeTeam}/>
        
        <div className="kickoff-center">
         <button className="generate-button" onClick={generateKickOff}>
@@ -108,24 +91,7 @@ function InternationalKickoff(){
         </button>
        </div>
 
-       <div className="kickoff-team">
-         <div className="subtitle-div">
-           <p className="kickoff-subtitle">INTERNATIONALS</p>
-         </div>
-         <div className="country-image-container">
-           <img src={kickoff.awayTeam.logo}
-             className="country-image" alt="Club Logo" />
-         </div>
-         <div className="rating-container">
-           <img src={starRatings[kickoff.awayTeam.stars]} 
-             alt={kickoff.awayTeam.stars.toString()} />
-         </div>
-         <div className="club-name-container">
-           <p className="country-name">
-            {kickoff.awayTeam.country}
-           </p>
-         </div>
-       </div>
+       <TeamCard team={kickoff.awayTeam}/>
      </div>
       )
      }

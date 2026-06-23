@@ -5,14 +5,7 @@
   margin-top: 50px;
 }
 
-.kickoff-team{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  backdrop-filter: blur(3px);
-  border-radius: 10px;
-  background: rgba(0, 0, 0, 0.5)
-}
+
 
 .kickoff-center{
   display: flex;
@@ -22,37 +15,14 @@
   min-width: 250px;
 }
 
-.country-image-container{
- padding-top: 15px;
-}
 
-.country-image{
-  max-width: 200px;
-  max-height: 200px;
-  width: 200px;
-  height: 200px;
-  object-fit: contain;
-  display: block;
-}
 
-.country-name{
-  font-weight: bold;
-  padding-top: 10px;
-  font-size: 23px;
-}
 
-.rating-container{
-  padding-top: 20px;
-}
 
-.subtitle-div{
-  border-bottom: 1px solid white;
-}
 
-.kickoff-subtitle{
-  font-size: 20px;
-  font-weight: bold;
-}
+
+
+
 
 .generate-button{
   cursor: pointer;
