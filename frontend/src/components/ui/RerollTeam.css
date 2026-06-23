@@ -1,0 +1,26 @@
+.reroll-div{
+  padding-top: 50px;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.reroll-button{
+  cursor: pointer;
+ background-color: black;
+ color: white;
+ border-radius: 5px;
+ border: solid 1px white;
+ font-size: 17px;
+ font-weight: bold;
+ transition: transform 0.1s ease;
+ padding: 15px 15px;
+ min-width: 150px;
+}
+
+.reroll-button:hover{
+  transform: scale(1.05);
+}
+
+.reroll-button:active{
+  box-shadow: 0px 7px 15px rgb(70, 70, 70);
+}

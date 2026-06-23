@@ -2,20 +2,15 @@ import './InternationalKickoff.css';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { KickoffType } from '../enums/kickoffType.enum';
-import type { RerollTeam } from '../types/rerollTeam.type';
 import BackNavigationButton from '../components/ui/BackNavigationButton';
 import { useKickoff } from '../hooks/useKickoff';
-import { getRequest } from '../api/getRequest';
+
 import TeamCard from '../components/ui/TeamCard';
+import RerollTeam from '../components/ui/RerollTeam';
 
 function InternationalKickoff(){
  const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
-
  const { kickoff, setKickoff, fetchKickoff } = useKickoff('/api/countries');
- 
- const fetchOneCountry = async (excludeId: string) => {
-  return getRequest<RerollTeam>(`/api/countries/random-team/reroll?baseTeamId=${excludeId}`);
- };
  
  useEffect(() => {
   if(!isSubmitted) return;
@@ -34,29 +29,7 @@ function InternationalKickoff(){
   } catch(error){
     console.log('The kickoff could not be generated', error)
   }
- };
-
- const rerollHome = async(): Promise<void> => {
-  setIsSubmitted(false);
-  const excludeId = kickoff.awayTeam._id;
-  const country = await fetchOneCountry(excludeId);
-  
-  setKickoff((prev) => ({
-    ...prev,
-    homeTeam: country.team   
-  }))
- };
-
- const rerollAway = async(): Promise<void> => {
-  setIsSubmitted(false);
-  const excludeId = kickoff.homeTeam._id;
-  const country = await fetchOneCountry(excludeId);
-
-  setKickoff((prev) => ({
-    ...prev,
-    awayTeam: country.team
-  }))
- };
+ }; 
 
  const isSubmittedButton = async(): Promise<void> => {
   if(isSubmitted) return;
@@ -96,14 +69,7 @@ function InternationalKickoff(){
       )
      }
 
-     <div className="reroll-div">
-       <button className="reroll-button" onClick={rerollHome}>
-         Reroll team
-       </button>
-       <button className="reroll-button" onClick={rerollAway}>
-         Reroll team
-       </button>
-     </div>
+     <RerollTeam setIsSubmitted={setIsSubmitted} setKickoff={setKickoff} team={kickoff}/>
   </>
  )
 }

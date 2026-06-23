@@ -1,5 +1,5 @@
 import type { Team } from "./team.type";
 
-export type RerollTeam = {
+export type TeamReroll = {
   team: Team
 }
