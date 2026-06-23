@@ -77,7 +77,7 @@ function InternationalKickoff(){
  return(
   <>
    <BackNavigationButton/>
-  
+
    {kickoff && (
      <div className="kickoff-container" key={kickoff.homeTeam._id}>
        <div className="kickoff-team">
