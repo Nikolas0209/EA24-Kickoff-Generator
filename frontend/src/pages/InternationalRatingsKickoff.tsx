@@ -25,7 +25,7 @@ function InternationalRatingsKickoff({ isSubmitted, setIsSubmitted }: SubmitMatc
        )
       }
 
-      <RerollTeam setIsSubmitted={setIsSubmitted} setKickoff={setKickoff} kickoff={kickoff}/>
+      <RerollTeam setIsSubmitted={setIsSubmitted} setKickoff={setKickoff} kickoff={kickoff} rerollEndpoint='/api/countries/country-ratings'/>
     </>
   )
 }

@@ -7,12 +7,13 @@ type Props = {
   setIsSubmitted: React.Dispatch<React.SetStateAction<boolean>>;
   setKickoff: React.Dispatch<React.SetStateAction<Kickoff | null>>;
   kickoff: Kickoff;
+  rerollEndpoint: string
 }
 
-function RerollTeam({ setIsSubmitted, setKickoff, kickoff }: Props){
+function RerollTeam({ setIsSubmitted, setKickoff, kickoff, rerollEndpoint }: Props){
 
  const fetchOneCountry = async (excludeId: string) => {
-    return getRequest<TeamReroll>(`/api/countries/random-team/reroll?baseTeamId=${excludeId}`);
+    return getRequest<TeamReroll>(`${rerollEndpoint}/reroll?baseTeamId=${excludeId}`);
  };
 
  const rerollHome = async(): Promise<void> => {

@@ -6,7 +6,6 @@ import RerollTeam from '../components/ui/RerollTeam';
 import KickoffActions from '../components/ui/KickoffActions';
 import type { SubmitMatch } from '../types/submitMatch.type';
 
-
 function InternationalKickoff({ isSubmitted, setIsSubmitted }: SubmitMatch){
  const { kickoff, setKickoff, fetchKickoff } = useKickoff('/api/countries');
  
@@ -26,7 +25,7 @@ function InternationalKickoff({ isSubmitted, setIsSubmitted }: SubmitMatch){
       )
      }
 
-     <RerollTeam setIsSubmitted={setIsSubmitted} setKickoff={setKickoff} kickoff={kickoff}/>
+     <RerollTeam setIsSubmitted={setIsSubmitted} setKickoff={setKickoff} kickoff={kickoff} rerollEndpoint='/api/countries/random-team' />
   </>
  )
 }
