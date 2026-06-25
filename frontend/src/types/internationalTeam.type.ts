@@ -1,4 +1,4 @@
-export type Team = {
+export type InternationalTeam = {
   _id: string,
   country: string,
   stars: number,

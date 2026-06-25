@@ -1,5 +1,5 @@
-import type { Team } from "./team.type";
+import type { InternationalTeam } from "./internationalTeam.type";
 
 export type TeamReroll = {
-  team: Team
+  team: InternationalTeam
 }

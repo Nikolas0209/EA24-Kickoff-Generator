@@ -1,12 +1,12 @@
 import './RerollTeam.css';
 import { getRequest } from '../../api/getRequest';
 import type { TeamReroll } from '../../types/teamReroll.type';
-import type { Kickoff } from '../../types/countryKickoff.type';
+import type { CountryKickoff } from '../../types/countryKickoff.type';
 
 type Props = {
   setIsSubmitted: React.Dispatch<React.SetStateAction<boolean>>;
-  setKickoff: React.Dispatch<React.SetStateAction<Kickoff | null>>;
-  kickoff: Kickoff;
+  setKickoff: React.Dispatch<React.SetStateAction<CountryKickoff | null>>;
+  kickoff: CountryKickoff;
   rerollEndpoint: string
 }
 

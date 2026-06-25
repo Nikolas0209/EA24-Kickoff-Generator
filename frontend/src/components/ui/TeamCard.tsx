@@ -1,9 +1,9 @@
 import './TeamCard.css';
 import { starRatings } from '../../data/starRatings';
-import type { Team } from '../../types/team.type';
+import type { InternationalTeam } from '../../types/internationalTeam.type';
 
 type teamDetails = {
-  team: Team;
+  team: InternationalTeam;
   title: string
 }
 

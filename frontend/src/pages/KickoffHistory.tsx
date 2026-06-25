@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import './KickoffHistory.css';
-import type { Kickoff } from '../types/countryKickoff.type';
+import type { CountryKickoff } from '../types/countryKickoff.type';
 import axios from 'axios';
 import dayjs from 'dayjs';
 import BackNavigationButton from '../components/ui/BackNavigationButton';
@@ -8,7 +8,7 @@ import BackNavigationButton from '../components/ui/BackNavigationButton';
 type HistoryKickoff = {
   homeTeam: string,
   awayTeam: string,
-  type: Kickoff,
+  type: CountryKickoff,
   _id: string,
   createdAt: string
 }
