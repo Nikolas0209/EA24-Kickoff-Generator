@@ -5,9 +5,10 @@ import KickoffActions from '../components/ui/KickoffActions';
 import TeamCard from '../components/ui/TeamCard';
 import RerollTeam from '../components/ui/RerollTeam'
 import type { SubmitMatch } from '../types/submitMatch.type';
+import type { CountryKickoff } from '../types/countryKickoff.type';
 
 function InternationalRatingsKickoff({ isSubmitted, setIsSubmitted }: SubmitMatch){
-  const { kickoff, setKickoff, fetchKickoff } = useKickoff('/api/countries/country-ratings');
+  const { kickoff, setKickoff, fetchKickoff } = useKickoff<CountryKickoff>('/api/countries/country-ratings');
 
   return(
     <>
