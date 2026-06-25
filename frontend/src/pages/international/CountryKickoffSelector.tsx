@@ -1,6 +1,6 @@
-import './HomePage.css';
+import '../HomePage.css';
 import { useNavigate } from 'react-router-dom';
-import BackNavigationButton from '../components/ui/BackNavigationButton';
+import BackNavigationButton from '../../components/ui/BackNavigationButton';
 
 function CountryKickoffSelector(){
  const navigate = useNavigate();
