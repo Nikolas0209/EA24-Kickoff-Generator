@@ -15,17 +15,17 @@ function InternationalRatingsKickoff({ isSubmitted, setIsSubmitted }: SubmitMatc
 
       {kickoff && (
         <div className="kickoff-container" key={kickoff.homeTeam._id}>
-          <TeamCard team={kickoff.homeTeam}/>
+          <TeamCard team={kickoff.homeTeam} title='INTERNATIONALS RATINGS'/>
     
           <KickoffActions isSubmitted={isSubmitted} setIsSubmitted={setIsSubmitted} kickoff={kickoff}
            fetchKickoff={fetchKickoff}/>
 
-          <TeamCard team={kickoff.awayTeam}/>
+          <TeamCard team={kickoff.awayTeam} title='INTERNATIONALS RATINGS'/>
         </div>
        )
       }
 
-      <RerollTeam setIsSubmitted={setIsSubmitted} setKickoff={setKickoff} kickoff={kickoff} rerollEndpoint='/api/countries/country-ratings'/>
+      <RerollTeam setIsSubmitted={setIsSubmitted} setKickoff={setKickoff} kickoff={kickoff} rerollEndpoint='/api/countries/country-ratings' />
     </>
   )
 }

@@ -3,15 +3,16 @@ import { starRatings } from '../../data/starRatings';
 import type { Team } from '../../types/team.type';
 
 type teamDetails = {
-  team: Team
+  team: Team;
+  title: string
 }
 
-function TeamCard({ team }: teamDetails){
+function TeamCard({ team, title }: teamDetails){
 
   return(
     <div className="kickoff-team">
       <div className="subtitle-div">
-        <p className="kickoff-subtitle">INTERNATIONALS</p>
+        <p className="kickoff-subtitle">{title}</p>
       </div>
       <div className="country-image-container">
         <img src={team.logo} className="country-image" alt="Club Logo" />
