@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import './KickoffHistory.css';
-import type { CountryKickoff } from '../types/countryKickoff.type';
+import type { CountryKickoff } from '../types/internationalTypes/countryKickoff.type';
 import axios from 'axios';
 import dayjs from 'dayjs';
 import BackNavigationButton from '../components/ui/BackNavigationButton';

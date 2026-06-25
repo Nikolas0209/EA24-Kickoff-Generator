@@ -1,6 +1,6 @@
 import './TeamCard.css';
 import { starRatings } from '../../data/starRatings';
-import type { InternationalTeam } from '../../types/internationalTeam.type';
+import type { InternationalTeam } from '../../types/internationalTypes/internationalTeam.type';
 
 type teamDetails = {
   team: InternationalTeam;
