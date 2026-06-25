@@ -8,12 +8,16 @@ function HomePage(){
     navigate('/countries')
   }
 
+  const navigateUCL = ():void => {
+    navigate('//UEFA-Champions-League')
+  }
+
   return(
     <div className="main-buttons-div">
      <button className="kickoff-button" onClick={navigatePage}>
        Generate International Kick-off
      </button>
-     <button className="kickoff-button">
+     <button className="kickoff-button" onClick={navigateUCL}>
        Generate Club Kick-off
      </button>
     </div>
