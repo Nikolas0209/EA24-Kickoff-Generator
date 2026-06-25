@@ -1,6 +1,6 @@
 import type { Team } from "./team.type"
 
-export type Kickoff = {
+export type CountryKickoff = {
   homeTeam: Team,
   awayTeam: Team
 }

@@ -1,7 +1,7 @@
 import './RerollTeam.css';
 import { getRequest } from '../../api/getRequest';
 import type { TeamReroll } from '../../types/teamReroll.type';
-import type { Kickoff } from '../../types/kickoff.type';
+import type { Kickoff } from '../../types/countryKickoff.type';
 
 type Props = {
   setIsSubmitted: React.Dispatch<React.SetStateAction<boolean>>;

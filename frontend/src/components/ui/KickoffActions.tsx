@@ -2,7 +2,7 @@ import './KickoffActions.css';
 import { useEffect } from 'react';
 import { KickoffType } from '../../enums/kickoffType.enum';
 import axios from 'axios';
-import type { Kickoff } from '../../types/kickoff.type';
+import type { Kickoff } from '../../types/countryKickoff.type';
 
 type Actions = {
  isSubmitted: boolean,

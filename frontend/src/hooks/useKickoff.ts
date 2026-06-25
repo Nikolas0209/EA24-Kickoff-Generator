@@ -1,9 +1,9 @@
 import { useState, useEffect, useCallback } from "react";
 import axios from "axios";
-import type { Kickoff } from "../types/kickoff.type";
+import type { CountryKickoff } from "../types/countryKickoff.type";
 
 export function useKickoff (url: string){
-  const [kickoff, setKickoff] = useState<Kickoff | null>(null);
+  const [kickoff, setKickoff] = useState<CountryKickoff | null>(null);
 
   const fetchKickoff = useCallback(async () => {
     try {
