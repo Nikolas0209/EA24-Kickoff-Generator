@@ -2,16 +2,20 @@ import './KickoffActions.css';
 import { useEffect } from 'react';
 import { KickoffType } from '../../enums/kickoffType.enum';
 import axios from 'axios';
-import type { CountryKickoff } from '../../types/internationalTypes/countryKickoff.type';
+//import type { CountryKickoff } from '../../types/internationalTypes/countryKickoff.type';
+import { createKickoffUI } from '../../data/createKickoffUI';
+
 
 type Actions = {
  isSubmitted: boolean,
- kickoff: CountryKickoff,
+ //kickoff:  ,
  fetchKickoff: () => Promise<void>,
- setIsSubmitted: React.Dispatch<React.SetStateAction<boolean>>
+ setIsSubmitted: React.Dispatch<React.SetStateAction<boolean>>,
+ type: KickoffType
 }
 
 function KickoffActions({ isSubmitted, setIsSubmitted, kickoff, fetchKickoff }: Actions){
+  const {homeTeam, awayTeam} = createKickoffUI(kickoff);
 
   useEffect(() => {
     if(!isSubmitted) return;
@@ -23,38 +27,37 @@ function KickoffActions({ isSubmitted, setIsSubmitted, kickoff, fetchKickoff }: 
     return () => clearTimeout(timer)
    }, [isSubmitted]);
 
-   const generateKickOff = async (): Promise<void> => {
+  const generateKickOff = async (): Promise<void> => {
     try{
       await fetchKickoff();
       setIsSubmitted(false);
     } catch(error){
       console.log('The kickoff could not be generated', error)
     }
-   }; 
+  }; 
   
-   const isSubmittedButton = async(): Promise<void> => {
+  const isSubmittedButton = async(type: KickoffType): Promise<void> => {
     if(isSubmitted) return;
    
     try{
      await axios.post('/api/kickoff-history', {
-       homeTeam: kickoff.homeTeam.country,
-       awayTeam: kickoff.awayTeam.country,
-       type: KickoffType.INTERNATIONAL
+       homeTeam: homeTeam.name,
+       awayTeam: awayTeam.name,
+       type
      }) 
     
       setIsSubmitted(true);
     } catch(error){
       console.log('The kickoff could not be submitted', error)
     } 
-   };
-
+  };
 
   return(
     <div className="kickoff-center">
       <button className="generate-button" onClick={generateKickOff}>
         GENERATE
       </button>
-      <button className="submit-button" onClick={isSubmittedButton}>
+      <button className="submit-button" onClick={() => isSubmittedButton}>
         {isSubmitted ? 'Submitted' : 'Submit Kickoff'}
       </button>
     </div>

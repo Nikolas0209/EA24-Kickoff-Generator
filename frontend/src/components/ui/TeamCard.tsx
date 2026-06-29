@@ -1,9 +1,9 @@
 import './TeamCard.css';
 import { starRatings } from '../../data/starRatings';
-import type { InternationalTeam } from '../../types/internationalTypes/internationalTeam.type';
+import type { UITeam } from '../../data/createKickoffUI';
 
 type teamDetails = {
-  team: InternationalTeam;
+  team: UITeam;
   title: string
 }
 
@@ -22,7 +22,7 @@ function TeamCard({ team, title }: teamDetails){
       </div>
       <div>
         <p className="country-name">
-          {team.country}
+          {team.name}
         </p>
       </div>
     </div>

@@ -1,12 +1,31 @@
 import './UCLKickoff.css';
 import type { ClubKickoff } from '../../types/clubTypes/clubKickoff.type';
 import { useKickoff } from '../../hooks/useKickoff';
+import TeamCard from '../../components/ui/TeamCard';
+import KickoffActions from '../../components/ui/KickoffActions';
+//import BackNavigationButton from '../../components/ui/BackNavigationButton';
+import type { SubmitMatch } from '../../types/submitMatch.type';
+import RerollTeam from '../../components/ui/RerollTeam';
+import { createKickoffUI } from '../../data/createKickoffUI';
 
-function UCLKickoff(){
-  const { kickoff, setKickoff } = useKickoff<ClubKickoff>('/api/clubs?competition=UCL');
+function UCLKickoff({ isSubmitted, setIsSubmitted }: SubmitMatch){
+  const { kickoff, setKickoff, fetchKickoff } = useKickoff<ClubKickoff>('/api/clubs?competition=UCL');
+  const {homeTeam, awayTeam} = createKickoffUI(kickoff);
 
   return(
     <div className="ucl-page">
+      {kickoff && (
+        <div className="kickoff-container" key={kickoff.homeTeam._id}>
+
+         <TeamCard team={homeTeam}  title='UEFA CHAMPIONS LEAGUE'/>
+
+         <KickoffActions isSubmitted={isSubmitted} setIsSubmitted={setIsSubmitted} kickoff={kickoff} fetchKickoff={fetchKickoff}/>
+
+         <TeamCard team={awayTeam}  title='UEFA CHAMPIONS LEAGUE'/>
+        </div>
+      )}
+
+      <RerollTeam setIsSubmitted={setIsSubmitted} setKickoff={setKickoff} rerollEndpoint='api/clubs/random-team/reroll?baseTeam=baseTeamId'/>
     
     </div>
   )

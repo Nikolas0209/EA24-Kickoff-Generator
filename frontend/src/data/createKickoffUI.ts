@@ -1,0 +1,41 @@
+import type { ClubKickoff } from "../types/clubTypes/clubKickoff.type"
+import type { CountryKickoff } from "../types/internationalTypes/countryKickoff.type"
+
+export type UITeam = {
+  name: string,
+  logo: string,
+  stars: number,
+  type: 'club' | 'international',
+}
+
+export function createKickoffUI(kickoff: CountryKickoff | ClubKickoff | null){
+
+  const getLogoPath = (logo: string) => {
+    return`/assets${logo}.svg`
+  };
+
+  if(!kickoff){
+    return{ homeTeam: null, awayTeam: null};
+  }
+
+  const home = kickoff.homeTeam;
+  const away = kickoff.awayTeam;
+
+  const homeTeam: UITeam = {
+    name: 'club' in home ? home.club : home.country,
+    logo: getLogoPath(home.logo),
+    stars: kickoff.homeTeam.stars,
+    type: 'club' in home ? 'club' : 'international'
+  }
+   const awayTeam: UITeam = {
+    name: 'club' in away ? away.club : away.country, 
+    logo: getLogoPath(away.logo),
+    stars: kickoff.awayTeam.stars,
+    type: 'club' in away ? 'club' : 'international'
+  }
+
+  return {homeTeam, awayTeam}
+}
+
+
+

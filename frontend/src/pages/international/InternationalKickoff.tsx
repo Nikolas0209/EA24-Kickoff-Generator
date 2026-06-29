@@ -6,22 +6,24 @@ import RerollTeam from '../../components/ui/RerollTeam';
 import KickoffActions from '../../components/ui/KickoffActions';
 import type { SubmitMatch } from '../../types/submitMatch.type';
 import type { CountryKickoff } from '../../types/internationalTypes/countryKickoff.type';
+import { createKickoffUI } from '../../data/createKickoffUI';
 
 function InternationalKickoff({ isSubmitted, setIsSubmitted }: SubmitMatch){
  const { kickoff, setKickoff, fetchKickoff } = useKickoff<CountryKickoff>('/api/countries');
- 
+ const {homeTeam, awayTeam} = createKickoffUI(kickoff);
+
  return(
   <>
    <BackNavigationButton/>
 
    {kickoff && (
      <div className="kickoff-container" key={kickoff.homeTeam._id}>
-       <TeamCard team={kickoff.homeTeam} title='INTERNATIONAL RANDOM'/>
+       <TeamCard team={homeTeam} title='INTERNATIONAL RANDOM'/>
        
        <KickoffActions isSubmitted={isSubmitted} setIsSubmitted={setIsSubmitted} kickoff={kickoff}
         fetchKickoff={fetchKickoff}/>
 
-       <TeamCard team={kickoff.awayTeam} title='INTERNATIONAL RANDOM'/>
+       <TeamCard team={awayTeam} title='INTERNATIONAL RANDOM'/>
      </div>
       )
      }

@@ -6,7 +6,7 @@ export function useKickoff <T>(url: string){
 
   const fetchKickoff = useCallback(async () => {
     try {
-      const response = await axios.get(url);
+      const response = await axios.get<T>(url);
       setKickoff(response.data);
     } catch (error) {
       console.log("Could not fetch the Kickoff", error);
