@@ -1,6 +1,6 @@
 import './TeamCard.css';
 import { starRatings } from '../../data/starRatings';
-import type { UITeam } from '../../data/createKickoffUI';
+import type { UITeam } from '../../types/uiTeam.types';
 
 type teamDetails = {
   team: UITeam;

@@ -1,12 +1,6 @@
 import type { ClubKickoff } from "../types/clubTypes/clubKickoff.type"
 import type { CountryKickoff } from "../types/internationalTypes/countryKickoff.type"
-
-export type UITeam = {
-  name: string,
-  logo: string,
-  stars: number,
-  type: 'club' | 'international',
-}
+import type { UITeam } from '../types/uiTeam.types';
 
 export function createKickoffUI(kickoff: CountryKickoff | ClubKickoff | null){
 
