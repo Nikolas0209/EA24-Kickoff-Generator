@@ -5,7 +5,7 @@ export const bundesliga = [
    competition: 'UCL',
    leagueName: 'Bundesliga',
    league: 'bundesliga',
-   logo: '/clubLogos/bayern_munich'
+   logo: '/clubLogos/bayern_munchen'
   },
   {
    club: 'Union Berlin',
