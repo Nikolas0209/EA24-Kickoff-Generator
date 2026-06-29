@@ -3,7 +3,7 @@ import type { ClubKickoff } from '../../types/clubTypes/clubKickoff.type';
 import { useKickoff } from '../../hooks/useKickoff';
 import TeamCard from '../../components/ui/TeamCard';
 import KickoffActions from '../../components/ui/KickoffActions';
-//import BackNavigationButton from '../../components/ui/BackNavigationButton';
+import BackNavigationButton from '../../components/ui/BackNavigationButton';
 import type { SubmitMatch } from '../../types/submitMatch.type';
 import RerollTeam from '../../components/ui/RerollTeam';
 import { createKickoffUI } from '../../data/createKickoffUI';
@@ -14,6 +14,8 @@ function UCLKickoff({ isSubmitted, setIsSubmitted }: SubmitMatch){
 
   return(
     <div className="ucl-page">
+      <BackNavigationButton />
+      
       {kickoff && (
         <div className="kickoff-container" key={kickoff.homeTeam._id}>
 

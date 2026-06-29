@@ -48,7 +48,7 @@ function KickoffHistory(){
   }
 
   return(
-   <>
+   <div className="page-background">
      <BackNavigationButton />
 
      <div className="kickoff-history-div">
@@ -83,7 +83,7 @@ function KickoffHistory(){
           })}
         </div>
       </div>    
-    </>
+    </div>
   )
 };
 

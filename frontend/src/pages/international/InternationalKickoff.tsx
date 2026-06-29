@@ -13,7 +13,7 @@ function InternationalKickoff({ isSubmitted, setIsSubmitted }: SubmitMatch){
  const {homeTeam, awayTeam} = createKickoffUI(kickoff);
 
  return(
-  <>
+  <div className="page-background">
    <BackNavigationButton/>
 
    {kickoff && (
@@ -30,7 +30,7 @@ function InternationalKickoff({ isSubmitted, setIsSubmitted }: SubmitMatch){
 
      <RerollTeam setIsSubmitted={setIsSubmitted} setKickoff={setKickoff} kickoff={kickoff} 
       rerollEndpoint='/api/countries/random-team' />
-  </>
+  </div>
  )
 }
 

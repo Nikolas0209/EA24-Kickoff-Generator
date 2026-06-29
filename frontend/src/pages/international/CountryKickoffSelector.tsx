@@ -14,7 +14,7 @@ function CountryKickoffSelector(){
  }
  
  return(
-  <>
+  <div className="page-background">
    <BackNavigationButton/>
 
    <div className="main-buttons-div">
@@ -25,7 +25,7 @@ function CountryKickoffSelector(){
       Ratings Mode Kick-off
     </button>  
    </div>
-  </>
+  </div>
   )
 }
 

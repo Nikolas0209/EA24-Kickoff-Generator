@@ -1,7 +1,7 @@
 .main-buttons-div{
   display: flex;
   justify-content: space-around;
-  margin-top: 30vh;
+  padding-top: 30vh;
 }
 
 .kickoff-button{
@@ -24,3 +24,5 @@
 .kickoff-button:hover{
   transform: scale(1.05);
 }
+
+/* margin-top: 30vh;*/

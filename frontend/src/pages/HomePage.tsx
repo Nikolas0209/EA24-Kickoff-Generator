@@ -13,7 +13,8 @@ function HomePage(){
   }
 
   return(
-    <div className="main-buttons-div">
+    <div className="page-background">
+   <div className="main-buttons-div">
      <button className="kickoff-button" onClick={navigatePage}>
        Generate International Kick-off
      </button>
@@ -21,6 +22,8 @@ function HomePage(){
        Generate Club Kick-off
      </button>
     </div>
+    </div>
+ 
   )
 }
 
