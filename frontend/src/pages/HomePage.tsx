@@ -8,8 +8,8 @@ function HomePage(){
     navigate('/countries')
   }
 
-  const navigateUCL = ():void => {
-    navigate('//UEFA-Champions-League')
+  const navigateCompetitions = ():void => {
+    navigate('/competitions')
   }
 
   return(
@@ -18,13 +18,13 @@ function HomePage(){
        <button className="kickoff-button" onClick={navigatePage}>
          Generate International Kickoff
        </button>
-       <button className="kickoff-button" onClick={navigateUCL}>
+       <button className="kickoff-button">
          Generate Club Kickoff
        </button>
      </div>
     
      <div className="competition-button-div">
-       <button className="kickoff-button">
+       <button className="kickoff-button" onClick={navigateCompetitions}>
          Generate UEFA Competition Kickoff
        </button>
      </div>
