@@ -13,17 +13,22 @@ function HomePage(){
   }
 
   return(
-    <div className="page-background">
-   <div className="main-buttons-div">
-     <button className="kickoff-button" onClick={navigatePage}>
-       Generate International Kick-off
-     </button>
-     <button className="kickoff-button" onClick={navigateUCL}>
-       Generate Club Kick-off
-     </button>
-    </div>
-    </div>
- 
+   <div className="page-background">
+     <div className="main-buttons-div">
+       <button className="kickoff-button" onClick={navigatePage}>
+         Generate International Kickoff
+       </button>
+       <button className="kickoff-button" onClick={navigateUCL}>
+         Generate Club Kickoff
+       </button>
+     </div>
+    
+     <div className="competition-button-div">
+       <button className="kickoff-button">
+         Generate UEFA Competition Kickoff
+       </button>
+     </div>
+   </div>
   )
 }
 
