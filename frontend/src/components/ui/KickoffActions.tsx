@@ -12,7 +12,7 @@ type Actions = {
  kickoff: CountryKickoff | ClubKickoff,
  fetchKickoff: () => Promise<void>,
  setIsSubmitted: React.Dispatch<React.SetStateAction<boolean>>,
- kickoffType: KickoffType
+ kickoffType: KickoffType,
 }
 
 function KickoffActions({ isSubmitted, setIsSubmitted, kickoff, fetchKickoff, kickoffType }: Actions){

@@ -13,6 +13,8 @@ function UCLKickoff({ isSubmitted, setIsSubmitted }: SubmitMatch){
   const { kickoff, setKickoff, fetchKickoff } = useKickoff<ClubKickoff>('/api/clubs?competition=UCL');
   const {homeTeam, awayTeam} = createKickoffUI(kickoff);
 
+  const competition = 'UCL';
+
   return(
     <div className="ucl-page">
       <BackNavigationButton />
@@ -30,7 +32,7 @@ function UCLKickoff({ isSubmitted, setIsSubmitted }: SubmitMatch){
       )}
 
       <RerollTeam setIsSubmitted={setIsSubmitted} setKickoff={setKickoff} kickoff={kickoff} 
-       rerollEndpoint='api/clubs/random-team/reroll?competition=UCL&baseTeam=baseTeamId'/>
+       rerollEndpoint='api/clubs/random-team' competition={competition}/>
     
     </div>
   )

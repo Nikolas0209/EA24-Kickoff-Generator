@@ -9,6 +9,7 @@ import InternationalRatingsKickoff from './pages/international/InternationalRati
 import { useState } from 'react';
 import UCLKickoff from './pages/competitions/UCLKickoff';
 import CompetitionKickoffSelector from './pages/competitions/CompetitionKickoffSelector';
+import UELKickoff from './pages/competitions/UELKickoff';
 
 function App(){
   const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
@@ -21,8 +22,9 @@ function App(){
       <Route path='/countries' element={<CountryKickoffSelector />} />
       <Route path='/countries-random' element={<InternationalKickoff isSubmitted={isSubmitted} setIsSubmitted={setIsSubmitted} />} />
       <Route path='/countries-ratings-mode' element={<InternationalRatingsKickoff isSubmitted={isSubmitted} setIsSubmitted={setIsSubmitted} />} />
-      <Route path='competitions' element={<CompetitionKickoffSelector/>}/>
-      <Route path='/UEFA-Champions-League' element={<UCLKickoff isSubmitted={isSubmitted} setIsSubmitted={setIsSubmitted}/>} />
+      <Route path='/competitions' element={<CompetitionKickoffSelector />} />
+      <Route path='/UEFA-Champions-League' element={<UCLKickoff isSubmitted={isSubmitted} setIsSubmitted={setIsSubmitted} />} />
+      <Route path='/UEFA-Europa-League' element={<UELKickoff isSubmitted={isSubmitted} setIsSubmitted={setIsSubmitted} />} />
       <Route path='/kickoff-history' element={<KickoffHistory />} />
     </Routes>
   </BrowserRouter>

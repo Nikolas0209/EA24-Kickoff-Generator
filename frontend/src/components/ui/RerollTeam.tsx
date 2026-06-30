@@ -9,13 +9,14 @@ type Reroll = {
   setIsSubmitted: React.Dispatch<React.SetStateAction<boolean>>;
   setKickoff: React.Dispatch<React.SetStateAction<ClubKickoff | CountryKickoff>>;
   rerollEndpoint: string;
-  kickoff: CountryKickoff | ClubKickoff
+  kickoff: CountryKickoff | ClubKickoff;
+  competition: string;
 }
 
-function RerollTeam({ setIsSubmitted, setKickoff, kickoff, rerollEndpoint }: Reroll){
+function RerollTeam({ setIsSubmitted, setKickoff, kickoff, rerollEndpoint, competition }: Reroll){
 
  const fetchOneTeam = async (excludeId: string) => {
-    return getRequest<TeamReroll>(`${rerollEndpoint}/reroll?competition=UCL&baseTeamId=${excludeId}`);
+    return getRequest<TeamReroll>(`${rerollEndpoint}/reroll?competition=${competition}&baseTeamId=${excludeId}`);
  };
 
  const {homeTeam, awayTeam} = createKickoffUI(kickoff);
