@@ -89,7 +89,7 @@ router.get('/country-ratings/reroll', async (req, res) => {
    return res.status(400).json({error: 'Not enough teams'})
   }
 
-  const newTeam = getRandomTeamByRating(teams, baseTeam);
+  const newTeam = getRandomTeamByRating(teams, baseTeam._id);
 
   res.status(200).json({team: newTeam});
  } catch(error){

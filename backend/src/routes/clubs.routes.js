@@ -73,15 +73,21 @@ router.get('/club-ratings', async (req, res) => {
 
 router.get('/random-team/reroll', async (req, res) => {
   try{
-   const { competition, league, excludeId } = req.query;
+   const { competition, league, baseTeamId } = req.query;
    let teams = await getCollection('clubs');
    teams = applyFilters(teams, { competition,league });
+
+   const baseTeam = teams.find(team => team._id.equals(baseTeamId));
+
+   if(!baseTeam){
+    return res.status(404).json({error: 'Base team not found'})
+  }
 
    if(teams.length < 1){
     return res.status(400).json({error: 'Not enough teams'});
    }
 
-   const newTeam = getRandomTeam(teams, excludeId);
+   const newTeam = getRandomTeam(teams, baseTeam._id);
 
    res.status(200).json({team: newTeam});
   }catch(error){
