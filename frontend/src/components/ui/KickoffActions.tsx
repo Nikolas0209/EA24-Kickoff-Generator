@@ -2,13 +2,14 @@ import './KickoffActions.css';
 import { useEffect } from 'react';
 import { KickoffType } from '../../enums/kickoffType.enum';
 import axios from 'axios';
-//import type { CountryKickoff } from '../../types/internationalTypes/countryKickoff.type';
+import type { CountryKickoff } from '../../types/internationalTypes/countryKickoff.type';
 import { createKickoffUI } from '../../data/createKickoffUI';
+import type { ClubKickoff } from '../../types/clubTypes/clubKickoff.type';
 
 
 type Actions = {
  isSubmitted: boolean,
- //kickoff:  ,
+// kickoff: CountryKickoff | ClubKickoff ,
  fetchKickoff: () => Promise<void>,
  setIsSubmitted: React.Dispatch<React.SetStateAction<boolean>>,
  type: KickoffType

@@ -1,41 +1,54 @@
 import './RerollTeam.css';
 import { getRequest } from '../../api/getRequest';
-import type { TeamReroll } from '../../types/internationalTypes/teamReroll.type';
+import type { TeamReroll } from '../../types/teamReroll.type';
 import type { CountryKickoff } from '../../types/internationalTypes/countryKickoff.type';
+import { createKickoffUI } from '../../data/createKickoffUI';
+import type { ClubKickoff } from '../../types/clubTypes/clubKickoff.type';
 
-type Props = {
+type Reroll = {
   setIsSubmitted: React.Dispatch<React.SetStateAction<boolean>>;
-  setKickoff: React.Dispatch<React.SetStateAction<CountryKickoff | null>>;
-  kickoff: CountryKickoff;
-  rerollEndpoint: string
+  setKickoff: React.Dispatch<React.SetStateAction<ClubKickoff | CountryKickoff>>;
+  rerollEndpoint: string;
+  kickoff: CountryKickoff | ClubKickoff
 }
 
-function RerollTeam({ setIsSubmitted, setKickoff, kickoff, rerollEndpoint }: Props){
+function RerollTeam({ setIsSubmitted, setKickoff, kickoff, rerollEndpoint }: Reroll){
 
- const fetchOneCountry = async (excludeId: string) => {
-    return getRequest<TeamReroll>(`${rerollEndpoint}/reroll?baseTeamId=${excludeId}`);
+ const fetchOneTeam = async (excludeId: string) => {
+    return getRequest<TeamReroll>(`${rerollEndpoint}/reroll?competition=UCL&baseTeamId=${excludeId}`);
  };
 
- const rerollHome = async(): Promise<void> => {
+ const {homeTeam, awayTeam} = createKickoffUI(kickoff);
+
+ const rerollHome = async (): Promise<void> => {
   setIsSubmitted(false);
-  const excludeId = kickoff.awayTeam._id;
-  const country = await fetchOneCountry(excludeId);
-  
-  setKickoff((prev) => ({
-    ...prev,
-    homeTeam: country.team   
-  }))
+
+  const excludeId = awayTeam.id;
+  const rerolledTeam = await fetchOneTeam(excludeId);
+
+  setKickoff(prev => {
+    if (!prev) return prev;
+
+    return{
+      ...prev,
+      homeTeam: rerolledTeam.team
+    } as typeof prev;
+  });
  };
 
  const rerollAway = async(): Promise<void> => {
   setIsSubmitted(false);
-  const excludeId = kickoff.homeTeam._id;
-  const country = await fetchOneCountry(excludeId);
+  const excludeId = homeTeam.id;
+  const rerolledTeam = await fetchOneTeam(excludeId);
 
-  setKickoff((prev) => ({
-    ...prev,
-    awayTeam: country.team
-  }))
+  setKickoff((prev) => {
+    if(!prev) return prev;
+
+    return{
+      ...prev,
+      awayTeam: rerolledTeam.team
+    } as typeof prev
+  })
  };
 
  return(

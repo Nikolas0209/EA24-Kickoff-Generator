@@ -1,5 +1,5 @@
 export type ClubTeam = {
- _id: string 
+ _id: string, 
  club: string,
  stars: number,
  competition: string | null,

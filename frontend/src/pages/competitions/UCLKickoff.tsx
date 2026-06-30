@@ -15,19 +15,20 @@ function UCLKickoff({ isSubmitted, setIsSubmitted }: SubmitMatch){
   return(
     <div className="ucl-page">
       <BackNavigationButton />
-      
+
       {kickoff && (
         <div className="kickoff-container" key={kickoff.homeTeam._id}>
 
-         <TeamCard team={homeTeam}  title='UEFA CHAMPIONS LEAGUE'/>
+         <TeamCard team={homeTeam} title='UEFA CHAMPIONS LEAGUE'/>
 
-         <KickoffActions isSubmitted={isSubmitted} setIsSubmitted={setIsSubmitted} kickoff={kickoff} fetchKickoff={fetchKickoff}/>
+         <KickoffActions isSubmitted={isSubmitted} setIsSubmitted={setIsSubmitted} kickoff={kickoff} fetchKickoff={fetchKickoff} />
 
-         <TeamCard team={awayTeam}  title='UEFA CHAMPIONS LEAGUE'/>
+         <TeamCard team={awayTeam} title='UEFA CHAMPIONS LEAGUE'/>
         </div>
       )}
 
-      <RerollTeam setIsSubmitted={setIsSubmitted} setKickoff={setKickoff} rerollEndpoint='api/clubs/random-team/reroll?baseTeam=baseTeamId'/>
+      <RerollTeam setIsSubmitted={setIsSubmitted} setKickoff={setKickoff} kickoff={kickoff} 
+       rerollEndpoint='api/clubs/random-team/reroll?competition=UCL&baseTeam=baseTeamId'/>
     
     </div>
   )

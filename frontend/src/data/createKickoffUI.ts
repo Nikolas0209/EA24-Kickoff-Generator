@@ -16,12 +16,14 @@ export function createKickoffUI(kickoff: CountryKickoff | ClubKickoff | null){
   const away = kickoff.awayTeam;
 
   const homeTeam: UITeam = {
+    id: home._id,
     name: 'club' in home ? home.club : home.country,
     logo: getLogoPath(home.logo),
     stars: kickoff.homeTeam.stars,
     type: 'club' in home ? 'club' : 'international'
   }
    const awayTeam: UITeam = {
+    id: away._id,
     name: 'club' in away ? away.club : away.country, 
     logo: getLogoPath(away.logo),
     stars: kickoff.awayTeam.stars,

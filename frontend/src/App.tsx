@@ -20,7 +20,7 @@ function App(){
       <Route path='/countries' element={<CountryKickoffSelector />} />
       <Route path='/countries-random' element={<InternationalKickoff isSubmitted={isSubmitted} setIsSubmitted={setIsSubmitted} />} />
       <Route path='/countries-ratings-mode' element={<InternationalRatingsKickoff isSubmitted={isSubmitted} setIsSubmitted={setIsSubmitted} />} />
-      <Route path='/UEFA-Champions-League' element={<UCLKickoff />} />
+      <Route path='/UEFA-Champions-League' element={<UCLKickoff isSubmitted={isSubmitted} setIsSubmitted={setIsSubmitted}/>} />
       <Route path='/kickoff-history' element={<KickoffHistory />} />
     </Routes>
   </BrowserRouter>
