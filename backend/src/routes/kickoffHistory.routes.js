@@ -29,17 +29,17 @@ router.get('/', async (req, res) => {
 
 router.post('/', async (req, res) => {
  try{
-  const { homeTeam, awayTeam, type } = req.body;
+  const { homeTeam, awayTeam, kickoffType } = req.body;
   const collection = await getKickoffCollection();
 
-  if(!homeTeam || !awayTeam || !type){
+  if(!homeTeam || !awayTeam || !kickoffType){
    return res.status(400).json({error: 'Missing required kick-off data'})
   };
 
   const kickoff = {
    homeTeam, 
    awayTeam, 
-   type, 
+   kickoffType, 
    createdAt: new Date()
   };
   await collection.insertOne(kickoff);
