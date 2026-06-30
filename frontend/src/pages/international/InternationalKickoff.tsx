@@ -7,6 +7,7 @@ import KickoffActions from '../../components/ui/KickoffActions';
 import type { SubmitMatch } from '../../types/submitMatch.type';
 import type { CountryKickoff } from '../../types/internationalTypes/countryKickoff.type';
 import { createKickoffUI } from '../../data/createKickoffUI';
+import { KickoffType } from '../../enums/kickoffType.enum';
 
 function InternationalKickoff({ isSubmitted, setIsSubmitted }: SubmitMatch){
  const { kickoff, setKickoff, fetchKickoff } = useKickoff<CountryKickoff>('/api/countries');
@@ -21,7 +22,7 @@ function InternationalKickoff({ isSubmitted, setIsSubmitted }: SubmitMatch){
        <TeamCard team={homeTeam} title='INTERNATIONAL RANDOM'/>
        
        <KickoffActions isSubmitted={isSubmitted} setIsSubmitted={setIsSubmitted} kickoff={kickoff}
-        fetchKickoff={fetchKickoff}/>
+        fetchKickoff={fetchKickoff} kickoffType={KickoffType.INTERNATIONAL} />
 
        <TeamCard team={awayTeam} title='INTERNATIONAL RANDOM'/>
      </div>

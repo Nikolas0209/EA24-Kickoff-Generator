@@ -9,13 +9,13 @@ import type { ClubKickoff } from '../../types/clubTypes/clubKickoff.type';
 
 type Actions = {
  isSubmitted: boolean,
-// kickoff: CountryKickoff | ClubKickoff ,
+ kickoff: CountryKickoff | ClubKickoff,
  fetchKickoff: () => Promise<void>,
  setIsSubmitted: React.Dispatch<React.SetStateAction<boolean>>,
- type: KickoffType
+ kickoffType: KickoffType
 }
 
-function KickoffActions({ isSubmitted, setIsSubmitted, kickoff, fetchKickoff }: Actions){
+function KickoffActions({ isSubmitted, setIsSubmitted, kickoff, fetchKickoff, kickoffType }: Actions){
   const {homeTeam, awayTeam} = createKickoffUI(kickoff);
 
   useEffect(() => {
@@ -37,14 +37,14 @@ function KickoffActions({ isSubmitted, setIsSubmitted, kickoff, fetchKickoff }: 
     }
   }; 
   
-  const isSubmittedButton = async(type: KickoffType): Promise<void> => {
+  const isSubmittedButton = async(kickoffType: KickoffType ): Promise<void> => {
     if(isSubmitted) return;
    
     try{
      await axios.post('/api/kickoff-history', {
        homeTeam: homeTeam.name,
        awayTeam: awayTeam.name,
-       type
+       kickoffType
      }) 
     
       setIsSubmitted(true);
@@ -58,7 +58,7 @@ function KickoffActions({ isSubmitted, setIsSubmitted, kickoff, fetchKickoff }: 
       <button className="generate-button" onClick={generateKickOff}>
         GENERATE
       </button>
-      <button className="submit-button" onClick={() => isSubmittedButton}>
+      <button className="submit-button" onClick={() => isSubmittedButton(kickoffType)}>
         {isSubmitted ? 'Submitted' : 'Submit Kickoff'}
       </button>
     </div>

@@ -7,6 +7,7 @@ import BackNavigationButton from '../../components/ui/BackNavigationButton';
 import type { SubmitMatch } from '../../types/submitMatch.type';
 import RerollTeam from '../../components/ui/RerollTeam';
 import { createKickoffUI } from '../../data/createKickoffUI';
+import { KickoffType } from '../../enums/kickoffType.enum';
 
 function UCLKickoff({ isSubmitted, setIsSubmitted }: SubmitMatch){
   const { kickoff, setKickoff, fetchKickoff } = useKickoff<ClubKickoff>('/api/clubs?competition=UCL');
@@ -21,7 +22,8 @@ function UCLKickoff({ isSubmitted, setIsSubmitted }: SubmitMatch){
 
          <TeamCard team={homeTeam} title='UEFA CHAMPIONS LEAGUE'/>
 
-         <KickoffActions isSubmitted={isSubmitted} setIsSubmitted={setIsSubmitted} kickoff={kickoff} fetchKickoff={fetchKickoff} />
+         <KickoffActions isSubmitted={isSubmitted} setIsSubmitted={setIsSubmitted} kickoff={kickoff} 
+          kickoffType={KickoffType.CLUB} fetchKickoff={fetchKickoff} />
 
          <TeamCard team={awayTeam} title='UEFA CHAMPIONS LEAGUE'/>
         </div>
