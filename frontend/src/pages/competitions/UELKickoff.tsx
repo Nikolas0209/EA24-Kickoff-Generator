@@ -32,7 +32,7 @@ function UELKickoff({isSubmitted, setIsSubmitted}: SubmitMatch){
      )}
 
      <RerollTeam setKickoff={setKickoff} kickoff={kickoff} setIsSubmitted={setIsSubmitted}
-      rerollEndpoint={'api/clubs/random-team'}competition={competition}/>
+      rerollEndpoint={'api/clubs/random-team'} competition={competition}/>
 
    </div>
   )

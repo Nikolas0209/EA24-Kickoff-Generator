@@ -10,6 +10,7 @@ import { useState } from 'react';
 import UCLKickoff from './pages/competitions/UCLKickoff';
 import CompetitionKickoffSelector from './pages/competitions/CompetitionKickoffSelector';
 import UELKickoff from './pages/competitions/UELKickoff';
+import UECLKickoff from './pages/competitions/UECLKickoff';
 
 function App(){
   const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
@@ -25,6 +26,7 @@ function App(){
       <Route path='/competitions' element={<CompetitionKickoffSelector />} />
       <Route path='/UEFA-Champions-League' element={<UCLKickoff isSubmitted={isSubmitted} setIsSubmitted={setIsSubmitted} />} />
       <Route path='/UEFA-Europa-League' element={<UELKickoff isSubmitted={isSubmitted} setIsSubmitted={setIsSubmitted} />} />
+      <Route path='/UEFA-Conference-League' element={<UECLKickoff isSubmitted={isSubmitted} setIsSubmitted={setIsSubmitted} />} />
       <Route path='/kickoff-history' element={<KickoffHistory />} />
     </Routes>
   </BrowserRouter>
