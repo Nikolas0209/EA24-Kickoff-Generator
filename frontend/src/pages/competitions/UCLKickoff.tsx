@@ -8,32 +8,36 @@ import type { SubmitMatch } from '../../types/submitMatch.type';
 import RerollTeam from '../../components/ui/RerollTeam';
 import { createKickoffUI } from '../../data/createKickoffUI';
 import { KickoffType } from '../../enums/kickoffType.enum';
+import LoadingComponent from '../../components/ui/LoadingComponent';
 
 function UCLKickoff({ isSubmitted, setIsSubmitted }: SubmitMatch){
-  const { kickoff, setKickoff, fetchKickoff } = useKickoff<ClubKickoff>('/api/clubs?competition=UCL');
+  const { kickoff, setKickoff, fetchKickoff, isLoading } = useKickoff<ClubKickoff>('/api/clubs?competition=UCL');
   const {homeTeam, awayTeam} = createKickoffUI(kickoff);
 
   const competition = 'UCL';
 
   return(
     <div className="ucl-page">
-      <BackNavigationButton />
+      {isLoading && kickoff === null ? <LoadingComponent/> : (
+        <>
+          <BackNavigationButton />
+          
+          {kickoff && (
+            <div className="kickoff-container" key={kickoff.homeTeam._id}>
 
-      {kickoff && (
-        <div className="kickoff-container" key={kickoff.homeTeam._id}>
+              <TeamCard team={homeTeam} title='UEFA CHAMPIONS LEAGUE'/>
 
-         <TeamCard team={homeTeam} title='UEFA CHAMPIONS LEAGUE'/>
+              <KickoffActions isSubmitted={isSubmitted} setIsSubmitted={setIsSubmitted} kickoff={kickoff} 
+               kickoffType={KickoffType.CLUB} fetchKickoff={fetchKickoff} />
 
-         <KickoffActions isSubmitted={isSubmitted} setIsSubmitted={setIsSubmitted} kickoff={kickoff} 
-          kickoffType={KickoffType.CLUB} fetchKickoff={fetchKickoff} />
+              <TeamCard team={awayTeam} title='UEFA CHAMPIONS LEAGUE'/>
+           </div>
+          )}
 
-         <TeamCard team={awayTeam} title='UEFA CHAMPIONS LEAGUE'/>
-        </div>
+          <RerollTeam setIsSubmitted={setIsSubmitted} setKickoff={setKickoff} kickoff={kickoff} 
+           rerollEndpoint='api/clubs/random-team' competition={competition}/>
+        </>
       )}
-
-      <RerollTeam setIsSubmitted={setIsSubmitted} setKickoff={setKickoff} kickoff={kickoff} 
-       rerollEndpoint='api/clubs/random-team' competition={competition}/>
-    
     </div>
   )
 }

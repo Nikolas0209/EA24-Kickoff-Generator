@@ -16,7 +16,7 @@ import ClubRatingsKickoff from './pages/clubs/ClubRatingsKickoff';
 
 function App(){
   const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
-
+  
  return (
   <BrowserRouter>
     <AppHeader />

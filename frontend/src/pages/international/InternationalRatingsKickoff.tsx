@@ -8,29 +8,33 @@ import type { SubmitMatch } from '../../types/submitMatch.type';
 import type { CountryKickoff } from '../../types/internationalTypes/countryKickoff.type';
 import { createKickoffUI } from '../../data/createKickoffUI';
 import { KickoffType } from '../../enums/kickoffType.enum';
+import LoadingComponent from '../../components/ui/LoadingComponent';
 
-function InternationalRatingsKickoff({ isSubmitted, setIsSubmitted }: SubmitMatch){
-  const { kickoff, setKickoff, fetchKickoff } = useKickoff<CountryKickoff>('/api/countries/country-ratings');
+function InternationalRatingsKickoff({ isSubmitted, setIsSubmitted}: SubmitMatch){
+  const { kickoff, setKickoff, fetchKickoff, isLoading } = useKickoff<CountryKickoff>('/api/countries/country-ratings');
   const {homeTeam, awayTeam} = createKickoffUI(kickoff);
 
   return(
     <div className="page-background">
-      <BackNavigationButton/>
+      {isLoading && kickoff === null ? <LoadingComponent/> : (
+        <>
+          <BackNavigationButton/>
 
-      {kickoff && (
-        <div className="kickoff-container" key={kickoff.homeTeam._id}>
-          <TeamCard team={homeTeam} title='INTERNATIONAL RATINGS'/>
-    
-          <KickoffActions isSubmitted={isSubmitted} setIsSubmitted={setIsSubmitted} kickoff={kickoff}
-           fetchKickoff={fetchKickoff} kickoffType={KickoffType.INTERNATIONAL} />
+          {kickoff && (
+            <div className="kickoff-container" key={kickoff.homeTeam._id}>
+              <TeamCard team={homeTeam} title='INTERNATIONAL RATINGS'/>
 
-          <TeamCard team={awayTeam} title='INTERNATIONAL RATINGS'/>
-        </div>
-       )
-      }
+              <KickoffActions isSubmitted={isSubmitted} setIsSubmitted={setIsSubmitted} kickoff={kickoff}
+                fetchKickoff={fetchKickoff} kickoffType={KickoffType.INTERNATIONAL} />
 
-      <RerollTeam setIsSubmitted={setIsSubmitted} setKickoff={setKickoff} kickoff={kickoff}
-       rerollEndpoint='/api/countries/country-ratings' />
+              <TeamCard team={awayTeam} title='INTERNATIONAL RATINGS'/>
+            </div>
+          )}
+
+          <RerollTeam setIsSubmitted={setIsSubmitted} setKickoff={setKickoff} kickoff={kickoff}
+          rerollEndpoint='/api/countries/country-ratings' />
+        </>
+      )}
     </div>
   )
 }

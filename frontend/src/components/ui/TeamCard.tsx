@@ -29,4 +29,7 @@ function TeamCard({ team, title }: teamDetails){
   )
 }
 
+
+//espanyol and juve logo, osnabruck,derby, swansea
+
 export default TeamCard;

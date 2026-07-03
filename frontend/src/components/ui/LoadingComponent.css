@@ -1,0 +1,22 @@
+.loading-spinner-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 200px;
+}
+
+.loading-spinner{
+  width: 15%;
+  object-fit: contain;
+  animation: spin 0.7s linear infinite;
+  height: 15%;
+}
+
+@keyframes spin{
+  from{
+   transform: rotate(0deg);
+  } 
+  to{
+   transform: rotate(360deg);
+  }
+}
