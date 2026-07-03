@@ -4,8 +4,12 @@ import { useNavigate } from 'react-router-dom';
 function HomePage(){
   const navigate = useNavigate();
  
-  const navigatePage = (): void => {
+  const navigatePageInternationals = (): void => {
     navigate('/countries')
+  }
+
+  const navigatePageClubs = ():void => {
+    navigate('/clubs')
   }
 
   const navigateCompetitions = ():void => {
@@ -15,10 +19,10 @@ function HomePage(){
   return(
    <div className="page-background">
      <div className="main-buttons-div">
-       <button className="kickoff-button" onClick={navigatePage}>
+       <button className="kickoff-button" onClick={navigatePageInternationals}>
          Generate International Kickoff
        </button>
-       <button className="kickoff-button">
+       <button className="kickoff-button" onClick={navigatePageClubs}>
          Generate Club Kickoff
        </button>
      </div>

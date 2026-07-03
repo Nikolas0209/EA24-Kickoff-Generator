@@ -2,17 +2,17 @@ import '../HomePage.css';
 import { useNavigate } from 'react-router-dom';
 import BackNavigationButton from '../../components/ui/BackNavigationButton';
 
-function CountryKickoffSelector(){
+function ClubKickoffSelector(){
  const navigate = useNavigate();
- 
+
  const navigateRandomKickoff = ():void => {
-  navigate('/countries-random')
+  navigate('/clubs-random')
  };
  
  const navigateRatingsMode = ():void => {
-  navigate('/countries-ratings-mode')
+  navigate('/clubs-ratings-mode')
  }
-
+ 
  return(
   <div className="page-background">
    <BackNavigationButton/>
@@ -29,4 +29,4 @@ function CountryKickoffSelector(){
   )
 }
 
-export default CountryKickoffSelector;
+export default ClubKickoffSelector;

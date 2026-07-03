@@ -5,7 +5,7 @@ import BackNavigationButton from '../../components/ui/BackNavigationButton';
 
 function CompetitionKickoffSelector(){
   const navigate = useNavigate();
-
+ 
   const navigateUCL = ():void => {
     navigate('//UEFA-Champions-League')
   };

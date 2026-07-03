@@ -11,6 +11,8 @@ import UCLKickoff from './pages/competitions/UCLKickoff';
 import CompetitionKickoffSelector from './pages/competitions/CompetitionKickoffSelector';
 import UELKickoff from './pages/competitions/UELKickoff';
 import UECLKickoff from './pages/competitions/UECLKickoff';
+import ClubKickoffSelector from './pages/clubs/ClubKickoffSelector';
+import ClubRatingsKickoff from './pages/clubs/ClubRatingsKickoff';
 
 function App(){
   const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
@@ -27,6 +29,8 @@ function App(){
       <Route path='/UEFA-Champions-League' element={<UCLKickoff isSubmitted={isSubmitted} setIsSubmitted={setIsSubmitted} />} />
       <Route path='/UEFA-Europa-League' element={<UELKickoff isSubmitted={isSubmitted} setIsSubmitted={setIsSubmitted} />} />
       <Route path='/UEFA-Conference-League' element={<UECLKickoff isSubmitted={isSubmitted} setIsSubmitted={setIsSubmitted} />} />
+      <Route path='/clubs'element={<ClubKickoffSelector />} />
+      <Route path='/clubs-ratings-mode' element={<ClubRatingsKickoff isSubmitted={isSubmitted} setIsSubmitted={setIsSubmitted}/>} />
       <Route path='/kickoff-history' element={<KickoffHistory />} />
     </Routes>
   </BrowserRouter>
