@@ -19,8 +19,8 @@ router.get('/', async (req, res) => {
   }
  
   const collection = await getKickoffCollection();
-  const kickoffHistory = await collection.find(query).toArray();
-
+  const kickoffHistory = await collection.find(query).sort({ createdAt: -1 }).toArray();
+ 
   res.status(200).json(kickoffHistory);
  }catch(error){
   res.status(500).json({error: 'Failed to fetch kick-off history'})
