@@ -61,7 +61,9 @@ function KickoffHistory(){
          <p className="kickoff-history-title">
            All Matches:
          </p>
-         <button className="delete-button" onClick={deleteAllButton}>
+         <button disabled={kickoffHistory.length === 0 }
+           className={`delete-button ${kickoffHistory.length === 0 ?'disable-delete-all-button': ''}`}
+           onClick={deleteAllButton}>
            Delete All
          </button>
        </div>

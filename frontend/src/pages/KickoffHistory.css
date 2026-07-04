@@ -77,3 +77,15 @@
 .delete-one-btn-div{
  padding-right: 15px;
 }
+
+.disable-delete-all-button{
+  opacity: 0.5;
+  cursor: auto;
+}
+
+.delete-button:disabled{
+  transform: none;
+  box-shadow: none;
+}
+
+
