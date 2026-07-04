@@ -4,6 +4,7 @@ import type { CountryKickoff } from '../types/internationalTypes/countryKickoff.
 import axios from 'axios';
 import dayjs from 'dayjs';
 import BackNavigationButton from '../components/ui/BackNavigationButton';
+import LoadingComponent from '../components/ui/LoadingComponent';
 
 type HistoryKickoff = {
   homeTeam: string,
@@ -15,15 +16,19 @@ type HistoryKickoff = {
 
 function KickoffHistory(){
   const [kickoffHistory, setKickoffHistory] = useState <HistoryKickoff[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   useEffect(() => {
     const fetchKickoffHistory = async (): Promise<void> => {
       try{
+        setIsLoading(true);
         const response = await axios.get('/api/kickoff-history');
         setKickoffHistory(response.data);
       } catch(error){
         console.log('Kickoff history could not be fetched.', error)
-      }  
+      } finally{
+        setIsLoading(false);
+      } 
     }
 
     fetchKickoffHistory();
@@ -60,8 +65,9 @@ function KickoffHistory(){
            Delete All
          </button>
        </div>
-       <div className="kickoff-list-wrapper">
-        {kickoffHistory.map(kickoff => {
+       {isLoading ? <LoadingComponent/> : (
+        <div className="kickoff-list-wrapper">
+         {kickoffHistory.map(kickoff => {
           return( 
             <div className="kickoff-history-list" key={kickoff._id}>
               <div className="kickoff-team-div">
@@ -73,15 +79,17 @@ function KickoffHistory(){
                 <p>{dayjs(kickoff.createdAt).format('DD/MM/YYYY')}</p>
               </div>
               <div className="delete-one-btn-div">
-               <button className="delete-button"
+                <button className="delete-button"
                   onClick={() => deleteOneButton(kickoff._id)}>
                     Delete
-               </button>
+                </button>
               </div>
             </div>   
             )
           })}
         </div>
+       )}
+      
       </div>    
     </div>
   )
