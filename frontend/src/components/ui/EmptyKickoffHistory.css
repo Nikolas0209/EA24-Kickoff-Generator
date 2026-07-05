@@ -1,0 +1,11 @@
+.empty-kickoff-history-div{
+ border-radius: 10px;
+ padding: 5px 25px;
+ background: rgba(0, 0, 0, 0.5);
+ backdrop-filter: blur(3px);
+}
+
+.empty-kickoff-history-mess{
+ font-weight: bold;
+ font-size: 20px;
+}

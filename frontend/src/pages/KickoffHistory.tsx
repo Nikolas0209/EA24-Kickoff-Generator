@@ -5,6 +5,7 @@ import axios from 'axios';
 import dayjs from 'dayjs';
 import BackNavigationButton from '../components/ui/BackNavigationButton';
 import LoadingComponent from '../components/ui/LoadingComponent';
+import EmptyKickoffHistory from '../components/ui/EmptyKickoffHistory';
 
 type HistoryKickoff = {
   homeTeam: string,
@@ -67,30 +68,36 @@ function KickoffHistory(){
            Delete All
          </button>
        </div>
-       {isLoading ? <LoadingComponent/> : (
-        <div className="kickoff-list-wrapper">
-         {kickoffHistory.map(kickoff => {
-          return( 
-            <div className="kickoff-history-list" key={kickoff._id}>
-              <div className="kickoff-team-div">
-                <p className="kickoff">
-                  {`${kickoff.homeTeam} - ${kickoff.awayTeam}`}
-                </p>
-              </div>
-              <div className="kickoff-date-div">
-                <p>{dayjs(kickoff.createdAt).format('DD/MM/YYYY')}</p>
-              </div>
-              <div className="delete-one-btn-div">
-                <button className="delete-button"
-                  onClick={() => deleteOneButton(kickoff._id)}>
-                    Delete
-                </button>
-              </div>
-            </div>   
-            )
-          })}
-        </div>
-       )}
+       <div className='wrapper'>
+       {isLoading ? (<LoadingComponent/>) : 
+          kickoffHistory.length === 0 ? ( 
+             <div className="empty-kickoff-wrapper">
+              <EmptyKickoffHistory />
+            </div>) : (
+            <div className="kickoff-list-wrapper">
+            {kickoffHistory.map(kickoff => {
+              return( 
+                <div className="kickoff-history-list" key={kickoff._id}>
+                  <div className="kickoff-team-div">
+                    <p className="kickoff">
+                      {`${kickoff.homeTeam} - ${kickoff.awayTeam}`}
+                    </p>
+                  </div>
+                  <div className="kickoff-date-div">
+                    <p>{dayjs(kickoff.createdAt).format('DD/MM/YYYY')}</p>
+                  </div>
+                  <div className="delete-one-btn-div">
+                    <button className="delete-button"
+                      onClick={() => deleteOneButton(kickoff._id)}>
+                        Delete
+                    </button>
+                  </div>
+                </div>   
+                )
+              })}
+          </div>
+        )}
+       </div>
       
       </div>    
     </div>
