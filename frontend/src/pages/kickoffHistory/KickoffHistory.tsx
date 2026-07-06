@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
 import './KickoffHistory.css';
-import type { CountryKickoff } from '../types/internationalTypes/countryKickoff.type';
+import type { CountryKickoff } from '../../types/internationalTypes/countryKickoff.type';
 import axios from 'axios';
 import dayjs from 'dayjs';
-import BackNavigationButton from '../components/ui/BackNavigationButton';
-import LoadingComponent from '../components/ui/LoadingComponent';
-import EmptyKickoffHistory from '../components/ui/EmptyKickoffHistory';
+import BackNavigationButton from '../../components/ui/BackNavigationButton';
+import LoadingComponent from '../../components/ui/LoadingComponent';
+import EmptyKickoffHistory from '../../components/ui/EmptyKickoffHistory';
+import ConfirmationPopup from './ConfirmationPopup';
 
 type HistoryKickoff = {
   homeTeam: string,
@@ -79,23 +80,7 @@ function KickoffHistory(){
 
      <div className="kickoff-history-div">
       {isPopup && (
-         <div className="popup-overlay">
-         <div className="popup-modal">
-           <p className="popup-text">
-            {errorMessage === '' ?  
-            `Proceeding will delete all kickoff history data.
-             Do you wish to proceed` : errorMessage}
-           </p>
-           <div className="popup-buttons-div">
-              <button onClick={yesPopupButton} className="popup-buttons">
-               YES
-              </button>
-              <button onClick={noPopupButton} className="popup-buttons">
-               NO
-              </button>
-           </div>
-         </div>
-        </div>
+         <ConfirmationPopup yesPopupButton={yesPopupButton} noPopupButton={noPopupButton} errorMessage={errorMessage} />
       )}
   
        <div className="kickoff-history-title-div">

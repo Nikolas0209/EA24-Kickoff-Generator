@@ -3,7 +3,7 @@ import AppHeader from './components/appHeader/AppHeader';
 import HomePage from './pages/HomePage';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import InternationalKickoff from './pages/international/InternationalKickoff';
-import KickoffHistory from './pages/KickoffHistory';
+import KickoffHistory from './pages/kickoffHistory/KickoffHistory';
 import CountryKickoffSelector from './pages/international/CountryKickoffSelector';
 import InternationalRatingsKickoff from './pages/international/InternationalRatingsKickoff';
 import { useState } from 'react';
