@@ -18,6 +18,8 @@ type HistoryKickoff = {
 function KickoffHistory(){
   const [kickoffHistory, setKickoffHistory] = useState <HistoryKickoff[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isPopup, setIsPopup] = useState<boolean>(false);
+  const [errorMessage, setErrorMessage] = useState<string>('');
 
   useEffect(() => {
     const fetchKickoffHistory = async (): Promise<void> => {
@@ -35,14 +37,18 @@ function KickoffHistory(){
     fetchKickoffHistory();
   }, []);
 
-  const deleteAllButton = async(): Promise<void> => {
+  const deleteAllButton = ():void => {
+     setIsPopup(true);
+  };
+
+  const deleteAllKickoffs = async(): Promise<void> => {
     try{
-     await axios.delete('/api/kickoff-history');
-     setKickoffHistory([]);
-    } catch(error){
-      console.log('Could not delete all data', error)
-    }
-  }
+      await axios.delete('/api/kickoff-history');
+      setKickoffHistory([]);
+     } catch(error){
+       console.log('Could not delete all data', error)
+     }
+  };
 
   const deleteOneButton = async(id:string): Promise<void> => {
     try{
@@ -51,18 +57,52 @@ function KickoffHistory(){
     } catch(error){
      console.log('The kickoff could not be deleted', error);
     }
-  }
+  };
+
+  const noPopupButton = ():void => {
+    setIsPopup(false);
+    setErrorMessage('');
+  };
+
+  const yesPopupButton = async(): Promise<void> => {
+    try{
+      await deleteAllKickoffs();
+      setIsPopup(false);
+    } catch(err){
+      setErrorMessage('Delete failed. Please try again.');
+    }
+  };
 
   return(
    <div className="page-background">
      <BackNavigationButton />
 
      <div className="kickoff-history-div">
+      {isPopup && (
+         <div className="popup-overlay">
+         <div className="popup-modal">
+           <p className="popup-text">
+            {errorMessage === '' ?  
+            `Proceeding will delete all kickoff history data.
+             Do you wish to proceed` : errorMessage}
+           </p>
+           <div className="popup-buttons-div">
+              <button onClick={yesPopupButton} className="popup-buttons">
+               YES
+              </button>
+              <button onClick={noPopupButton} className="popup-buttons">
+               NO
+              </button>
+           </div>
+         </div>
+        </div>
+      )}
+  
        <div className="kickoff-history-title-div">
          <p className="kickoff-history-title">
            All Matches:
          </p>
-         <button disabled={kickoffHistory.length === 0 }
+         <button disabled={kickoffHistory.length === 0}
            className={`delete-button ${kickoffHistory.length === 0 ?'disable-delete-all-button': ''}`}
            onClick={deleteAllButton}>
            Delete All
@@ -98,7 +138,6 @@ function KickoffHistory(){
           </div>
         )}
        </div>
-      
       </div>    
     </div>
   )

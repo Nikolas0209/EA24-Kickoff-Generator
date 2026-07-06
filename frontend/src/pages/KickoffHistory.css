@@ -95,3 +95,57 @@
   max-height: 100px;
   padding-top: 120px;
   }
+
+.popup-overlay{
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(3px);
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-radius: 10px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  z-index: 5;
+  font-weight: bold;
+}
+
+.popup-modal{
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 400px;
+  background: rgba(0, 0, 0, 0.8);
+  border: 1px solid white;
+}
+
+.popup-text{
+  text-align: center;
+}
+
+.popup-buttons-div{
+ display: flex;
+ justify-content: space-around;
+}
+
+.popup-buttons{
+  cursor: pointer;
+  background-color: black;
+  color: white;
+  border-radius: 5px;
+  border: solid 1px white;
+  font-weight: bold;
+  transition: transform 0.1s ease;
+  padding: 5px 15px;
+}
+
+.popup-buttons:hover{
+  transform: scale(1.05);
+ }
+  
+ .popup-buttons:active{
+  box-shadow: 0px 7px 15px rgb(70, 70, 70);
+ }
