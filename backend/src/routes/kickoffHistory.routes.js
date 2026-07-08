@@ -11,11 +11,11 @@ async function getKickoffCollection(){
 
 router.get('/', async (req, res) => {
  try{
-  const { type } = req.query;
+  const { kickoffType } = req.query;
 
   let query = {};
-  if(type){
-    query.type = type;
+  if(kickoffType){
+    query.kickoffType = kickoffType;
   }
  
   const collection = await getKickoffCollection();
