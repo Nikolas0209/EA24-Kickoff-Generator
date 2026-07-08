@@ -1,0 +1,75 @@
+
+
+.kickoff-history-title{
+  font-weight: bold;
+  font-size: 25px;
+ }
+ 
+ .filter-section{
+   display: flex;
+   gap: 20px;
+   align-items: center;
+ }
+ 
+ .drop-down-menu{
+   width: 200px;
+   position: relative;
+ }
+ 
+ .drop-down-button{
+   cursor: pointer;
+   background-color: black;
+   color: white;
+   border: solid 1px white;
+   font-size: 15px;
+   font-weight: bold;
+   padding: 10px;
+   width: 100%;
+   border-radius: 5px 5px 0 0;
+ }
+ 
+ .drop-down-button:disabled{
+   cursor: auto;
+   box-shadow: none;
+ }
+ 
+ .dropdown-list{
+   position: absolute;
+   background-color: black;
+   border-radius: 0 0 5px 5px;
+   padding: 5px;
+   margin: 0;
+   list-style: none;
+   width: 100%;
+   border: solid 1px white;
+   border-top: none;
+   box-sizing: border-box;
+ }
+ 
+ .list-item{
+   padding: 8px;
+   cursor: pointer;
+   transition: background-color 0.2s ease;
+ }
+ 
+ .list-item:hover{
+   background-color: rgb(76, 76, 76);
+ }
+ 
+ .list-item:active{
+   box-shadow: 0 0 8px rgba(255, 255, 255, 0.7);
+ }
+ 
+ .dropdown-closed{
+   border-radius: 5px;
+ }
+ 
+ .drop-down-button:not(:disabled):hover{
+   box-shadow: inset 0 0 8px rgba(255, 255, 255, 0.7);
+ }
+ 
+ .drop-down-button:not(:disabled):active{
+   box-shadow: 0 0 8px rgba(255, 255, 255, 0.7);
+ }
+ 
+ 
