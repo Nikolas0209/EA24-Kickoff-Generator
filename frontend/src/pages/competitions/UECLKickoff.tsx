@@ -27,7 +27,7 @@ function UECLKickoff({isSubmitted, setIsSubmitted}: SubmitMatch){
 
              <TeamCard team={homeTeam} title='UEFA CONFERENCE LEAGUE'/>
 
-             <KickoffActions kickoff={kickoff} setIsSubmitted={setIsSubmitted} isSubmitted={isSubmitted} fetchKickoff={fetchKickoff} kickoffType={KickoffType.CLUB}/>
+             <KickoffActions kickoff={kickoff} setIsSubmitted={setIsSubmitted} isSubmitted={isSubmitted} fetchKickoff={fetchKickoff} kickoffType={KickoffType.UECL}/>
 
              <TeamCard team={awayTeam} title='UEFA CONFERENCE LEAGUE'/>
          

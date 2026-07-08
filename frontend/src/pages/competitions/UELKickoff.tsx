@@ -28,7 +28,7 @@ function UELKickoff({isSubmitted, setIsSubmitted}: SubmitMatch){
             <TeamCard team={homeTeam} title='UEFA EUROPA LEAGUE'/>
 
             <KickoffActions setIsSubmitted={setIsSubmitted} isSubmitted={isSubmitted} fetchKickoff={fetchKickoff}
-              kickoff={kickoff} kickoffType={KickoffType.CLUB}/>
+              kickoff={kickoff} kickoffType={KickoffType.UEL}/>
 
             <TeamCard team={awayTeam} title='UEFA EUROPA LEAGUE'/>
           </div>

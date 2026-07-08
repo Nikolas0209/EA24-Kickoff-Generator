@@ -1,17 +1,17 @@
 import { useEffect, useState } from 'react';
 import './KickoffHistory.css';
-import type { CountryKickoff } from '../../types/internationalTypes/countryKickoff.type';
 import axios from 'axios';
 import dayjs from 'dayjs';
 import BackNavigationButton from '../../components/ui/BackNavigationButton';
 import LoadingComponent from '../../components/ui/LoadingComponent';
 import EmptyKickoffHistory from '../../components/ui/EmptyKickoffHistory';
 import ConfirmationPopup from './ConfirmationPopup';
+import { KickoffType } from '../../enums/kickoffType.enum';
 
 type HistoryKickoff = {
   homeTeam: string,
   awayTeam: string,
-  type: CountryKickoff,
+  kickoffType: KickoffType,
   _id: string,
   createdAt: string
 }
@@ -21,6 +21,8 @@ function KickoffHistory(){
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isPopup, setIsPopup] = useState<boolean>(false);
   const [errorMessage, setErrorMessage] = useState<string>('');
+  const [isDropDown, setIsDropDown] = useState<boolean>(false);
+  const [selectedFilter, setSelectedFilter] = useState<KickoffType>(KickoffType.ALL);
 
   useEffect(() => {
     const fetchKickoffHistory = async (): Promise<void> => {
@@ -38,6 +40,10 @@ function KickoffHistory(){
     fetchKickoffHistory();
   }, []);
 
+  const filteredKickoffHistory = selectedFilter === KickoffType.ALL
+   ? kickoffHistory
+   : kickoffHistory.filter(kickoff => kickoff.kickoffType === selectedFilter);
+  
   const deleteAllButton = ():void => {
      setIsPopup(true);
   };
@@ -74,6 +80,19 @@ function KickoffHistory(){
     }
   };
 
+  const openDropDownMenu = ():void => {
+    if(!isDropDown){
+      setIsDropDown(true)
+    } else {
+      setIsDropDown(false)
+    }
+  }
+
+  const chooseFilter = (selectedFilter: KickoffType):void => {
+    setSelectedFilter(selectedFilter);
+    setIsDropDown(false);
+  }
+
   return(
    <div className="page-background">
      <BackNavigationButton />
@@ -84,23 +103,72 @@ function KickoffHistory(){
       )}
   
        <div className="kickoff-history-title-div">
-         <p className="kickoff-history-title">
-           All Matches:
-         </p>
-         <button disabled={kickoffHistory.length === 0}
-           className={`delete-button ${kickoffHistory.length === 0 ?'disable-delete-all-button': ''}`}
-           onClick={deleteAllButton}>
-           Delete All
-         </button>
+          <p className="kickoff-history-title">
+             Matches: {selectedFilter.toUpperCase()}
+           </p>
+         <div className="filter-section">
+           <div className="drop-down-menu">
+             <button disabled={kickoffHistory.length === 0} 
+               className={`drop-down-button ${!isDropDown ? 'dropdown-closed' : ''} ${kickoffHistory.length === 0 ? 'disable-button' : ''}`}
+               onClick={openDropDownMenu}>
+                 Filter
+             </button>
+             {isDropDown && (
+              <ul className="dropdown-list">
+                <li onClick={() => chooseFilter(KickoffType.ALL)} 
+                  className="list-item">
+                    ALL
+                </li>
+                <li onClick={() => chooseFilter(KickoffType.CLUB_RANDOM)} 
+                  className="list-item">
+                    CLUB RANDOM
+                </li>
+                <li onClick={() => chooseFilter(KickoffType.CLUB_RATINGS)}
+                  className="list-item">
+                    CLUB RATINGS 
+                </li>
+                <li onClick={() => chooseFilter(KickoffType.INTERNATIONAL_RANDOM)} 
+                  className="list-item">
+                    INTERNATIONAL RANDOM
+                </li>
+                <li onClick={() => chooseFilter(KickoffType.INTERNATIONAL_RATINGS)} 
+                  className="list-item">
+                    INTERNATIONAL RATINGS
+                </li>
+                <li onClick={() => chooseFilter(KickoffType.UCL)}
+                  className="list-item">
+                    UCL
+                </li>
+                <li onClick={() => chooseFilter(KickoffType.UEL)} 
+                  className="list-item">
+                    UEL
+                </li>
+                <li onClick={() => chooseFilter(KickoffType.UECL)} 
+                  className="list-item">
+                    UECL
+                </li>
+              </ul>
+              )}
+           </div>
+
+           <button disabled={filteredKickoffHistory.length === 0}
+             className={`delete-button ${filteredKickoffHistory.length === 0 ? 'disable-button': ''}`}
+             onClick={deleteAllButton}>
+               Delete All
+           </button>
+
+         </div>
+       
        </div>
-       <div className='wrapper'>
+
+       <div>
        {isLoading ? (<LoadingComponent/>) : 
-          kickoffHistory.length === 0 ? ( 
+          filteredKickoffHistory.length === 0 ? ( 
              <div className="empty-kickoff-wrapper">
               <EmptyKickoffHistory />
             </div>) : (
             <div className="kickoff-list-wrapper">
-            {kickoffHistory.map(kickoff => {
+            {filteredKickoffHistory.map(kickoff => { 
               return( 
                 <div className="kickoff-history-list" key={kickoff._id}>
                   <div className="kickoff-team-div">

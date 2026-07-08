@@ -28,7 +28,7 @@ function UCLKickoff({ isSubmitted, setIsSubmitted }: SubmitMatch){
               <TeamCard team={homeTeam} title='UEFA CHAMPIONS LEAGUE'/>
 
               <KickoffActions isSubmitted={isSubmitted} setIsSubmitted={setIsSubmitted} kickoff={kickoff} 
-               kickoffType={KickoffType.CLUB} fetchKickoff={fetchKickoff} />
+               kickoffType={KickoffType.UCL} fetchKickoff={fetchKickoff} />
 
               <TeamCard team={awayTeam} title='UEFA CHAMPIONS LEAGUE'/>
            </div>

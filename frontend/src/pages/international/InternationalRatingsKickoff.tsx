@@ -25,7 +25,7 @@ function InternationalRatingsKickoff({ isSubmitted, setIsSubmitted}: SubmitMatch
               <TeamCard team={homeTeam} title='INTERNATIONAL RATINGS'/>
 
               <KickoffActions isSubmitted={isSubmitted} setIsSubmitted={setIsSubmitted} kickoff={kickoff}
-                fetchKickoff={fetchKickoff} kickoffType={KickoffType.INTERNATIONAL} />
+                fetchKickoff={fetchKickoff} kickoffType={KickoffType.INTERNATIONAL_RATINGS} />
 
               <TeamCard team={awayTeam} title='INTERNATIONAL RATINGS'/>
             </div>

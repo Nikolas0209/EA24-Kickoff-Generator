@@ -25,7 +25,7 @@ function InternationalKickoff({ isSubmitted, setIsSubmitted }: SubmitMatch){
              <TeamCard team={homeTeam} title='INTERNATIONAL RANDOM'/>
      
              <KickoffActions isSubmitted={isSubmitted} setIsSubmitted={setIsSubmitted} kickoff={kickoff}
-             fetchKickoff={fetchKickoff} kickoffType={KickoffType.INTERNATIONAL} />
+             fetchKickoff={fetchKickoff} kickoffType={KickoffType.INTERNATIONAL_RANDOM} />
 
              <TeamCard team={awayTeam} title='INTERNATIONAL RANDOM'/>
            </div>

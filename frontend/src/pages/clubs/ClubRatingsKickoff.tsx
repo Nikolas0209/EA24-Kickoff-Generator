@@ -24,7 +24,7 @@ function ClubRatingsKickoff({setIsSubmitted, isSubmitted}: SubmitMatch){
             <div className="kickoff-container" key={kickoff.homeTeam._id}>
               <TeamCard team={homeTeam} title='CLUBS RATINGS'/>
 
-              <KickoffActions isSubmitted={isSubmitted} setIsSubmitted={setIsSubmitted} fetchKickoff={fetchKickoff} kickoff={kickoff} kickoffType={KickoffType.CLUB}/>
+              <KickoffActions isSubmitted={isSubmitted} setIsSubmitted={setIsSubmitted} fetchKickoff={fetchKickoff} kickoff={kickoff} kickoffType={KickoffType.CLUB_RATINGS}/>
 
               <TeamCard team={awayTeam} title='CLUBS RATINGS'/>
             </div>
