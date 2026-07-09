@@ -21,7 +21,7 @@ router.get('/', async (req, res) => {
       }
 
       const homeTeam = getRandomTeam(teamsHome);
-      const awayTeam = getRandomTeam(teamsAway);
+      const awayTeam = getRandomTeam(teamsAway, homeTeam._id);
 
       const kickOffTeams = {
        homeTeam,
