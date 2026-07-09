@@ -1,7 +1,7 @@
 import '../HomePage.css';
 import './CompetitionKickoffSelector.css';
 import { useNavigate } from 'react-router-dom';
-import BackNavigationButton from '../../components/ui/BackNavigationButton';
+import NavigationHeader from '../../components/navigation/NavigationHeader';
 
 function CompetitionKickoffSelector(){
   const navigate = useNavigate();
@@ -21,7 +21,7 @@ function CompetitionKickoffSelector(){
   return(
    <div className="page-background">
 
-     <BackNavigationButton title='UEFA Competitions Kickoff'/>
+     <NavigationHeader title='UEFA Competitions Kickoff'/>
 
      <div className="main-buttons-div competition-buttons-div">
        <button className="kickoff-button" onClick={navigateUCL}>

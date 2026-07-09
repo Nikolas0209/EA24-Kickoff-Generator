@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import './KickoffHistory.css';
 import axios from 'axios';
 import dayjs from 'dayjs';
-import BackNavigationButton from '../../components/ui/BackNavigationButton';
+import NavigationHeader from '../../components/navigation/NavigationHeader';
 import LoadingComponent from '../../components/ui/LoadingComponent';
 import EmptyKickoffHistory from '../../components/ui/EmptyKickoffHistory';
 import ConfirmationPopup from './ConfirmationPopup';
@@ -96,7 +96,7 @@ function KickoffHistory(){
 
   return(
    <div className="page-background">
-     <BackNavigationButton />
+     <NavigationHeader />
 
      <div className="kickoff-history-div">
       {isPopup && (

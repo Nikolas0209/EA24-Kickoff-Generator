@@ -1,5 +1,5 @@
 import './UELKickoff.css';
-import BackNavigationButton from '../../components/ui/BackNavigationButton';
+import NavigationHeader from '../../components/navigation/NavigationHeader';
 import { useKickoff } from '../../hooks/useKickoff';
 import { createKickoffUI } from '../../data/createKickoffUI';
 import type { ClubKickoff } from '../../types/clubTypes/clubKickoff.type';
@@ -21,7 +21,7 @@ function UELKickoff(){
    <div className="uel-page">
     {isLoading && kickoff === null ? <LoadingComponent/> : (
       <>
-        <BackNavigationButton/>
+        <NavigationHeader/>
     
         {kickoff && (
           <div className="kickoff-container" key={kickoff.homeTeam._id}>

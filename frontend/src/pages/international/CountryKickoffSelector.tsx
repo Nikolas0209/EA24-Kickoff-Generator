@@ -1,6 +1,6 @@
 import '../HomePage.css';
 import { useNavigate } from 'react-router-dom';
-import BackNavigationButton from '../../components/ui/BackNavigationButton';
+import NavigationHeader from '../../components/navigation/NavigationHeader';
 
 function CountryKickoffSelector(){
  const navigate = useNavigate();
@@ -15,7 +15,7 @@ function CountryKickoffSelector(){
 
  return(
   <div className="page-background">
-   <BackNavigationButton title='Country Kickoff'/>
+   <NavigationHeader title='Country Kickoff'/>
 
    <div className="main-buttons-div">
     <button className="kickoff-button" onClick={navigateRandomKickoff}>

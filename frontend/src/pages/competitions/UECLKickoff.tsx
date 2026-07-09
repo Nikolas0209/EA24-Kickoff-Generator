@@ -1,8 +1,7 @@
-import type { SubmitMatch } from '../../types/submitMatch.type';
 import './UECLKickoff.css';
 import { useKickoff } from '../../hooks/useKickoff';
 import { createKickoffUI } from '../../data/createKickoffUI';
-import BackNavigationButton from '../../components/ui/BackNavigationButton';
+import NavigationHeader from '../../components/navigation/NavigationHeader';
 import type { ClubKickoff } from '../../types/clubTypes/clubKickoff.type';
 import TeamCard from '../../components/ui/TeamCard';
 import KickoffActions from '../../components/ui/KickoffActions';
@@ -22,7 +21,7 @@ function UECLKickoff(){
     <div className="uecl-page">
       {isLoading && kickoff === null ? <LoadingComponent/> : (
         <>
-          <BackNavigationButton />
+          <NavigationHeader />
      
           {kickoff && (
             <div className="kickoff-container" key={kickoff.homeTeam._id}>

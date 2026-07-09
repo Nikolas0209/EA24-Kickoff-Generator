@@ -1,11 +1,11 @@
-import '../ui/BackNavigationButton.css';
+import './NavigationHeader.css';
 import { useNavigate } from "react-router-dom";
 
 type Navigation = {
   title?: string
 }
 
-function BackNavigationButton({ title }: Navigation){
+function NavigationHeader({ title }: Navigation){
   const navigate = useNavigate();
 
   const navigatePage = (): void => {
@@ -32,4 +32,4 @@ function BackNavigationButton({ title }: Navigation){
  )
 }
 
-export default BackNavigationButton;
+export default NavigationHeader;

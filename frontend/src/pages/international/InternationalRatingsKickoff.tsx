@@ -1,6 +1,6 @@
 import './InternationalKickoff.css';
 import { useKickoff } from '../../hooks/useKickoff';
-import BackNavigationButton from '../../components/ui/BackNavigationButton';
+import NavigationHeader from '../../components/navigation/NavigationHeader';
 import KickoffActions from '../../components/ui/KickoffActions';
 import TeamCard from '../../components/ui/TeamCard';
 import RerollTeam from '../../components/ui/RerollTeam'
@@ -19,7 +19,7 @@ function InternationalRatingsKickoff(){
     <div className="page-background">
       {isLoading && kickoff === null ? <LoadingComponent/> : (
         <>
-          <BackNavigationButton/>
+          <NavigationHeader/>
 
           {kickoff && (
             <div className="kickoff-container" key={kickoff.homeTeam._id}>

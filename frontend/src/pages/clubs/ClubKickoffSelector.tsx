@@ -1,6 +1,6 @@
 import '../HomePage.css';
 import { useNavigate } from 'react-router-dom';
-import BackNavigationButton from '../../components/ui/BackNavigationButton';
+import NavigationHeader from '../../components/navigation/NavigationHeader';
 
 function ClubKickoffSelector(){
  const navigate = useNavigate();
@@ -15,7 +15,7 @@ function ClubKickoffSelector(){
  
  return(
   <div className="page-background">
-   <BackNavigationButton title='Club Kickoff'/>
+   <NavigationHeader title='Club Kickoff'/>
   
    <div className="main-buttons-div">
     <button className="kickoff-button" onClick={navigateRandomKickoff}>
