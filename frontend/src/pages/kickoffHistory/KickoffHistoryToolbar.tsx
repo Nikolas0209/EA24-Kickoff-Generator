@@ -1,5 +1,5 @@
 import './KickoffHistoryToolbar.css';
-import type { HistoryKickoff } from './KickoffHistory';
+import type { HistoryKickoff } from '../../types/historyKickoff.type';
 import { KickoffType } from '../../enums/kickoffType.enum';
 
 type Toolbar = {

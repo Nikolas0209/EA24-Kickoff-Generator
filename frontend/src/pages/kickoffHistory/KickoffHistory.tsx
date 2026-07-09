@@ -8,14 +8,8 @@ import EmptyKickoffHistory from '../../components/ui/EmptyKickoffHistory';
 import ConfirmationPopup from './ConfirmationPopup';
 import { KickoffType } from '../../enums/kickoffType.enum';
 import KickoffHistoryToolbar from './KickoffHistoryToolbar';
+import type { HistoryKickoff } from '../../types/historyKickoff.type';
 
-export type HistoryKickoff = {
-  homeTeam: string,
-  awayTeam: string,
-  kickoffType: KickoffType,
-  _id: string,
-  createdAt: string
-}
 
 function KickoffHistory(){
   const [kickoffHistory, setKickoffHistory] = useState <HistoryKickoff[]>([]);
