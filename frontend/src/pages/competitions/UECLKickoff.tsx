@@ -9,10 +9,12 @@ import KickoffActions from '../../components/ui/KickoffActions';
 import { KickoffType } from '../../enums/kickoffType.enum';
 import RerollTeam from '../../components/ui/RerollTeam';
 import LoadingComponent from '../../components/ui/LoadingComponent';
+import { useState } from 'react';
 
-function UECLKickoff({isSubmitted, setIsSubmitted}: SubmitMatch){
+function UECLKickoff(){
   const { kickoff, setKickoff, fetchKickoff, isLoading } = useKickoff<ClubKickoff>('/api/clubs?competition=UECL');
   const {homeTeam, awayTeam} = createKickoffUI(kickoff);
+  const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
 
   const competition = 'UECL';
 

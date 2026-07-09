@@ -1,6 +1,5 @@
 import '../international/InternationalKickoff.css'
 import BackNavigationButton from '../../components/ui/BackNavigationButton';
-import type { SubmitMatch } from '../../types/submitMatch.type';
 import { useKickoff } from '../../hooks/useKickoff';
 import { createKickoffUI } from '../../data/createKickoffUI';
 import { KickoffType } from '../../enums/kickoffType.enum';
@@ -9,10 +8,12 @@ import RerollTeam from '../../components/ui/RerollTeam';
 import KickoffActions from '../../components/ui/KickoffActions';
 import type { ClubKickoff } from '../../types/clubTypes/clubKickoff.type';
 import LoadingComponent from '../../components/ui/LoadingComponent';
+import { useState } from 'react';
 
-function ClubRatingsKickoff({setIsSubmitted, isSubmitted}: SubmitMatch){
+function ClubRatingsKickoff(){
   const { kickoff, setKickoff, fetchKickoff, isLoading } = useKickoff<ClubKickoff>('/api/clubs/club-ratings');
   const {homeTeam, awayTeam} = createKickoffUI(kickoff);
+  const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
 
   return(
     <div className="page-background">

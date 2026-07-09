@@ -4,15 +4,16 @@ import { useKickoff } from '../../hooks/useKickoff';
 import TeamCard from '../../components/ui/TeamCard';
 import KickoffActions from '../../components/ui/KickoffActions';
 import BackNavigationButton from '../../components/ui/BackNavigationButton';
-import type { SubmitMatch } from '../../types/submitMatch.type';
 import RerollTeam from '../../components/ui/RerollTeam';
 import { createKickoffUI } from '../../data/createKickoffUI';
 import { KickoffType } from '../../enums/kickoffType.enum';
 import LoadingComponent from '../../components/ui/LoadingComponent';
+import { useState } from 'react';
 
-function UCLKickoff({ isSubmitted, setIsSubmitted }: SubmitMatch){
+function UCLKickoff(){
   const { kickoff, setKickoff, fetchKickoff, isLoading } = useKickoff<ClubKickoff>('/api/clubs?competition=UCL');
   const {homeTeam, awayTeam} = createKickoffUI(kickoff);
+  const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
 
   const competition = 'UCL';
 

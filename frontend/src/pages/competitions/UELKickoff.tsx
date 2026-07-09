@@ -1,6 +1,5 @@
 import './UELKickoff.css';
 import BackNavigationButton from '../../components/ui/BackNavigationButton';
-import type { SubmitMatch } from '../../types/submitMatch.type';
 import { useKickoff } from '../../hooks/useKickoff';
 import { createKickoffUI } from '../../data/createKickoffUI';
 import type { ClubKickoff } from '../../types/clubTypes/clubKickoff.type';
@@ -9,10 +8,12 @@ import KickoffActions from '../../components/ui/KickoffActions';
 import { KickoffType } from '../../enums/kickoffType.enum';
 import RerollTeam from '../../components/ui/RerollTeam';
 import LoadingComponent from '../../components/ui/LoadingComponent';
+import { useState } from 'react';
 
-function UELKickoff({isSubmitted, setIsSubmitted}: SubmitMatch){
+function UELKickoff(){
  const { kickoff, setKickoff, fetchKickoff, isLoading } = useKickoff<ClubKickoff>('/api/clubs?competition=UEL'); 
  const {homeTeam, awayTeam} = createKickoffUI(kickoff);
+ const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
  
  const competition = 'UEL';
 

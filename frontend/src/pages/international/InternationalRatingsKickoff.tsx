@@ -4,15 +4,16 @@ import BackNavigationButton from '../../components/ui/BackNavigationButton';
 import KickoffActions from '../../components/ui/KickoffActions';
 import TeamCard from '../../components/ui/TeamCard';
 import RerollTeam from '../../components/ui/RerollTeam'
-import type { SubmitMatch } from '../../types/submitMatch.type';
 import type { CountryKickoff } from '../../types/internationalTypes/countryKickoff.type';
 import { createKickoffUI } from '../../data/createKickoffUI';
 import { KickoffType } from '../../enums/kickoffType.enum';
 import LoadingComponent from '../../components/ui/LoadingComponent';
+import { useState } from 'react';
 
-function InternationalRatingsKickoff({ isSubmitted, setIsSubmitted}: SubmitMatch){
+function InternationalRatingsKickoff(){
   const { kickoff, setKickoff, fetchKickoff, isLoading } = useKickoff<CountryKickoff>('/api/countries/country-ratings');
   const {homeTeam, awayTeam} = createKickoffUI(kickoff);
+  const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
 
   return(
     <div className="page-background">
