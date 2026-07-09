@@ -21,7 +21,7 @@ function CompetitionKickoffSelector(){
   return(
    <div className="page-background">
 
-     <BackNavigationButton/>
+     <BackNavigationButton title='UEFA Competitions Kickoff'/>
 
      <div className="main-buttons-div competition-buttons-div">
        <button className="kickoff-button" onClick={navigateUCL}>

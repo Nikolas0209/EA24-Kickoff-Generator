@@ -18,6 +18,14 @@ function HomePage(){
 
   return(
    <div className="page-background">
+    <div className="title-container">
+      <span className="title-span">
+        <h1 className="title">
+          Home Page
+        </h1>
+      </span>
+    </div>
+    
      <div className="main-buttons-div">
        <button className="kickoff-button" onClick={navigatePageInternationals}>
          Generate International Kickoff

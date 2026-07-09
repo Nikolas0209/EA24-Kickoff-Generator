@@ -1,7 +1,11 @@
 import '../ui/BackNavigationButton.css';
 import { useNavigate } from "react-router-dom";
 
-function BackNavigationButton(){
+type Navigation = {
+  title?: string
+}
+
+function BackNavigationButton({ title }: Navigation){
   const navigate = useNavigate();
 
   const navigatePage = (): void => {
@@ -17,7 +21,14 @@ function BackNavigationButton(){
      <button className="go-back-button" onClick={navigatePage}>
        Go Back
      </button>
-   </div>
+     {title && (
+      <span className="title-span">
+         <h1 className="title">
+           {title}
+         </h1>
+      </span>
+     )} 
+    </div>
  )
 }
 

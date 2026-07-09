@@ -15,8 +15,8 @@ function ClubKickoffSelector(){
  
  return(
   <div className="page-background">
-   <BackNavigationButton/>
-
+   <BackNavigationButton title='Club Kickoff'/>
+  
    <div className="main-buttons-div">
     <button className="kickoff-button" onClick={navigateRandomKickoff}>
       Random Kick-off 

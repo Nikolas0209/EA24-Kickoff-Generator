@@ -15,7 +15,7 @@ function CountryKickoffSelector(){
 
  return(
   <div className="page-background">
-   <BackNavigationButton/>
+   <BackNavigationButton title='Country Kickoff'/>
 
    <div className="main-buttons-div">
     <button className="kickoff-button" onClick={navigateRandomKickoff}>

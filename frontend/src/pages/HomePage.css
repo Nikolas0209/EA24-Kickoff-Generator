@@ -1,7 +1,30 @@
+.title-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 30px;
+  margin-left: 9px;
+}
+
+.title-span{
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(3px);
+  padding: 10px 20px;
+  border-radius: 5px;
+  grid-column: 2;
+  justify-self: center;
+}
+
+.title{
+  color: white;
+  margin: 0;
+  font-size: 30px;
+}
+
 .main-buttons-div{
   display: flex;
   justify-content: space-around;
-  padding-top: 30vh;
+  padding-top: 20vh;
 }
 
 .kickoff-button{

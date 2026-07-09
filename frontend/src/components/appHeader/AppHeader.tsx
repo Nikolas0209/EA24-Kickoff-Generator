@@ -30,7 +30,7 @@ function AppHeader(){
      </Link>
    
      <div className="header-section-2">
-       <h3 className="title">
+       <h3 className="header-title">
          EA Kickoff Generator
        </h3>
      </div>
