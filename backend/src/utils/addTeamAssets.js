@@ -13,3 +13,13 @@ export function addTeamAssets(homeTeam, awayTeam){
 
   return { homeTeam, awayTeam, competitionLogo }
 }
+
+export function addRerollAssets(team, baseTeam){
+  let competitionLogo;
+
+  if(team.competition === baseTeam.competition){
+    competitionLogo = competitionAssets[team.competition]
+  }
+
+  return { team, competitionLogo }
+}

@@ -3,7 +3,7 @@ import getCollection from '../utils/getCollection.js';
 import getRandomTeam from '../utils/getRandomTeam.js';
 import getRandomTeamByRating from '../utils/getRandomTeamByRating.js';
 import applyFilters from '../utils/applyFilters.js';
-import { addTeamAssets } from '../utils/addTeamAssets.js';
+import { addTeamAssets, addRerollAssets } from '../utils/addTeamAssets.js';
 
 const router = express.Router();
 
@@ -91,9 +91,14 @@ router.get('/random-team/reroll', async (req, res) => {
     return res.status(400).json({error: 'Not enough teams'});
    }
 
-   const newTeam = getRandomTeam(teams, baseTeam._id);
+   const team = getRandomTeam(teams, baseTeam._id);
 
-   res.status(200).json({team: newTeam});
+   const { team: newTeam, competitionLogo } = addRerollAssets(team, baseTeam);
+
+   res.status(200).json({
+    team: newTeam, 
+    competitionLogo
+   });
   }catch(error){
     res.status(500).json({error: 'The kick-off could not be generated'});
   }
