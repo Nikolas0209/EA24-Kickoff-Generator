@@ -3,6 +3,7 @@ import getCollection from '../utils/getCollection.js';
 import getRandomTeam from '../utils/getRandomTeam.js';
 import getRandomTeamByRating from '../utils/getRandomTeamByRating.js';
 import applyFilters from '../utils/applyFilters.js';
+import { addTeamAssets } from '../utils/addTeamAssets.js';
 
 const router = express.Router();
 
@@ -19,7 +20,7 @@ router.get('/', async (req, res) => {
       if(teamsHome.length < 1 || teamsAway.length < 1){
        return res.status(400).json({error: 'Not enough teams in one of the leagues'});
       }
-
+   
       const homeTeam = getRandomTeam(teamsHome);
       const awayTeam = getRandomTeam(teamsAway, homeTeam._id);
 
@@ -38,9 +39,12 @@ router.get('/', async (req, res) => {
     const homeTeam = getRandomTeam(teams);
     const awayTeam = getRandomTeam(teams, homeTeam._id);
 
+    const { homeTeam: enrichedHomeTeam, awayTeam: enrichedAwayTeam, competitionLogo } = addTeamAssets(homeTeam, awayTeam);
+
     const kickOffTeams = {
-      homeTeam,
-      awayTeam
+      homeTeam: enrichedHomeTeam,
+      awayTeam: enrichedAwayTeam,
+      competitionLogo
     };
 
     res.status(200).json(kickOffTeams);
