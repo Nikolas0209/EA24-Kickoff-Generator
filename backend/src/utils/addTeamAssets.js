@@ -1,7 +1,7 @@
 const competitionAssets = {
-  UCL: '/src/assets/leagueLogos/ucl-logo.svg',
-  UEL: '/src/assets/leagueLogos/uel-logo.svg',
-  UECL: '/src/assets/leagueLogos/uecl-logo.svg'
+  UCL: '/leagueLogos/ucl_logo.svg',
+  UEL: '/leagueLogos/uel_logo.svg',
+  UECL: '/leagueLogos/uecl_logo.svg'
 }
 
 export function addTeamAssets(homeTeam, awayTeam){
