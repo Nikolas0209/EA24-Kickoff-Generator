@@ -16,6 +16,7 @@ function UECLKickoff(){
   const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
 
   const competition = 'UECL';
+  const competitionLogo = kickoff?.competitionLogo;
 
   return(
     <div className="uecl-page">
@@ -26,11 +27,13 @@ function UECLKickoff(){
           {kickoff && (
             <div className="kickoff-container" key={kickoff.homeTeam._id}>
 
-             <TeamCard team={homeTeam} title='UEFA CONFERENCE LEAGUE'/>
+             <TeamCard team={homeTeam} title='UEFA CONFERENCE LEAGUE' competitionLogo={competitionLogo}
+              side='left' competition={competition}/>
 
              <KickoffActions kickoff={kickoff} setIsSubmitted={setIsSubmitted} isSubmitted={isSubmitted} fetchKickoff={fetchKickoff} kickoffType={KickoffType.UECL}/>
 
-             <TeamCard team={awayTeam} title='UEFA CONFERENCE LEAGUE'/>
+             <TeamCard team={awayTeam} title='UEFA CONFERENCE LEAGUE' competitionLogo={competitionLogo} 
+              side='right' competition={competition}/>
          
             </div>
           )}

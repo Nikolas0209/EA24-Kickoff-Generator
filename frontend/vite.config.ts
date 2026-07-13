@@ -14,6 +14,10 @@ export default defineConfig({
       '/assets': {
         target: 'http://localhost:3000',
         changeOrigin: true
+      },
+      '/leagueLogos': {
+        target: 'http://localhost:3000',
+        changeOrigin: true
       }
     }
   }
