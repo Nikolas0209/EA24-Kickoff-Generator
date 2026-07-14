@@ -13,6 +13,7 @@ import UECLKickoff from './pages/competitions/UECLKickoff';
 import ClubKickoffSelector from './pages/clubs/ClubKickoffSelector';
 import ClubRatingsKickoff from './pages/clubs/ClubRatingsKickoff';
 import ClubRandomKickoff from './pages/clubs/ClubRandomKickoff';
+import ClubLeagueKickoff from './pages/clubs/ClubLeagueKickoff';
 
 function App(){
   
@@ -31,6 +32,7 @@ function App(){
       <Route path='/clubs'element={<ClubKickoffSelector />} />
       <Route path='clubs-random' element={<ClubRandomKickoff />} />
       <Route path='/clubs-ratings-mode' element={<ClubRatingsKickoff />} />
+      <Route path='/clubs-league-mode' element={<ClubLeagueKickoff />}  />
       <Route path='/kickoff-history' element={<KickoffHistory />} />
     </Routes>
   </BrowserRouter>
