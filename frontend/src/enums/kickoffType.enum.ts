@@ -4,6 +4,7 @@ export enum KickoffType {
   INTERNATIONAL_RATINGS = 'international ratings',
   CLUB_RANDOM = 'club random',
   CLUB_RATINGS = 'club ratings',
+  CLUB_LEAGUES = 'club leagues',
   UCL = 'ucl',
   UEL = 'uel',
   UECL = 'uecl'

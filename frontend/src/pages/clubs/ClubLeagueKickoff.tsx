@@ -25,7 +25,7 @@ function ClubLeagueKickoff(){
           <div className="kickoff-container" key={kickoff.homeTeam._id}>
             <TeamCard team={homeTeam} title={homeTeam.league} />
 
-            <KickoffActions isSubmitted={isSubmitted} setIsSubmitted={setIsSubmitted} fetchKickoff={fetchKickoff} kickoff={kickoff} kickoffType={KickoffType.CLUB_RANDOM}/>
+            <KickoffActions isSubmitted={isSubmitted} setIsSubmitted={setIsSubmitted} fetchKickoff={fetchKickoff} kickoff={kickoff} kickoffType={KickoffType.CLUB_LEAGUES}/>
 
             <TeamCard team={awayTeam} title={awayTeam.league}/>
           </div>

@@ -35,6 +35,10 @@ deleteAllButton, filteredKickoffHistory }: Toolbar){
           className="list-item">
             CLUB RATINGS 
         </li>
+        <li onClick={() => chooseFilter(KickoffType.CLUB_LEAGUES)}
+           className="list-item">
+            CLUB LEAGUES
+        </li>
         <li onClick={() => chooseFilter(KickoffType.INTERNATIONAL_RANDOM)} 
           className="list-item">
             INTERNATIONAL RANDOM
