@@ -14,9 +14,14 @@ type Reroll = {
 }
 
 function RerollTeam({ setIsSubmitted, setKickoff, kickoff, rerollEndpoint, competition }: Reroll){
-
  const fetchOneTeam = (excludeId: string) => {
-  return getRequest<TeamReroll>(`${rerollEndpoint}/reroll?competition=${competition}&baseTeamId=${excludeId}`);
+  let query = `reroll?baseTeamId=${excludeId}`;
+
+  if(competition){
+    query = `reroll?competition=${competition}&baseTeamId=${excludeId}`;
+  }
+
+  return getRequest<TeamReroll>(`${rerollEndpoint}/${query}`);
  };
 
  const {homeTeam, awayTeam} = createKickoffUI(kickoff);

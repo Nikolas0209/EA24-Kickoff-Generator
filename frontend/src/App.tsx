@@ -12,6 +12,7 @@ import UELKickoff from './pages/competitions/UELKickoff';
 import UECLKickoff from './pages/competitions/UECLKickoff';
 import ClubKickoffSelector from './pages/clubs/ClubKickoffSelector';
 import ClubRatingsKickoff from './pages/clubs/ClubRatingsKickoff';
+import ClubRandomKickoff from './pages/clubs/ClubRandomKickoff';
 
 function App(){
   
@@ -28,6 +29,7 @@ function App(){
       <Route path='/UEFA-Europa-League' element={<UELKickoff />} />
       <Route path='/UEFA-Conference-League' element={<UECLKickoff />} />
       <Route path='/clubs'element={<ClubKickoffSelector />} />
+      <Route path='clubs-random' element={<ClubRandomKickoff />} />
       <Route path='/clubs-ratings-mode' element={<ClubRatingsKickoff />} />
       <Route path='/kickoff-history' element={<KickoffHistory />} />
     </Routes>
