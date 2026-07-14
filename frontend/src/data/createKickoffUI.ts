@@ -20,7 +20,8 @@ export function createKickoffUI(kickoff: CountryKickoff | ClubKickoff | null){
     name: 'club' in home ? home.club : home.country,
     logo: getLogoPath(home.logo),
     stars: kickoff.homeTeam.stars,
-    type: 'club' in home ? 'club' : 'international',
+    type: 'club' in home ? 'club' : 'international', 
+    league: 'club' in home ? home.leagueName : undefined
   }
  
   const awayTeam: UITeam = {
@@ -28,7 +29,8 @@ export function createKickoffUI(kickoff: CountryKickoff | ClubKickoff | null){
     name: 'club' in away ? away.club : away.country, 
     logo: getLogoPath(away.logo),
     stars: kickoff.awayTeam.stars,
-    type: 'club' in away ? 'club' : 'international'
+    type: 'club' in away ? 'club' : 'international',
+    league: 'club' in away ? away.leagueName : undefined
   }
 
   return {homeTeam, awayTeam}

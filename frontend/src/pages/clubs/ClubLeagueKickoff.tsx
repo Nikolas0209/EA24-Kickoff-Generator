@@ -23,15 +23,15 @@ function ClubLeagueKickoff(){
 
         {kickoff && (
           <div className="kickoff-container" key={kickoff.homeTeam._id}>
-            <TeamCard team={homeTeam} title='' />
+            <TeamCard team={homeTeam} title={homeTeam.league} />
 
-            <KickoffActions isSubmitted={isSubmitted} setIsSubmitted={setIsSubmitted} fetchKickoff={fetchKickoff} kickoff={kickoff} kickoffType={KickoffType.CLUB_RATINGS}/>
+            <KickoffActions isSubmitted={isSubmitted} setIsSubmitted={setIsSubmitted} fetchKickoff={fetchKickoff} kickoff={kickoff} kickoffType={KickoffType.CLUB_RANDOM}/>
 
-            <TeamCard team={awayTeam} title=''/>
+            <TeamCard team={awayTeam} title={awayTeam.league}/>
           </div>
         )}
 
-        <RerollTeam setIsSubmitted={setIsSubmitted} kickoff={kickoff} setKickoff={setKickoff} rerollEndpoint='/api/clubs/club-ratings'/>
+        <RerollTeam setIsSubmitted={setIsSubmitted} kickoff={kickoff} setKickoff={setKickoff} rerollEndpoint='api/clubs/random-team'/>
       </>
     )}
   </div>
