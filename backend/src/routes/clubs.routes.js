@@ -24,9 +24,13 @@ router.get('/', async (req, res) => {
       const homeTeam = getRandomTeam(teamsHome);
       const awayTeam = getRandomTeam(teamsAway, homeTeam._id);
 
-      const kickOffTeams = {
-       homeTeam,
-       awayTeam
+      const { homeTeam: enrichedHomeTeam, awayTeam: enrichedAwayTeam, homeLeagueLogo, awayLeagueLogo } = addTeamAssets(homeTeam, awayTeam);
+
+     const kickOffTeams = {
+       homeTeam: enrichedHomeTeam,
+       awayTeam: enrichedAwayTeam,
+       homeLeagueLogo,
+       awayLeagueLogo
       }
 
       return res.status(200).json(kickOffTeams);
@@ -39,12 +43,14 @@ router.get('/', async (req, res) => {
     const homeTeam = getRandomTeam(teams);
     const awayTeam = getRandomTeam(teams, homeTeam._id);
 
-    const { homeTeam: enrichedHomeTeam, awayTeam: enrichedAwayTeam, competitionLogo } = addTeamAssets(homeTeam, awayTeam);
+    const { homeTeam: enrichedHomeTeam, awayTeam: enrichedAwayTeam, competitionLogo, homeLeagueLogo, awayLeagueLogo } = addTeamAssets(homeTeam, awayTeam);
 
     const kickOffTeams = {
-      homeTeam: enrichedHomeTeam,
+      homeTeam: enrichedHomeTeam, 
       awayTeam: enrichedAwayTeam,
-      competitionLogo
+      competitionLogo,
+      homeLeagueLogo,
+      awayLeagueLogo
     };
 
     res.status(200).json(kickOffTeams);
@@ -77,23 +83,25 @@ router.get('/club-ratings', async (req, res) => {
 
 router.get('/random-team/reroll', async (req, res) => {
   try{
-   const { competition, league, baseTeamId } = req.query;
+   const { competition, leagueId, baseTeamId } = req.query;
    let teams = await getCollection('clubs');
-   teams = applyFilters(teams, { competition,league });
-
+ 
    const baseTeam = teams.find(team => team._id.equals(baseTeamId));
 
    if(!baseTeam){
     return res.status(404).json({error: 'Base team not found'})
-  }
+   }
 
+   teams = applyFilters(teams, { competition, leagueId });
+
+  
    if(teams.length < 1){
     return res.status(400).json({error: 'Not enough teams'});
    }
 
    const team = getRandomTeam(teams, baseTeam._id);
-
-   const { team: newTeam, competitionLogo } = addRerollAssets(team, baseTeam);
+  
+   const { team: newTeam, competitionLogo } = addRerollAssets(team, baseTeam, leagueId);
 
    res.status(200).json({
     team: newTeam, 

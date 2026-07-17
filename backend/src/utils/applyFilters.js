@@ -1,11 +1,12 @@
-function applyFilters(teams, {competition, league}){
+function applyFilters(teams, {competition, leagueId}){
   if(competition){
    return teams.filter(team => team.competition?.toUpperCase() === competition.toUpperCase());
-  }else if(league){
-   return teams.filter(team => team.league === league);
+  }else if(leagueId){
+   return teams.filter(team => team.league === leagueId)
   }else {
     return teams;
   }
 } 
+
 
 export default applyFilters;
