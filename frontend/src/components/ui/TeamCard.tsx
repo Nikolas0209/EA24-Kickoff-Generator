@@ -2,22 +2,27 @@ import './TeamCard.css';
 import { starRatings } from '../../data/starRatings';
 import type { UITeam } from '../../types/uiTeam.types';
 import TeamCardTitle from './TeamCardTitle';
+import LeagueTeamCardTitle from './LeagueTeamCardTitle';
 
 export type Side = 'left' | 'right';
 
 type teamDetails = {
   team: UITeam;
-  title: string;
+  title?: string;
   competitionLogo?: string;
   side?: Side;
-  competition?: string
+  competition?: string,
+  league?: string,
+  homeLeagueLogo?: string,
+  awayLeagueLogo?: string
 }
 
-function TeamCard({ team, title, competitionLogo, side, competition }: teamDetails){
+function TeamCard({ team, title, competitionLogo, side, competition, league, homeLeagueLogo, awayLeagueLogo }: teamDetails){
 
   return(
     <div className="kickoff-team">
-      {competition ? (<TeamCardTitle title={title} competitionLogo={competitionLogo} side={side}/>) : (
+      {competition ? (<TeamCardTitle title={title} competitionLogo={competitionLogo} side={side} />) : league ? 
+         <LeagueTeamCardTitle homeLeagueLogo={homeLeagueLogo} awayLeagueLogo={awayLeagueLogo} side={side} league={league} /> : (
         <div className="subtitle-div">
         <p className="kickoff-subtitle">{title}</p>
       </div>
@@ -39,6 +44,6 @@ function TeamCard({ team, title, competitionLogo, side, competition }: teamDetai
 }
 
 
-//espanyol and juve logo, osnabruck,derby, swansea
+//espanyol and juve logo, osnabruck,derby, swansea, osnabruck, charlton
 
 export default TeamCard;

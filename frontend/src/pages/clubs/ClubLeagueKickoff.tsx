@@ -15,6 +15,10 @@ function ClubLeagueKickoff(){
   const {homeTeam, awayTeam} = createKickoffUI(kickoff);
   const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
 
+  const competitionLogo = kickoff?.competitionLogo;
+  const homeLeagueLogo = kickoff?.homeLeagueLogo;
+  const awayLeagueLogo = kickoff?.awayLeagueLogo;
+
   return(
     <div className="page-background">
     {isLoading && kickoff === null ? <LoadingComponent/> : (
@@ -22,16 +26,18 @@ function ClubLeagueKickoff(){
         <NavigationHeader />
 
         {kickoff && (
+          <>
           <div className="kickoff-container" key={kickoff.homeTeam._id}>
-            <TeamCard team={homeTeam} title={homeTeam.league} />
+            <TeamCard team={homeTeam} league={homeTeam.league} side='left' competitionLogo={competitionLogo} homeLeagueLogo={homeLeagueLogo}/>
 
             <KickoffActions isSubmitted={isSubmitted} setIsSubmitted={setIsSubmitted} fetchKickoff={fetchKickoff} kickoff={kickoff} kickoffType={KickoffType.CLUB_LEAGUES}/>
 
-            <TeamCard team={awayTeam} title={awayTeam.league}/>
+            <TeamCard team={awayTeam} league={awayTeam.league} side='right' competitionLogo={competitionLogo} awayLeagueLogo={awayLeagueLogo}/>
           </div>
-        )}
-
-        <RerollTeam setIsSubmitted={setIsSubmitted} kickoff={kickoff} setKickoff={setKickoff} rerollEndpoint='api/clubs/random-team'/>
+        
+          <RerollTeam setIsSubmitted={setIsSubmitted} kickoff={kickoff} setKickoff={setKickoff} rerollEndpoint='api/clubs/random-team'/>
+         </>
+      )}
       </>
     )}
   </div>

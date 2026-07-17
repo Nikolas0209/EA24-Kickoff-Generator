@@ -4,5 +4,6 @@ export type UITeam = {
   logo: string,
   stars: number,
   type: 'club' | 'international',
-  league?: string
+  league?: string,
+  leagueId?: string
 }

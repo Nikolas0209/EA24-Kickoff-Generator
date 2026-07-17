@@ -1,4 +1,4 @@
-.subtitle-div-competition {
+.subtitle-div-league {
   position: relative;
   display: flex;
   justify-content: center;
@@ -6,32 +6,32 @@
   width: 100%;
   max-width: 500px;
   border-bottom: 1px solid white;
-  filter: brightness(0) invert(1);
   padding-left: 10px;
 }
 
-.competition-logo {
+.league-logo {
   width: 55px;
   height: 55px;
   object-fit: contain;
 }
 
-.competition-logo-wrapper {
+.league-logo-wrapper {
   position: absolute;
   width: 55px;
   display: flex;
   justify-content: center;
   top: 50%;
   transform: translateY(-50%);
+  background-color: white;
   padding: 3px;
   border-radius: 5px;
 }
 
-.subtitle-div-competition.left .competition-logo-wrapper {
+.subtitle-div-league.left .league-logo-wrapper {
   right: 0;
 }
 
-.subtitle-div-competition.right .competition-logo-wrapper {
+.subtitle-div-league.right .league-logo-wrapper {
   left: 0;
 }
 
