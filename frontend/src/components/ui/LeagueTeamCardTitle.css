@@ -6,7 +6,7 @@
   width: 100%;
   max-width: 500px;
   border-bottom: 1px solid white;
-  padding-left: 10px;
+  
 }
 
 .league-logo {
@@ -35,3 +35,37 @@
   left: 0;
 }
 
+.kickoff-subtitle-wrapper{
+  width: 250px;
+  justify-self: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.arrow-wrapper-left{
+  padding-right: 10px;
+}
+
+.arrow-wrapper-right{
+  padding-left: 10px;
+}
+
+.arrow-wrapper-left, .arrow-wrapper-right{
+  width: 55px;
+  height: 55px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.arrow-wrapper-left:hover, .arrow-wrapper-right:hover{
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.arrow-wrapper-left:active, .arrow-wrapper-right:active{
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.7);
+  transition: 0.3s;
+  background-color: rgb(76, 76, 76);
+}

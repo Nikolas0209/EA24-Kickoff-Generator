@@ -1,5 +1,6 @@
 import './LeagueTeamCardTitle.css';
 import type { Side } from './TeamCard';
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 type TeamCardTitleProps = {
   league: string,
@@ -14,14 +15,17 @@ function LeagueTeamCardTitle({ league, side, homeLeagueLogo, awayLeagueLogo }: T
     <div className={`subtitle-div-league ${side}`}>
       {side === 'left' ? (
         <>
-          <div>
+          <div className="arrow-wrapper-left">
+             <ChevronLeft />
+          </div>
+          <div className='kickoff-subtitle-wrapper'>
             <p className="kickoff-subtitle">{league}</p>
           </div>
-          <div>
+          <div className="arrow-wrapper-right">
+             <ChevronRight />
+          </div>
           <div className='league-logo-wrapper'>
             <img src={homeLeagueLogo} alt="League Logo" className='league-logo'/>
-          </div>
-          
           </div>
         </>
       ) : (
@@ -29,13 +33,17 @@ function LeagueTeamCardTitle({ league, side, homeLeagueLogo, awayLeagueLogo }: T
           <div className='league-logo-wrapper'>
             <img src={awayLeagueLogo} alt="League Logo" className='league-logo'/>
           </div>
-          <div>
+          <div className="arrow-wrapper-left">
+             <ChevronLeft />
+          </div>
+          <div className='kickoff-subtitle-wrapper'>
             <p className="kickoff-subtitle">{league}</p>
           </div>
-      
+          <div className="arrow-wrapper-right">
+             <ChevronRight />
+          </div>
         </>
       )}
-    
   </div>
   )
 }
