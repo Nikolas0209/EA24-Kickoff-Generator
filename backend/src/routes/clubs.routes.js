@@ -135,5 +135,46 @@ router.get('/club-ratings/reroll', async (req, res) => {
   }
 });
 
+router.get('/leagues', async (req, res) => {
+ try{
+  const teams = await getCollection('clubs');
+
+  const leagues = teams.map(team => ({
+    league: team.leagueName,
+    leagueId: team.league
+  }))
+
+  const uniqueLeagues = leagues.reduce((uniqueLeagues, currentLeague) => {
+   const leagueExists = uniqueLeagues.some(league => currentLeague.leagueId === league.leagueId);
+
+   if(leagueExists){
+     return uniqueLeagues;
+   } else {
+     uniqueLeagues.push(currentLeague);
+   }
+    
+   return uniqueLeagues;
+  }, [])
+
+  const sortedClubs = uniqueLeagues.sort((a, b) => {
+    const aStartsWithNumber = !isNaN(Number(a.league[0]));
+    const bStartsWithNumber = !isNaN(Number(b.league[0]));
+
+    if(aStartsWithNumber && !bStartsWithNumber){
+     return 1
+    } else if (!aStartsWithNumber && bStartsWithNumber){
+     return -1
+    } else {
+     return a.league.localeCompare(b.league);
+    }
+  });
+  
+  res.status(200).json(sortedClubs);
+
+ } catch(error){
+  res.status(500).json({error: 'Could not fetch the leagues'});
+ }
+})
+
 export default router;
 
