@@ -42,7 +42,7 @@ function LeagueTeamCardTitle({ league, side, homeLeagueLogo, awayLeagueLogo }: T
           <div className="arrow-wrapper-right">
              <ChevronRight />
           </div>
-        </>
+        </> 
       )}
   </div>
   )

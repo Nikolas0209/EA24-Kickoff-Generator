@@ -8,12 +8,25 @@ import RerollTeam from '../../components/ui/RerollTeam';
 import KickoffActions from '../../components/ui/KickoffActions';
 import type { ClubKickoff } from '../../types/clubTypes/clubKickoff.type';
 import LoadingComponent from '../../components/ui/LoadingComponent';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 
 function ClubLeagueKickoff(){
   const { kickoff, setKickoff, fetchKickoff, isLoading } = useKickoff<ClubKickoff>('/api/clubs');
   const {homeTeam, awayTeam} = createKickoffUI(kickoff);
   const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
+  const [league, setLeague] = useState<T | null>(null);
+
+  useEffect(() => {
+   const fetchLeague = async() => {
+    const response = await axios.get('/api/clubs/leagues');
+    setLeague(response.data);
+   }
+
+  fetchLeague();
+
+  console.log(league)
+  }, [])
 
   const competitionLogo = kickoff?.competitionLogo;
   const homeLeagueLogo = kickoff?.homeLeagueLogo;
