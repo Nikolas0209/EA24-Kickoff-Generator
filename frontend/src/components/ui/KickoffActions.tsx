@@ -13,9 +13,10 @@ type Actions = {
  fetchKickoff: () => Promise<void>,
  setIsSubmitted: React.Dispatch<React.SetStateAction<boolean>>,
  kickoffType: KickoffType,
+ generateLeagueKickoff?: () => Promise<void>
 }
 
-function KickoffActions({ isSubmitted, setIsSubmitted, kickoff, fetchKickoff, kickoffType }: Actions){
+function KickoffActions({ isSubmitted, setIsSubmitted, kickoff, fetchKickoff, kickoffType, generateLeagueKickoff }: Actions){
   const {homeTeam, awayTeam} = createKickoffUI(kickoff);
 
   useEffect(() => {
@@ -30,7 +31,11 @@ function KickoffActions({ isSubmitted, setIsSubmitted, kickoff, fetchKickoff, ki
 
   const generateKickOff = async (): Promise<void> => {
     try{
-      await fetchKickoff();
+      if(generateLeagueKickoff){
+        generateLeagueKickoff()
+      } else {
+        await fetchKickoff();
+      }
       setIsSubmitted(false);
     } catch(error){
       console.log('The kickoff could not be generated', error)

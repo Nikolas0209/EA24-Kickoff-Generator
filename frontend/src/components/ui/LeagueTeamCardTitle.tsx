@@ -1,27 +1,34 @@
+import type { League } from '../../pages/clubs/ClubLeagueKickoff';
 import './LeagueTeamCardTitle.css';
 import type { Side } from './TeamCard';
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 type TeamCardTitleProps = {
-  league: string,
+ 
   homeLeagueLogo: string,
   awayLeagueLogo: string,
-  side: Side
+  side: Side,
+  nextHomeLeague: () => void,
+  previousHomeLeague: () => void,
+  nextAwayLeague: () => void,
+  previousAwayLeague: () => void,
+  currentHomeLeague: League,
+  currentAwayLeague: League
 }
 
-function LeagueTeamCardTitle({ league, side, homeLeagueLogo, awayLeagueLogo }: TeamCardTitleProps){
+function LeagueTeamCardTitle({ side, homeLeagueLogo, awayLeagueLogo, nextHomeLeague, previousHomeLeague, nextAwayLeague, previousAwayLeague, currentHomeLeague, currentAwayLeague }: TeamCardTitleProps){
   
   return(
     <div className={`subtitle-div-league ${side}`}>
       {side === 'left' ? (
         <>
-          <div className="arrow-wrapper-left">
+          <div className="arrow-wrapper-left" onClick={previousHomeLeague}>
              <ChevronLeft />
           </div>
           <div className='kickoff-subtitle-wrapper'>
-            <p className="kickoff-subtitle">{league}</p>
+            <p className="kickoff-subtitle">{currentHomeLeague.league}</p>
           </div>
-          <div className="arrow-wrapper-right">
+          <div className="arrow-wrapper-right" onClick={nextHomeLeague}>
              <ChevronRight />
           </div>
           <div className='league-logo-wrapper'>
@@ -33,13 +40,13 @@ function LeagueTeamCardTitle({ league, side, homeLeagueLogo, awayLeagueLogo }: T
           <div className='league-logo-wrapper'>
             <img src={awayLeagueLogo} alt="League Logo" className='league-logo'/>
           </div>
-          <div className="arrow-wrapper-left">
+          <div className="arrow-wrapper-left" onClick={previousAwayLeague}>
              <ChevronLeft />
           </div>
           <div className='kickoff-subtitle-wrapper'>
-            <p className="kickoff-subtitle">{league}</p>
+            <p className="kickoff-subtitle">{currentAwayLeague.league}</p>
           </div>
-          <div className="arrow-wrapper-right">
+          <div className="arrow-wrapper-right" onClick={nextAwayLeague}>
              <ChevronRight />
           </div>
         </> 
