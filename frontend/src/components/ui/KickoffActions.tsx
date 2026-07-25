@@ -6,7 +6,6 @@ import type { CountryKickoff } from '../../types/internationalTypes/countryKicko
 import { createKickoffUI } from '../../data/createKickoffUI';
 import type { ClubKickoff } from '../../types/clubTypes/clubKickoff.type';
 
-
 type Actions = {
  isSubmitted: boolean,
  kickoff: CountryKickoff | ClubKickoff,

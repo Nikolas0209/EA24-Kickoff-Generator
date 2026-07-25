@@ -13,7 +13,8 @@ type TeamCardTitleProps = {
   nextAwayLeague: () => void,
   previousAwayLeague: () => void,
   currentHomeLeague: League,
-  currentAwayLeague: League
+  currentAwayLeague: League,
+  toggleLeague: () => Promise<void>
 }
 
 function LeagueTeamCardTitle({ side, homeLeagueLogo, awayLeagueLogo, nextHomeLeague, previousHomeLeague, nextAwayLeague, previousAwayLeague, currentHomeLeague, currentAwayLeague }: TeamCardTitleProps){
