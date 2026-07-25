@@ -12,7 +12,7 @@ router.get('/', async (req, res) => {
     const { competition, league, homeLeague, awayLeague } = req.query; 
     let teams = await getCollection('clubs');
     teams = applyFilters(teams, {competition, league});
-
+   
     if(homeLeague && awayLeague){
       let teamsHome = teams.filter(team => team.league === homeLeague);
       let teamsAway = teams.filter(team => team.league === awayLeague);
@@ -94,7 +94,6 @@ router.get('/random-team/reroll', async (req, res) => {
 
    teams = applyFilters(teams, { competition, leagueId });
 
-  
    if(teams.length < 1){
     return res.status(400).json({error: 'Not enough teams'});
    }
@@ -107,6 +106,7 @@ router.get('/random-team/reroll', async (req, res) => {
     team: newTeam, 
     competitionLogo
    });
+
   }catch(error){
     res.status(500).json({error: 'The kick-off could not be generated'});
   }
@@ -133,6 +133,7 @@ router.get('/club-ratings/reroll', async (req, res) => {
   } catch(error){
    res.status(500).json({error: 'The kick-off could not be generated'});
   }
+
 });
 
 router.get('/leagues', async (req, res) => {
@@ -173,8 +174,9 @@ router.get('/leagues', async (req, res) => {
 
  } catch(error){
   res.status(500).json({error: 'Could not fetch the leagues'});
- }
-})
+ };
+
+});
 
 export default router;
 
