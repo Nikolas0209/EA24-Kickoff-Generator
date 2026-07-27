@@ -49,7 +49,7 @@ function ClubLeagueKickoff(){
    }
   }, [leagues, currentAwayLeague, currentHomeLeague, fetchKickoff]);
    
-  const toggleLeague = useCallback(async (excludeId: string, leagueId: string) => {
+  const rerollTeamFromLeague = useCallback(async (excludeId: string, leagueId: string) => {
     return await getRequest<TeamReroll>(`/api/clubs/random-team/reroll?baseTeamId=${excludeId}&leagueId=${leagueId}`)
   }, []);
 
@@ -89,7 +89,7 @@ function ClubLeagueKickoff(){
     setHomeLeagueIndex(targetLeagueIndex);
 
     const leagueId = leagues[targetLeagueIndex].leagueId;
-    const rerolledTeam = await toggleLeague(excludeId, leagueId);
+    const rerolledTeam = await rerollTeamFromLeague(excludeId, leagueId);
 
     if(requestId !== homeRequestId.current) return;
 
@@ -128,7 +128,7 @@ function ClubLeagueKickoff(){
    setAwayLeagueIndex(targetLeagueIndex);
 
    const leagueId = leagues[targetLeagueIndex].leagueId;
-   const rerolledTeam = await toggleLeague(excludeId, leagueId);
+   const rerolledTeam = await rerollTeamFromLeague(excludeId, leagueId);
 
    if(requestId !== awayRequestId.current) return;
 
