@@ -31,7 +31,6 @@ function RerollTeam({ setIsSubmitted, setKickoff, kickoff, rerollEndpoint, compe
 
  const rerollHome = async (): Promise<void> => {
   setIsSubmitted(false);
-
   const excludeId = awayTeam.id;
   const rerolledTeam = await fetchOneTeam(excludeId, homeTeam.leagueId);
 

@@ -18,6 +18,8 @@ export type League = {
   leagueId: string,
 }
 
+export type Direction = 'next' | 'previous';
+
 function ClubLeagueKickoff(){
   const { kickoff, setKickoff, fetchKickoff, isLoading } = useKickoff<ClubKickoff>('/api/clubs', false);
   const {homeTeam, awayTeam} = createKickoffUI(kickoff);
@@ -47,8 +49,7 @@ function ClubLeagueKickoff(){
    }
   }, [leagues, currentAwayLeague, currentHomeLeague, fetchKickoff]);
    
-  
-  const toggleLeague = useCallback( async (excludeId: string, leagueId: string) => {
+  const toggleLeague = useCallback(async (excludeId: string, leagueId: string) => {
     return await getRequest<TeamReroll>(`/api/clubs/random-team/reroll?baseTeamId=${excludeId}&leagueId=${leagueId}`)
   }, []);
 
@@ -63,29 +64,33 @@ function ClubLeagueKickoff(){
   const homeLeagueLogo = kickoff?.homeLeagueLogo;
   const awayLeagueLogo = kickoff?.awayLeagueLogo;
 
-  
-
-  const nextHomeLeague = async(): Promise<void> => {
+  const changeHomeLeague = async(direction: Direction): Promise<void> => {
     homeRequestId.current += 1;
     const requestId = homeRequestId.current;
     const excludeId = awayTeam.id;
-    let nextLeagueIndex: number;
-   
-    if(homeLeagueIndex === leagues.length - 1){
-      nextLeagueIndex = 0
+    let movement: number;
+
+    if(direction === 'next'){
+      movement = 1
     } else{
-      nextLeagueIndex = homeLeagueIndex + 1
+      movement = -1
+    };
+
+    let targetLeagueIndex = homeLeagueIndex + movement;
+
+    if(targetLeagueIndex === leagues.length){
+      targetLeagueIndex = 0;
     }
 
-    const leagueId = leagues[nextLeagueIndex].leagueId;
-
-    if(homeLeagueIndex === leagues.length - 1){
-      setHomeLeagueIndex(0);
-    } else{
-      setHomeLeagueIndex(prev => prev + 1)
+    if(targetLeagueIndex === -1){
+      targetLeagueIndex = leagues.length -1;
     }
-   
-    const rerolledTeam = await toggleLeague(excludeId, leagueId)
+
+    setHomeLeagueIndex(targetLeagueIndex);
+
+    const leagueId = leagues[targetLeagueIndex].leagueId;
+    const rerolledTeam = await toggleLeague(excludeId, leagueId);
+
     if(requestId !== homeRequestId.current) return;
 
     setKickoff((prev) => {
@@ -98,113 +103,43 @@ function ClubLeagueKickoff(){
     })
   };
 
+  const changeAwayLeague = async(direction: Direction): Promise<void> => {
+   awayRequestId.current += 1;
+   const requestId = awayRequestId.current;
+   const excludeId = homeTeam.id;
+   let movement: number;
 
+   if(direction === 'next'){
+    movement = 1;
+   } else{
+    movement = -1;
+   }
 
+   let targetLeagueIndex = awayLeagueIndex + movement;
 
-  const previousHomeLeague = async(): Promise<void> => {
-    homeRequestId.current += 1;
-    const requestId = homeRequestId.current; 
-    const excludeId = awayTeam.id;
-    let nextLeagueIndex: number;
+   if(targetLeagueIndex === leagues.length){
+    targetLeagueIndex = 0;
+   }
 
-    if(homeLeagueIndex === 0){
-      nextLeagueIndex = leagues.length - 1
-    } else{
-      nextLeagueIndex = homeLeagueIndex - 1
-    }
+   if(targetLeagueIndex === -1){
+    targetLeagueIndex = leagues.length - 1;
+   }
 
-    const leagueId = leagues[nextLeagueIndex].leagueId;
- 
-    if(homeLeagueIndex === 0){
-      setHomeLeagueIndex(leagues.length - 1)
-    } else {
-      setHomeLeagueIndex(prev => prev - 1)
-    }
+   setAwayLeagueIndex(targetLeagueIndex);
 
-    const rerolledTeam = await toggleLeague(excludeId, leagueId);
-    if(requestId !== homeRequestId.current) return
-  
-    setKickoff((prev) => {
-      if(!prev) return prev;
+   const leagueId = leagues[targetLeagueIndex].leagueId;
+   const rerolledTeam = await toggleLeague(excludeId, leagueId);
 
-      return{
-        ...prev,
-        homeTeam: rerolledTeam.team
-      } as typeof prev
-    });
-  };
+   if(requestId !== awayRequestId.current) return;
 
+   setKickoff((prev) => {
+     if(!prev) return prev;
 
-
-
-  const nextAwayLeague = async (): Promise<void> => {
-    awayRequestId.current += 1;
-    const requestId = awayRequestId.current;
-    const excludeId = homeTeam.id;
-    let nextLeagueIndex: number;
-   
-    if(awayLeagueIndex === leagues.length - 1){
-      nextLeagueIndex = 0
-    } else{
-      nextLeagueIndex = awayLeagueIndex + 1
-    }
-
-    const leagueId = leagues[nextLeagueIndex].leagueId;
-   
-    if(awayLeagueIndex === leagues.length - 1){
-      setAwayLeagueIndex(0);
-    } else{
-      setAwayLeagueIndex(prev => prev + 1)
-    }
-
-    const rerolledTeam = await toggleLeague(excludeId, leagueId);
-    if(requestId !== awayRequestId.current) return;
-   
-    setKickoff((prev) => {
-      if(!prev) return prev;
-
-      return{
-        ...prev,
-        awayTeam: rerolledTeam.team
-      } as typeof prev
-    })
-  };
-
-
-
-
-
-  const previousAwayLeague = async (): Promise<void> => {
-    awayRequestId.current += 1;
-    const requestId = awayRequestId.current;
-    const excludeId = homeTeam.id;
-    let nextLeagueIndex: number;
-
-    if(awayLeagueIndex === 0){
-      nextLeagueIndex = leagues.length - 1
-    } else{
-      nextLeagueIndex = awayLeagueIndex - 1
-    }
-
-    const leagueId = leagues[nextLeagueIndex].leagueId;
-    
-    if(awayLeagueIndex === 0){
-      setAwayLeagueIndex(leagues.length - 1)
-    } else {
-      setAwayLeagueIndex(prev => prev - 1)
-    }
-
-    const rerolledTeam = await toggleLeague(excludeId, leagueId);
-    if(requestId !== awayRequestId.current) return;
-  
-    setKickoff((prev) => {
-      if(!prev) return prev;
-
-      return{
-        ...prev,
-        awayTeam: rerolledTeam.team
-      } as typeof prev
-    });
+     return{
+      ...prev, 
+      awayTeam: rerolledTeam.team
+     } as typeof prev
+   })
   };
 
   return(
@@ -217,12 +152,13 @@ function ClubLeagueKickoff(){
           <>
            <div className="kickoff-container" key={kickoff.homeTeam._id}>
             <TeamCard team={homeTeam} league={homeTeam.league} side='left' competitionLogo={competitionLogo} 
-             homeLeagueLogo={homeLeagueLogo} nextHomeLeague={nextHomeLeague} previousHomeLeague={previousHomeLeague} currentHomeLeague={currentHomeLeague} />
+             homeLeagueLogo={homeLeagueLogo} currentHomeLeague={currentHomeLeague} changeHomeLeague={changeHomeLeague}/>
             
             <KickoffActions isSubmitted={isSubmitted} setIsSubmitted={setIsSubmitted} fetchKickoff={fetchKickoff} kickoff={kickoff} 
              kickoffType={KickoffType.CLUB_LEAGUES} generateLeagueKickoff={generateLeagueKickoff}/>
 
-            <TeamCard team={awayTeam} league={awayTeam.league} side='right' competitionLogo={competitionLogo} awayLeagueLogo={awayLeagueLogo}  nextAwayLeague={nextAwayLeague} previousAwayLeague={previousAwayLeague} currentAwayLeague={currentAwayLeague} />
+            <TeamCard team={awayTeam} league={awayTeam.league} side='right' competitionLogo={competitionLogo} awayLeagueLogo={awayLeagueLogo} 
+             currentAwayLeague={currentAwayLeague} changeAwayLeague={changeAwayLeague} />
            </div>
         
            <RerollTeam setIsSubmitted={setIsSubmitted} kickoff={kickoff} setKickoff={setKickoff} rerollEndpoint='api/clubs/random-team'/>
