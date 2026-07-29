@@ -11,17 +11,18 @@ type Reroll = {
   rerollEndpoint: string;
   kickoff: CountryKickoff | ClubKickoff;
   competition?: string;
+  mode?: 'club-league';
 }
 
-function RerollTeam({ setIsSubmitted, setKickoff, kickoff, rerollEndpoint, competition }: Reroll){
+function RerollTeam({ setIsSubmitted, setKickoff, kickoff, rerollEndpoint, competition, mode }: Reroll){
  const fetchOneTeam = (excludeId: string, leagueId?:string ) => {
  
   let query = `reroll?baseTeamId=${excludeId}`;
-
+  
   if(competition){
     query = `reroll?competition=${competition}&baseTeamId=${excludeId}`;
-  } else if(leagueId){
-    query = `reroll?leagueId=${leagueId}&baseTeamId=${excludeId}`;
+  } else if(mode){
+    query = `reroll?leagueId=${leagueId}&baseTeamId=${excludeId}`;  
   }
   
   return getRequest<TeamReroll>(`${rerollEndpoint}/${query}`);

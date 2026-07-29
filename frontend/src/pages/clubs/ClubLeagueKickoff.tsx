@@ -144,8 +144,6 @@ function ClubLeagueKickoff(){
    })
   };
 
-  //bug in the random club kickoff with rerolls
-
   return(
     <div className="page-background">
     {leagues.length === 0 || (isLoading && kickoff === null) ? <LoadingComponent/> : (
@@ -165,7 +163,7 @@ function ClubLeagueKickoff(){
               currentAwayLeague={currentAwayLeague} changeAwayLeague={changeAwayLeague} />
            </div>
         
-           <RerollTeam setIsSubmitted={setIsSubmitted} kickoff={kickoff} setKickoff={setKickoff} rerollEndpoint='api/clubs/random-team'/>
+           <RerollTeam setIsSubmitted={setIsSubmitted} kickoff={kickoff} setKickoff={setKickoff} rerollEndpoint='api/clubs/random-team' mode='club-league'/>
          </>
       )}
       </>
