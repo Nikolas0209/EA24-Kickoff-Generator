@@ -98,7 +98,8 @@ function ClubLeagueKickoff(){
 
       return{
         ...prev,
-        homeTeam: rerolledTeam.team
+        homeTeam: rerolledTeam.team,
+        homeLeagueLogo: rerolledTeam.leagueLogo
       } as typeof prev
     })
   };
@@ -137,10 +138,13 @@ function ClubLeagueKickoff(){
 
      return{
       ...prev, 
-      awayTeam: rerolledTeam.team
+      awayTeam: rerolledTeam.team,
+      awayLeagueLogo: rerolledTeam.leagueLogo
      } as typeof prev
    })
   };
+
+  //bug in the random club kickoff with rerolls
 
   return(
     <div className="page-background">
@@ -151,14 +155,14 @@ function ClubLeagueKickoff(){
         {kickoff && (
           <>
            <div className="kickoff-container" key={kickoff.homeTeam._id}>
-            <TeamCard team={homeTeam} league={homeTeam.league} side='left' competitionLogo={competitionLogo} 
-             homeLeagueLogo={homeLeagueLogo} currentHomeLeague={currentHomeLeague} changeHomeLeague={changeHomeLeague}/>
+             <TeamCard team={homeTeam} league={homeTeam.league} side='left' competitionLogo={competitionLogo} 
+              homeLeagueLogo={homeLeagueLogo} currentHomeLeague={currentHomeLeague} changeHomeLeague={changeHomeLeague}/>
             
-            <KickoffActions isSubmitted={isSubmitted} setIsSubmitted={setIsSubmitted} fetchKickoff={fetchKickoff} kickoff={kickoff} 
-             kickoffType={KickoffType.CLUB_LEAGUES} generateLeagueKickoff={generateLeagueKickoff}/>
+             <KickoffActions isSubmitted={isSubmitted} setIsSubmitted={setIsSubmitted} fetchKickoff={fetchKickoff} kickoff={kickoff} 
+              kickoffType={KickoffType.CLUB_LEAGUES} generateLeagueKickoff={generateLeagueKickoff}/>
 
-            <TeamCard team={awayTeam} league={awayTeam.league} side='right' competitionLogo={competitionLogo} awayLeagueLogo={awayLeagueLogo} 
-             currentAwayLeague={currentAwayLeague} changeAwayLeague={changeAwayLeague} />
+             <TeamCard team={awayTeam} league={awayTeam.league} side='right' competitionLogo={competitionLogo} awayLeagueLogo={awayLeagueLogo} 
+              currentAwayLeague={currentAwayLeague} changeAwayLeague={changeAwayLeague} />
            </div>
         
            <RerollTeam setIsSubmitted={setIsSubmitted} kickoff={kickoff} setKickoff={setKickoff} rerollEndpoint='api/clubs/random-team'/>
