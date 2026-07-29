@@ -4,13 +4,11 @@ import type { Side } from './TeamCard';
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 type TeamCardTitleProps = {
- 
   homeLeagueLogo: string,
   awayLeagueLogo: string,
   side: Side,
   currentHomeLeague: League,
   currentAwayLeague: League,
-  toggleLeague: () => Promise<void>,
   changeHomeLeague: (direction: Direction) => Promise<void>,
   changeAwayLeague: (direction: Direction) => Promise<void>,
 }

@@ -18,17 +18,16 @@ type teamDetails = {
   awayLeagueLogo?: string,
   currentHomeLeague?: League,
   currentAwayLeague?: League,
-  toggleLeague?: () => Promise<void>,
-  changeHomeLeague?: (direction: Direction) => Promise<void>,
+    changeHomeLeague?: (direction: Direction) => Promise<void>,
   changeAwayLeague?: (direction: Direction) => Promise<void>
 }
 
-function TeamCard({ team, title, competitionLogo, side, competition, league, homeLeagueLogo, awayLeagueLogo, currentHomeLeague, currentAwayLeague, toggleLeague, changeHomeLeague, changeAwayLeague }: teamDetails){
+function TeamCard({ team, title, competitionLogo, side, competition, league, homeLeagueLogo, awayLeagueLogo, currentHomeLeague, currentAwayLeague, changeHomeLeague, changeAwayLeague }: teamDetails){
 
   return(
     <div className="kickoff-team">
       {competition ? (<TeamCardTitle title={title} competitionLogo={competitionLogo} side={side} />) : league ? 
-         <LeagueTeamCardTitle homeLeagueLogo={homeLeagueLogo} awayLeagueLogo={awayLeagueLogo} side={side} currentHomeLeague={currentHomeLeague} currentAwayLeague={currentAwayLeague} toggleLeague={toggleLeague} changeHomeLeague={changeHomeLeague} changeAwayLeague={changeAwayLeague} /> : (
+         <LeagueTeamCardTitle homeLeagueLogo={homeLeagueLogo} awayLeagueLogo={awayLeagueLogo} side={side} currentHomeLeague={currentHomeLeague} currentAwayLeague={currentAwayLeague} changeHomeLeague={changeHomeLeague} changeAwayLeague={changeAwayLeague} /> : (
         <div className="subtitle-div">
         <p className="kickoff-subtitle">{title}</p>
       </div>
@@ -48,8 +47,5 @@ function TeamCard({ team, title, competitionLogo, side, competition, league, hom
     </div>
   )
 }
-
-
-//espanyol and juve logo, osnabruck,derby, swansea, osnabruck, charlton
 
 export default TeamCard;
