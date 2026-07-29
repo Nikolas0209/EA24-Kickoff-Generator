@@ -92,7 +92,7 @@ router.get('/random-team/reroll', async (req, res) => {
     return res.status(404).json({error: 'Base team not found'})
    }
 
-   teams = applyFilters(teams, { competition, leagueId });
+   teams = applyFilters(teams, { competition, leagueId });  
 
    if(teams.length < 1){
     return res.status(400).json({error: 'Not enough teams'});
