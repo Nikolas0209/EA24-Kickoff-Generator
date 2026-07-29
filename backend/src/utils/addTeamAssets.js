@@ -72,8 +72,8 @@ export function addRerollAssets(team, baseTeam, league){
   }
 
   if(team.league === league){
-   leagueLogo = competitionAssets[team.league]
+   leagueLogo = leagueAssets[team.league]
   }
   
-  return { team, competitionLogo, league }
+  return { team, competitionLogo, leagueLogo }
 }

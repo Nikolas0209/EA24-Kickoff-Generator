@@ -98,13 +98,13 @@ router.get('/random-team/reroll', async (req, res) => {
     return res.status(400).json({error: 'Not enough teams'});
    }
 
-   const team = getRandomTeam(teams, baseTeam._id);
-  
-   const { team: newTeam, competitionLogo } = addRerollAssets(team, baseTeam, leagueId);
+   const team = getRandomTeam(teams, baseTeam._id);  
+   const { team: newTeam, competitionLogo, leagueLogo } = addRerollAssets(team, baseTeam, leagueId);
 
    res.status(200).json({
     team: newTeam, 
-    competitionLogo
+    competitionLogo,
+    leagueLogo
    });
 
   }catch(error){
