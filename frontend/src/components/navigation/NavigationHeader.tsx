@@ -22,11 +22,11 @@ function NavigationHeader({ title }: Navigation){
        Go Back
      </button>
      {title && (
-      <span className="title-span">
+      <div className="title-span">
          <h1 className="title">
            {title}
          </h1>
-      </span>
+      </div>
      )} 
     </div>
  )
