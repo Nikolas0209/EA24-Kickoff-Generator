@@ -9,9 +9,10 @@ import { KickoffType } from '../../enums/kickoffType.enum';
 import RerollTeam from '../../components/ui/RerollTeam';
 import LoadingComponent from '../../components/ui/LoadingComponent';
 import { useState } from 'react';
+import ErrorComponent from '../../components/ui/ErrorComponent';
 
 function UECLKickoff(){
-  const { kickoff, setKickoff, fetchKickoff, isLoading } = useKickoff<ClubKickoff>('/api/clubs?competition=UECL');
+  const { kickoff, setKickoff, fetchKickoff, isLoading, hasError, retryFetch } = useKickoff<ClubKickoff>('/api/clubs?competition=UECL');
   const {homeTeam, awayTeam} = createKickoffUI(kickoff);
   const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
 
@@ -20,7 +21,8 @@ function UECLKickoff(){
 
   return(
     <div className="uecl-page">
-      {isLoading && kickoff === null ? <LoadingComponent/> : (
+      {isLoading && kickoff === null ? (<LoadingComponent/>) : hasError ? 
+       (<ErrorComponent retryFetch={retryFetch}/>) : (
         <>
           <NavigationHeader />
      

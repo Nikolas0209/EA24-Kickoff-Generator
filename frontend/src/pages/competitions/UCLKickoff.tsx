@@ -9,9 +9,10 @@ import { createKickoffUI } from '../../data/createKickoffUI';
 import { KickoffType } from '../../enums/kickoffType.enum';
 import LoadingComponent from '../../components/ui/LoadingComponent';
 import { useState } from 'react';
+import ErrorComponent from '../../components/ui/ErrorComponent';
 
 function UCLKickoff(){
-  const { kickoff, setKickoff, fetchKickoff, isLoading } = useKickoff<ClubKickoff>('/api/clubs?competition=UCL');
+  const { kickoff, setKickoff, fetchKickoff, isLoading, hasError, retryFetch } = useKickoff<ClubKickoff>('/api/clubs?competition=UCL');
   const {homeTeam, awayTeam} = createKickoffUI(kickoff);
   const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
 
@@ -20,11 +21,12 @@ function UCLKickoff(){
   
   return(
     <div className="ucl-page">
-      {isLoading && kickoff === null ? <LoadingComponent/> : (
+      {isLoading && kickoff === null ? (<LoadingComponent/>) : hasError ?
+        (<ErrorComponent retryFetch={retryFetch} />) : (
         <>
-          <NavigationHeader />
+         <NavigationHeader />
           
-          {kickoff && (
+          {kickoff && ( 
             <div className="kickoff-container" key={kickoff.homeTeam._id}>
 
               <TeamCard team={homeTeam} title='UEFA CHAMPIONS LEAGUE' competition={competition} 
@@ -35,11 +37,13 @@ function UCLKickoff(){
 
               <TeamCard team={awayTeam} title='UEFA CHAMPIONS LEAGUE' competition={competition} 
                 competitionLogo={competitionLogo} side='right'/>
+
            </div>
           )}
 
           <RerollTeam setIsSubmitted={setIsSubmitted} setKickoff={setKickoff} kickoff={kickoff} 
            rerollEndpoint='api/clubs/random-team' competition={competition}/>
+
         </>
       )}
     </div>
@@ -47,3 +51,4 @@ function UCLKickoff(){
 }
 
 export default UCLKickoff;
+

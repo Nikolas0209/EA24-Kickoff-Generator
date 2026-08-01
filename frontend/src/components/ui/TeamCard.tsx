@@ -18,7 +18,7 @@ type teamDetails = {
   awayLeagueLogo?: string,
   currentHomeLeague?: League,
   currentAwayLeague?: League,
-    changeHomeLeague?: (direction: Direction) => Promise<void>,
+  changeHomeLeague?: (direction: Direction) => Promise<void>,
   changeAwayLeague?: (direction: Direction) => Promise<void>
 }
 

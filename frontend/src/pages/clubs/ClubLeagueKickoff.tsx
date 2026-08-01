@@ -12,6 +12,7 @@ import { useState, useEffect, useCallback, useRef } from 'react';
 import axios from 'axios';
 import { getRequest } from '../../api/getRequest';
 import type { TeamReroll } from '../../types/teamReroll.type';
+import ErrorComponent from '../../components/ui/ErrorComponent';
 
 export type League = {
   league: string,
@@ -21,7 +22,7 @@ export type League = {
 export type Direction = 'next' | 'previous';
 
 function ClubLeagueKickoff(){
-  const { kickoff, setKickoff, fetchKickoff, isLoading } = useKickoff<ClubKickoff>('/api/clubs', false);
+  const { kickoff, setKickoff, fetchKickoff, isLoading, hasError, retryFetch } = useKickoff<ClubKickoff>('/api/clubs', false);
   const {homeTeam, awayTeam} = createKickoffUI(kickoff);
   const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
   const [leagues, setLeagues] = useState<League[]>([]);
@@ -144,9 +145,12 @@ function ClubLeagueKickoff(){
    })
   };
 
+  //error comp here doesnt work
+
   return(
     <div className="page-background">
-    {leagues.length === 0 || (isLoading && kickoff === null) ? <LoadingComponent/> : (
+    {leagues.length === 0 || (isLoading && kickoff === null) ? (<LoadingComponent/>) : hasError ?
+     (<ErrorComponent retryFetch={retryFetch}/>) : (
       <>
         <NavigationHeader />
 

@@ -9,15 +9,17 @@ import { createKickoffUI } from '../../data/createKickoffUI';
 import { KickoffType } from '../../enums/kickoffType.enum';
 import LoadingComponent from '../../components/ui/LoadingComponent';
 import { useState } from 'react';
+import ErrorComponent from '../../components/ui/ErrorComponent';
 
 function InternationalKickoff(){
- const { kickoff, setKickoff, fetchKickoff, isLoading } = useKickoff<CountryKickoff>('/api/countries');
- const {homeTeam, awayTeam} = createKickoffUI(kickoff);
+ const { kickoff, setKickoff, fetchKickoff, isLoading, hasError, retryFetch } = useKickoff<CountryKickoff>('/api/countries');
+ const {homeTeam, awayTeam} = kickoff ? createKickoffUI(kickoff) : {homeTeam: null, awayTeam: null};
  const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
 
  return(
    <div className="page-background">
-     {isLoading && kickoff === null ? <LoadingComponent/> : (
+     {isLoading && kickoff === null ? (<LoadingComponent/>) : hasError ? 
+      (<ErrorComponent retryFetch={retryFetch} />) : (
        <>
          <NavigationHeader/>
 

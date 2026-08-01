@@ -9,15 +9,17 @@ import KickoffActions from '../../components/ui/KickoffActions';
 import type { ClubKickoff } from '../../types/clubTypes/clubKickoff.type';
 import LoadingComponent from '../../components/ui/LoadingComponent';
 import { useState } from 'react';
+import ErrorComponent from '../../components/ui/ErrorComponent';
 
 function ClubRatingsKickoff(){
-  const { kickoff, setKickoff, fetchKickoff, isLoading } = useKickoff<ClubKickoff>('/api/clubs/club-ratings');
+  const { kickoff, setKickoff, fetchKickoff, isLoading, hasError, retryFetch } = useKickoff<ClubKickoff>('/api/clubs/club-ratings');
   const {homeTeam, awayTeam} = createKickoffUI(kickoff);
   const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
 
   return(
     <div className="page-background">
-      {isLoading && kickoff === null ? <LoadingComponent/> : (
+      {isLoading && kickoff === null ? (<LoadingComponent/>) : hasError ?
+       (<ErrorComponent retryFetch={retryFetch}/>) : (
         <>
           <NavigationHeader />
   

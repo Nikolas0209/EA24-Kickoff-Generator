@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 function HomePage(){
   const navigate = useNavigate();
- 
+  
   const navigatePageInternationals = (): void => {
     navigate('/countries')
   }

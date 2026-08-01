@@ -11,7 +11,7 @@ export function createKickoffUI(kickoff: CountryKickoff | ClubKickoff | null){
   if(!kickoff){
     return {homeTeam: null, awayTeam: null};
   }
-
+  
   const home = kickoff.homeTeam;
   const away = kickoff.awayTeam;
 
