@@ -19,7 +19,7 @@
 }
 
 .kickoff-history-div{
- margin-top: 50px;
+
  color: white; 
  max-width: 1000px;
  width: 80%;
@@ -50,7 +50,8 @@
 }
 
 .kickoff-team-div{
- width: 400px;
+  flex: 1fr;
+  min-width: 400px;
 }
 
 .kickoff-date-div{
