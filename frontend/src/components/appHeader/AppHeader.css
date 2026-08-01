@@ -1,6 +1,8 @@
 .header-div{
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 200px 1fr 200px;
+  align-items: center;
+  padding:15px 20px 20px; 
   background-color: black;
   padding-top: 15px;
   padding-bottom: 20px;
@@ -29,6 +31,7 @@
   border-radius: 3px;
   padding: 3px;
   width: 200px;
+  justify-self: start;
 }
 
 .game-logo, .ball{
@@ -38,7 +41,7 @@
 }
 
 .header-section-2{
-  width: 200px;
+  justify-self: center;
 }
 
 .header-title{
@@ -49,7 +52,7 @@
  
 .header-section-3{
   width: 40px;
-  margin-left: 150px;
+  justify-self: end;
 }
 
 .kickoff-history-tooltip-div{
@@ -91,7 +94,7 @@
 }
 
 .rotating-class{
- animation: spin 0.8s linear;
+ animation: spin 0.8s linear forwards;
 }
 
 @keyframes spin{
