@@ -1,5 +1,4 @@
 import '../HomePage.css';
-import './CompetitionKickoffSelector.css';
 import { useNavigate } from 'react-router-dom';
 import NavigationHeader from '../../components/navigation/NavigationHeader';
 
@@ -7,15 +6,15 @@ function CompetitionKickoffSelector(){
   const navigate = useNavigate();
  
   const navigateUCL = ():void => {
-    navigate('//UEFA-Champions-League')
+    navigate('/uefa-champions-league')
   };
 
   const navigateUEL = ():void => {
-   navigate('/UEFA-Europa-League')
+   navigate('/uefa-europa-league')
   };
 
   const navigateUECL = ():void => {
-    navigate('/UEFA-Conference-League')
+    navigate('/uefa-conference-league')
   }
 
   return(
@@ -23,7 +22,7 @@ function CompetitionKickoffSelector(){
 
      <NavigationHeader title='UEFA Competitions Kickoff'/>
 
-     <div className="main-buttons-div competition-buttons-div">
+     <div className="main-buttons-div">
        <button className="kickoff-button" onClick={navigateUCL}>
          UEFA Champions League 
        </button>

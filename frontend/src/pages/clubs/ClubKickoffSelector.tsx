@@ -1,4 +1,3 @@
-import '../competitions/CompetitionKickoffSelector.css';
 import { useNavigate } from 'react-router-dom';
 import NavigationHeader from '../../components/navigation/NavigationHeader';
 
@@ -21,7 +20,7 @@ function ClubKickoffSelector(){
   <div className="page-background">
    <NavigationHeader title='Club Kickoff'/>
   
-   <div className="main-buttons-div">
+   <div className="main-buttons-div competition-buttons-div">
     <button className="kickoff-button" onClick={navigateRandomKickoff}>
       Random Kickoff 
     </button>
