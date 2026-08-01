@@ -1,4 +1,4 @@
-import './UELKickoff.css';
+import './CompetitionKickoff.css';
 import NavigationHeader from '../../components/navigation/NavigationHeader';
 import { useKickoff } from '../../hooks/useKickoff';
 import { createKickoffUI } from '../../data/createKickoffUI';
@@ -20,7 +20,7 @@ function UELKickoff(){
  const competitionLogo = kickoff?.competitionLogo;
 
  return(
-   <div className="uel-page">
+   <div className="competition-page uel-background">
     {isLoading && kickoff === null ? (<LoadingComponent/>) : hasError ? 
      (<ErrorComponent retryFetch={retryFetch}/>) : (
       <>

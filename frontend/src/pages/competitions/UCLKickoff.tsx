@@ -1,4 +1,4 @@
-import './UCLKickoff.css';
+import './CompetitionKickoff.css';
 import type { ClubKickoff } from '../../types/clubTypes/clubKickoff.type';
 import { useKickoff } from '../../hooks/useKickoff';
 import TeamCard from '../../components/ui/TeamCard';
@@ -20,7 +20,7 @@ function UCLKickoff(){
   const competitionLogo = kickoff?.competitionLogo;
   
   return(
-    <div className="ucl-page">
+    <div className="competition-page ucl-background">
       {isLoading && kickoff === null ? (<LoadingComponent/>) : hasError ?
         (<ErrorComponent retryFetch={retryFetch} />) : (
         <>
