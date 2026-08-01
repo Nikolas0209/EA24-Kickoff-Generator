@@ -76,11 +76,7 @@ function KickoffHistory(){
   };
 
   const openDropDownMenu = ():void => {
-    if(!isDropDown){
-      setIsDropDown(true)
-    } else {
-      setIsDropDown(false)
-    }
+    setIsDropDown(prev => !prev)
   }
 
   const chooseFilter = (selectedFilter: KickoffType):void => {
