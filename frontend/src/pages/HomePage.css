@@ -6,12 +6,11 @@
   margin-left: 9px;
 }
 
-.title-span{
+.title-wrapper{
   background: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(3px);
   padding: 10px 20px;
   border-radius: 5px;
-  grid-column: 2;
   justify-self: center;
 }
 
@@ -54,9 +53,4 @@
   justify-content: center;
   padding-top: 100px;
   flex-direction: row;
-}
-
-.page-background{
-  display: flex;
-  flex-direction: column;
 }

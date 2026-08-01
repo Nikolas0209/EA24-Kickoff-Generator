@@ -19,11 +19,11 @@ function HomePage(){
   return(
    <div className="page-background">
     <div className="title-container">
-      <span className="title-span">
+      <div className="title-wrapper">
         <h1 className="title">
           Home Page
         </h1>
-      </span>
+      </div>
     </div>
     
      <div className="main-buttons-div">
