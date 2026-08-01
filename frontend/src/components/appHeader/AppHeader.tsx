@@ -18,7 +18,7 @@ function AppHeader(){
 
     setTimeout(() => {
       setIsRotating(false)
-    }, 3000);
+    }, 800);
   };
 
  return(
@@ -38,7 +38,7 @@ function AppHeader(){
      <div className="header-section-3">
       <button onClick={navigateKickoffHistory} disabled={isKickoffHistoryPage} 
         className={`${isKickoffHistoryPage ? 'disable-history-button' : ""}`}>
-        <img src={ball} 
+        <img src={ball} alt='kickoff-history'
          className={`ball ${isRotating ? 'rotating-class' : ""} ${isKickoffHistoryPage ? 'dim-ball-img' : ""}`}/>
       </button>
       <div className={`kickoff-history-tooltip-div ${isKickoffHistoryPage ? 'hide-tooltip' : ''}`}> 
