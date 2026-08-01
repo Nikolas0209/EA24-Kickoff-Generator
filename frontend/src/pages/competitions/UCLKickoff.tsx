@@ -27,23 +27,23 @@ function UCLKickoff(){
          <NavigationHeader />
           
           {kickoff && ( 
-            <div className="kickoff-container" key={kickoff.homeTeam._id}>
+            <>
+              <div className="kickoff-container">
+ 
+               <TeamCard team={homeTeam} title='UEFA CHAMPIONS LEAGUE' competition={competition} 
+                competitionLogo={competitionLogo} side='left'/>
 
-              <TeamCard team={homeTeam} title='UEFA CHAMPIONS LEAGUE' competition={competition} 
-               competitionLogo={competitionLogo} side='left'/>
+               <KickoffActions isSubmitted={isSubmitted} setIsSubmitted={setIsSubmitted} kickoff={kickoff} 
+                kickoffType={KickoffType.UCL} fetchKickoff={fetchKickoff} />
 
-              <KickoffActions isSubmitted={isSubmitted} setIsSubmitted={setIsSubmitted} kickoff={kickoff} 
-               kickoffType={KickoffType.UCL} fetchKickoff={fetchKickoff} />
-
-              <TeamCard team={awayTeam} title='UEFA CHAMPIONS LEAGUE' competition={competition} 
+               <TeamCard team={awayTeam} title='UEFA CHAMPIONS LEAGUE' competition={competition} 
                 competitionLogo={competitionLogo} side='right'/>
+              </div>
 
-           </div>
+              <RerollTeam setIsSubmitted={setIsSubmitted} setKickoff={setKickoff} kickoff={kickoff} 
+              rerollEndpoint='/api/clubs/random-team' competition={competition}/>
+           </>
           )}
-
-          <RerollTeam setIsSubmitted={setIsSubmitted} setKickoff={setKickoff} kickoff={kickoff} 
-           rerollEndpoint='api/clubs/random-team' competition={competition}/>
-
         </>
       )}
     </div>

@@ -20,7 +20,7 @@ function ClubKickoffSelector(){
   <div className="page-background">
    <NavigationHeader title='Club Kickoff'/>
   
-   <div className="main-buttons-div competition-buttons-div">
+   <div className="main-buttons-div">
     <button className="kickoff-button" onClick={navigateRandomKickoff}>
       Random Kickoff 
     </button>

@@ -27,21 +27,23 @@ function UELKickoff(){
         <NavigationHeader/>
     
         {kickoff && (
-          <div className="kickoff-container" key={kickoff.homeTeam._id}>
+          <>
+            <div className="kickoff-container">
        
-            <TeamCard team={homeTeam} title='UEFA EUROPA LEAGUE' competitionLogo={competitionLogo} 
-              side='left' competition={competition}/>
+              <TeamCard team={homeTeam} title='UEFA EUROPA LEAGUE' competitionLogo={competitionLogo} 
+               side='left' competition={competition}/>
 
-            <KickoffActions setIsSubmitted={setIsSubmitted} isSubmitted={isSubmitted} fetchKickoff={fetchKickoff}
-              kickoff={kickoff} kickoffType={KickoffType.UEL}/>
+              <KickoffActions setIsSubmitted={setIsSubmitted} isSubmitted={isSubmitted} fetchKickoff={fetchKickoff}
+               kickoff={kickoff} kickoffType={KickoffType.UEL}/>
 
-            <TeamCard team={awayTeam} title='UEFA EUROPA LEAGUE' competitionLogo={competitionLogo}
-              side='right' competition={competition}/>
-          </div>
+              <TeamCard team={awayTeam} title='UEFA EUROPA LEAGUE' competitionLogo={competitionLogo}
+               side='right' competition={competition}/>
+            </div>
+
+            <RerollTeam setKickoff={setKickoff} kickoff={kickoff} setIsSubmitted={setIsSubmitted}
+            rerollEndpoint={'/api/clubs/random-team'} competition={competition}/>
+          </>
         )}
-
-        <RerollTeam setKickoff={setKickoff} kickoff={kickoff} setIsSubmitted={setIsSubmitted}
-         rerollEndpoint={'/api/clubs/random-team'} competition={competition}/>
       </>
     )}
    </div>

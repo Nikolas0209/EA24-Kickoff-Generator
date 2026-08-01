@@ -24,16 +24,18 @@ function ClubRatingsKickoff(){
           <NavigationHeader />
   
           {kickoff && (
-            <div className="kickoff-container" key={kickoff.homeTeam._id}>
-              <TeamCard team={homeTeam} title='CLUBS RATINGS'/>
+            <>
+              <div className="kickoff-container">
+                <TeamCard team={homeTeam} title='CLUBS RATINGS'/>
 
-              <KickoffActions isSubmitted={isSubmitted} setIsSubmitted={setIsSubmitted} fetchKickoff={fetchKickoff} kickoff={kickoff} kickoffType={KickoffType.CLUB_RATINGS}/>
+                <KickoffActions isSubmitted={isSubmitted} setIsSubmitted={setIsSubmitted} fetchKickoff={fetchKickoff} kickoff={kickoff} kickoffType={KickoffType.CLUB_RATINGS}/>
 
-              <TeamCard team={awayTeam} title='CLUBS RATINGS'/>
-            </div>
+                <TeamCard team={awayTeam} title='CLUBS RATINGS'/>
+              </div>
+
+              <RerollTeam setIsSubmitted={setIsSubmitted} kickoff={kickoff} setKickoff={setKickoff} rerollEndpoint='/api/clubs/club-ratings'/>
+            </>
           )}
-  
-          <RerollTeam setIsSubmitted={setIsSubmitted} kickoff={kickoff} setKickoff={setKickoff} rerollEndpoint='/api/clubs/club-ratings'/>
         </>
       )}
     </div>

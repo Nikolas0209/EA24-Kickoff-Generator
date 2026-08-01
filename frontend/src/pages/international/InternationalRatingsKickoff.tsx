@@ -24,18 +24,20 @@ function InternationalRatingsKickoff(){
           <NavigationHeader/>
 
           {kickoff && (
-            <div className="kickoff-container" key={kickoff.homeTeam._id}>
-              <TeamCard team={homeTeam} title='INTERNATIONAL RATINGS'/>
+           <>
+             <div className="kickoff-container">
+               <TeamCard team={homeTeam} title='INTERNATIONAL RATINGS'/>
 
-              <KickoffActions isSubmitted={isSubmitted} setIsSubmitted={setIsSubmitted} kickoff={kickoff}
+               <KickoffActions isSubmitted={isSubmitted} setIsSubmitted={setIsSubmitted} kickoff={kickoff}
                 fetchKickoff={fetchKickoff} kickoffType={KickoffType.INTERNATIONAL_RATINGS} />
 
-              <TeamCard team={awayTeam} title='INTERNATIONAL RATINGS'/>
-            </div>
-          )}
+               <TeamCard team={awayTeam} title='INTERNATIONAL RATINGS'/>
+             </div>
 
-          <RerollTeam setIsSubmitted={setIsSubmitted} setKickoff={setKickoff} kickoff={kickoff}
-          rerollEndpoint='/api/countries/country-ratings' />
+             <RerollTeam setIsSubmitted={setIsSubmitted} setKickoff={setKickoff} kickoff={kickoff}
+              rerollEndpoint='/api/countries/country-ratings' />
+           </>
+          )}
         </>
       )}
     </div>

@@ -25,16 +25,18 @@ function ClubRandomKickoff(){
        <NavigationHeader />
 
         {kickoff && (
-          <div className="kickoff-container" key={kickoff.homeTeam._id}>
-            <TeamCard team={homeTeam} title='CLUBS RANDOM'/>
+          <>
+            <div className="kickoff-container">
+             <TeamCard team={homeTeam} title='CLUBS RANDOM'/>
 
-            <KickoffActions isSubmitted={isSubmitted} setIsSubmitted={setIsSubmitted} fetchKickoff={fetchKickoff} kickoff={kickoff} kickoffType={KickoffType.CLUB_RANDOM}/>
+             <KickoffActions isSubmitted={isSubmitted} setIsSubmitted={setIsSubmitted} fetchKickoff={fetchKickoff} kickoff={kickoff} kickoffType={KickoffType.CLUB_RANDOM}/>
 
-            <TeamCard team={awayTeam} title='CLUBS RANDOM'/>
-          </div>
-        )}
+             <TeamCard team={awayTeam} title='CLUBS RANDOM'/>
+            </div>
 
-       <RerollTeam setIsSubmitted={setIsSubmitted} kickoff={kickoff} setKickoff={setKickoff} rerollEndpoint='api/clubs/random-team'/>
+            <RerollTeam setIsSubmitted={setIsSubmitted} kickoff={kickoff} setKickoff={setKickoff} rerollEndpoint='/api/clubs/random-team'/>
+          </>
+        )}      
       </>
      )}
     </div>

@@ -145,8 +145,6 @@ function ClubLeagueKickoff(){
    })
   };
 
-  //error comp here doesnt work
-
   return(
     <div className="page-background">
     {leagues.length === 0 || (isLoading && kickoff === null) ? (<LoadingComponent/>) : hasError ?
@@ -156,7 +154,7 @@ function ClubLeagueKickoff(){
 
         {kickoff && (
           <>
-           <div className="kickoff-container" key={kickoff.homeTeam._id}>
+           <div className="kickoff-container">
              <TeamCard team={homeTeam} league={homeTeam.league} side='left' competitionLogo={competitionLogo} 
               homeLeagueLogo={homeLeagueLogo} currentHomeLeague={currentHomeLeague} changeHomeLeague={changeHomeLeague}/>
             
@@ -167,7 +165,7 @@ function ClubLeagueKickoff(){
               currentAwayLeague={currentAwayLeague} changeAwayLeague={changeAwayLeague} />
            </div>
         
-           <RerollTeam setIsSubmitted={setIsSubmitted} kickoff={kickoff} setKickoff={setKickoff} rerollEndpoint='api/clubs/random-team' mode='club-league'/>
+           <RerollTeam setIsSubmitted={setIsSubmitted} kickoff={kickoff} setKickoff={setKickoff} rerollEndpoint='/api/clubs/random-team' mode='club-league'/>
          </>
       )}
       </>

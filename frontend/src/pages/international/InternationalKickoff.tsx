@@ -13,7 +13,7 @@ import ErrorComponent from '../../components/ui/ErrorComponent';
 
 function InternationalKickoff(){
  const { kickoff, setKickoff, fetchKickoff, isLoading, hasError, retryFetch } = useKickoff<CountryKickoff>('/api/countries');
- const {homeTeam, awayTeam} = kickoff ? createKickoffUI(kickoff) : {homeTeam: null, awayTeam: null};
+ const {homeTeam, awayTeam} = createKickoffUI(kickoff);
  const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
 
  return(
@@ -24,7 +24,8 @@ function InternationalKickoff(){
          <NavigationHeader/>
 
          {kickoff && (
-           <div className="kickoff-container" key={kickoff.homeTeam._id}>
+          <>
+           <div className="kickoff-container">
              <TeamCard team={homeTeam} title='INTERNATIONAL RANDOM'/>
      
              <KickoffActions isSubmitted={isSubmitted} setIsSubmitted={setIsSubmitted} kickoff={kickoff}
@@ -32,10 +33,11 @@ function InternationalKickoff(){
 
              <TeamCard team={awayTeam} title='INTERNATIONAL RANDOM'/>
            </div>
-         )}
 
-         <RerollTeam setIsSubmitted={setIsSubmitted} setKickoff={setKickoff} kickoff={kickoff} 
-          rerollEndpoint='/api/countries/random-team' />
+           <RerollTeam setIsSubmitted={setIsSubmitted} setKickoff={setKickoff} kickoff={kickoff} 
+           rerollEndpoint='/api/countries/random-team' />
+          </>
+         )}
         </>
      )}
    </div>
