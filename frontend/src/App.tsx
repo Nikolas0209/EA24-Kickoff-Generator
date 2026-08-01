@@ -26,11 +26,11 @@ function App(){
       <Route path='/countries-random' element={<InternationalKickoff />} />
       <Route path='/countries-ratings-mode' element={<InternationalRatingsKickoff />} />
       <Route path='/competitions' element={<CompetitionKickoffSelector />} />
-      <Route path='/UEFA-Champions-League' element={<UCLKickoff />} />
-      <Route path='/UEFA-Europa-League' element={<UELKickoff />} />
-      <Route path='/UEFA-Conference-League' element={<UECLKickoff />} />
+      <Route path='/uefa-champions-league' element={<UCLKickoff />} />
+      <Route path='/uefa-europa-league' element={<UELKickoff />} />
+      <Route path='/uefa-conference-league' element={<UECLKickoff />} />
       <Route path='/clubs'element={<ClubKickoffSelector />} />
-      <Route path='clubs-random' element={<ClubRandomKickoff />} />
+      <Route path='/clubs-random' element={<ClubRandomKickoff />} />
       <Route path='/clubs-ratings-mode' element={<ClubRatingsKickoff />} />
       <Route path='/clubs-league-mode' element={<ClubLeagueKickoff />}  />
       <Route path='/kickoff-history' element={<KickoffHistory />} />
