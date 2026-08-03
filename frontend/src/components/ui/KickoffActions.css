@@ -6,7 +6,7 @@
   min-width: 250px;
 }
 
-.generate-button{
+.action-button{
   cursor: pointer;
   background-color: black;
   color: white;
@@ -15,27 +15,14 @@
   font-size: 17px;
   font-weight: bold;
   transition: transform 0.1s ease;
-  padding: 15px ;
+  padding: 15px;
   min-width: 150px;
 }
 
-.submit-button{
-  cursor: pointer;
-  background-color: black;
-  color: white;
-  border-radius: 5px;
-  border: solid 1px white;
-  font-size: 17px;
-  font-weight: bold;
-  transition: transform 0.1s ease;
-  padding: 15px 15px;
-  min-width: 150px;
- }
-
- .generate-button:hover, .submit-button:hover{
+ .action-button:hover{
   transform: scale(1.05);
 }
 
-.generate-button:active, .submit-button:active{
+.action-button:active{
   box-shadow: 0px 7px 15px rgb(70, 70, 70);
 }

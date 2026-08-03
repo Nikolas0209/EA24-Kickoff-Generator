@@ -59,10 +59,10 @@ function KickoffActions({ isSubmitted, setIsSubmitted, kickoff, fetchKickoff, ki
 
   return(
     <div className="kickoff-center">
-      <button className="generate-button" onClick={generateKickOff}>
+      <button className="action-button" onClick={generateKickOff}>
         GENERATE
       </button>
-      <button className="submit-button" onClick={submitKickoff}>
+      <button className="action-button" onClick={submitKickoff}>
         {isSubmitted ? 'Submitted' : 'Submit Kickoff'}
       </button>
     </div>
