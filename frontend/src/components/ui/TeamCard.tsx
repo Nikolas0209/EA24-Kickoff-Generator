@@ -3,7 +3,7 @@ import { starRatings } from '../../data/starRatings';
 import type { UITeam } from '../../types/uiTeam.types';
 import TeamCardTitle from './TeamCardTitle';
 import LeagueTeamCardTitle from './LeagueTeamCardTitle';
-import type { Direction, League } from '../../pages/clubs/ClubLeagueKickoff';
+import type { League, Direction } from '../../types/clubTypes/leagueNavigation.type';
 
 export type Side = 'left' | 'right';
 

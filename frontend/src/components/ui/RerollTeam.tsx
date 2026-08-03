@@ -14,7 +14,7 @@ type Reroll = {
   mode?: 'club-league';
 }
 
-type TeamSide = 'home' | 'away' ;
+type TeamSide = 'home' | 'away';
 
 function RerollTeam({ setIsSubmitted, setKickoff, kickoff, rerollEndpoint, competition, mode }: Reroll){
  const fetchOneTeam = (excludeId: string, leagueId?: string ) => {
@@ -35,7 +35,7 @@ function RerollTeam({ setIsSubmitted, setKickoff, kickoff, rerollEndpoint, compe
    setIsSubmitted(false);
    const excludeId = side === 'home' ? awayTeam.id : homeTeam.id;
    const rerolledLeague = side === 'home' ? homeTeam.leagueId : awayTeam.leagueId;
-   
+
    const rerolledTeam = await fetchOneTeam(excludeId, rerolledLeague);
 
     setKickoff((prev) => {

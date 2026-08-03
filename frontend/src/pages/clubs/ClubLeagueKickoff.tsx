@@ -13,13 +13,7 @@ import axios from 'axios';
 import { getRequest } from '../../api/getRequest';
 import ErrorComponent from '../../components/ui/ErrorComponent';
 import type { LeagueTeamSelection } from '../../types/clubTypes/leagueTeamSelection.type';
-
-type League = {
- league: string,
- leagueId: string,
-};
-
-type Direction = 'next' | 'previous';
+import type { League, Direction } from '../../types/clubTypes/leagueNavigation.type';
 
 function ClubLeagueKickoff(){
   const { kickoff, setKickoff, fetchKickoff, isLoading, hasError, retryFetch } = useKickoff<ClubKickoff>('/api/clubs', false);
