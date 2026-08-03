@@ -14,9 +14,10 @@ type Reroll = {
   mode?: 'club-league';
 }
 
+type TeamSide = 'home' | 'away' ;
+
 function RerollTeam({ setIsSubmitted, setKickoff, kickoff, rerollEndpoint, competition, mode }: Reroll){
- const fetchOneTeam = (excludeId: string, leagueId?:string ) => {
- 
+ const fetchOneTeam = (excludeId: string, leagueId?: string ) => {
   let query = `reroll?baseTeamId=${excludeId}`;
   
   if(competition){
@@ -30,42 +31,36 @@ function RerollTeam({ setIsSubmitted, setKickoff, kickoff, rerollEndpoint, compe
 
  const {homeTeam, awayTeam} = createKickoffUI(kickoff);
 
- const rerollHome = async (): Promise<void> => {
-  setIsSubmitted(false);
-  const excludeId = awayTeam.id;
-  const rerolledTeam = await fetchOneTeam(excludeId, homeTeam.leagueId);
+ const rerollTeam = async (side: TeamSide): Promise<void> => {
+   setIsSubmitted(false);
+   const excludeId = side === 'home' ? awayTeam.id : homeTeam.id;
+   const rerolledLeague = side === 'home' ? homeTeam.leagueId : awayTeam.leagueId;
+   
+   const rerolledTeam = await fetchOneTeam(excludeId, rerolledLeague);
 
-  setKickoff(prev => {
-    if (!prev) return prev;
+    setKickoff((prev) => {
+      if(!prev) return;
 
-    return{
-      ...prev,
-      homeTeam: rerolledTeam.team
-    } as typeof prev;
-  });
- };
-
- const rerollAway = async(): Promise<void> => {
-  setIsSubmitted(false);
-  const excludeId = homeTeam.id;
-  const rerolledTeam = await fetchOneTeam(excludeId, awayTeam.leagueId);
-
-  setKickoff((prev) => {
-    if(!prev) return prev;
-
-    return{
-      ...prev,
-      awayTeam: rerolledTeam.team
-    } as typeof prev
-  })
+      if(side === 'home'){
+        return{
+          ...prev,
+          homeTeam: rerolledTeam.team
+        } as typeof prev
+      } else {
+        return{
+          ...prev,
+          awayTeam: rerolledTeam.team,
+        } as typeof prev
+      }
+   })
  };
 
  return(
   <div className="reroll-div">
-    <button className="reroll-button" onClick={rerollHome}>
+    <button className="reroll-button" onClick={() => rerollTeam('home')}>
       Reroll team
     </button>
-    <button className="reroll-button" onClick={rerollAway}>
+    <button className="reroll-button" onClick={() => rerollTeam('away')}>
       Reroll team
     </button>
   </div>
