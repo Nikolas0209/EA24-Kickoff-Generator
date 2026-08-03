@@ -1,42 +1,34 @@
 import type { ClubKickoff } from "../types/clubTypes/clubKickoff.type"
+import type { ClubTeam } from "../types/clubTypes/clubTeam.type";
 import type { CountryKickoff } from "../types/internationalTypes/countryKickoff.type"
 import type { UITeam } from '../types/uiTeam.types';
+import type { InternationalTeam } from "../types/internationalTypes/internationalTeam.type";
 
 export function createKickoffUI(kickoff: CountryKickoff | ClubKickoff | null){
-
-  const getLogoPath = (logo: string) => {
-    return`/assets${logo}.svg`
-  };
-
+  const getLogoPath = (logo: string) => `/assets${logo}.svg`;
+  
   if(!kickoff){
     return {homeTeam: null, awayTeam: null};
   }
+
+  function normaliseTeam(team: ClubTeam | InternationalTeam): UITeam {
+    return {
+      id: team._id,
+      name: 'club' in team ? team.club : team.country, 
+      logo: getLogoPath(team.logo),
+      stars: team.stars,
+      type: 'club' in team ? 'club' : 'international',
+      league: 'club' in team ? team.leagueName : undefined,
+      leagueId: 'club' in team ? team.league : undefined
+    }
+  }
   
-  const home = kickoff.homeTeam;
-  const away = kickoff.awayTeam;
-
-  const homeTeam: UITeam = {
-    id: home._id,
-    name: 'club' in home ? home.club : home.country,
-    logo: getLogoPath(home.logo),
-    stars: home.stars,
-    type: 'club' in home ? 'club' : 'international', 
-    league: 'club' in home ? home.leagueName : undefined,
-    leagueId: 'club' in home ? home.league : undefined
+  return {
+    homeTeam: normaliseTeam(kickoff.homeTeam), 
+    awayTeam: normaliseTeam(kickoff.awayTeam)
   }
- 
-  const awayTeam: UITeam = {
-    id: away._id,
-    name: 'club' in away ? away.club : away.country, 
-    logo: getLogoPath(away.logo),
-    stars: away.stars,
-    type: 'club' in away ? 'club' : 'international',
-    league: 'club' in away ? away.leagueName : undefined,
-    leagueId: 'club' in away ? away.league : undefined
-  }
-
-  return {homeTeam, awayTeam}
 }
+
 
 
 
