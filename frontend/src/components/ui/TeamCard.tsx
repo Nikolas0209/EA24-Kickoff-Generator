@@ -4,14 +4,13 @@ import type { UITeam } from '../../types/uiTeam.types';
 import TeamCardTitle from './TeamCardTitle';
 import LeagueTeamCardTitle from './LeagueTeamCardTitle';
 import type { League, Direction } from '../../types/clubTypes/leagueNavigation.type';
+import type { KickoffTeamPosition } from '../../types/clubTypes/KickoffTeamPosition.type';
 
-export type Side = 'left' | 'right';
-
-type teamDetails = {
+type teamDetailsProps = {
   team: UITeam;
   title?: string;
   competitionLogo?: string;
-  side?: Side;
+  position?: KickoffTeamPosition;
   competition?: string,
   league?: string,
   homeLeagueLogo?: string,
@@ -22,19 +21,19 @@ type teamDetails = {
   changeAwayLeague?: (direction: Direction) => Promise<void>
 }
 
-function TeamCard({ team, title, competitionLogo, side, competition, league, homeLeagueLogo, awayLeagueLogo, currentHomeLeague, currentAwayLeague, changeHomeLeague, changeAwayLeague }: teamDetails){
+function TeamCard({ team, title, competitionLogo, position, competition, league, homeLeagueLogo, awayLeagueLogo, currentHomeLeague, currentAwayLeague, changeHomeLeague, changeAwayLeague }: teamDetailsProps){
 
   return(
     <div className="kickoff-team">
-      {competition ? (<TeamCardTitle title={title} competitionLogo={competitionLogo} side={side} />) : league ? 
-         <LeagueTeamCardTitle homeLeagueLogo={homeLeagueLogo} awayLeagueLogo={awayLeagueLogo} side={side} currentHomeLeague={currentHomeLeague} currentAwayLeague={currentAwayLeague} changeHomeLeague={changeHomeLeague} changeAwayLeague={changeAwayLeague} /> : (
+      {competition ? (<TeamCardTitle title={title} competitionLogo={competitionLogo} position={position} />) : league ? 
+         <LeagueTeamCardTitle homeLeagueLogo={homeLeagueLogo} awayLeagueLogo={awayLeagueLogo} position={position} currentHomeLeague={currentHomeLeague} currentAwayLeague={currentAwayLeague} changeHomeLeague={changeHomeLeague} changeAwayLeague={changeAwayLeague} /> : (
         <div className="subtitle-div">
         <p className="kickoff-subtitle">{title}</p>
       </div>
       )}
    
       <div className="country-image-container">
-        <img src={team.logo} className="country-image" alt="Club Logo" />
+        <img src={team.logo} className="country-image" alt={`${team.name} logo`} />
       </div>
       <div className="rating-container">
         <img src={starRatings[team.stars]} alt={team.stars.toString()} />

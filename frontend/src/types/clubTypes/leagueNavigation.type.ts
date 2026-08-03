@@ -4,3 +4,5 @@ export type League = {
  };
  
 export type Direction = 'next' | 'previous';
+
+export type Side = 'left' | 'right';

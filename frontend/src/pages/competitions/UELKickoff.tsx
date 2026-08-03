@@ -31,13 +31,13 @@ function UELKickoff(){
             <div className="kickoff-container">
        
               <TeamCard team={homeTeam} title='UEFA EUROPA LEAGUE' competitionLogo={competitionLogo} 
-               side='left' competition={competition}/>
+               position='left' competition={competition}/>
 
               <KickoffActions setIsSubmitted={setIsSubmitted} isSubmitted={isSubmitted} fetchKickoff={fetchKickoff}
                kickoff={kickoff} kickoffType={KickoffType.UEL}/>
 
               <TeamCard team={awayTeam} title='UEFA EUROPA LEAGUE' competitionLogo={competitionLogo}
-               side='right' competition={competition}/>
+               position='right' competition={competition}/>
             </div>
 
             <RerollTeam setKickoff={setKickoff} kickoff={kickoff} setIsSubmitted={setIsSubmitted}

@@ -31,12 +31,12 @@ function UECLKickoff(){
               <div className="kickoff-container">
 
                 <TeamCard team={homeTeam} title='UEFA CONFERENCE LEAGUE' competitionLogo={competitionLogo}
-                side='left' competition={competition}/>
+                position='left' competition={competition}/>
 
                 <KickoffActions kickoff={kickoff} setIsSubmitted={setIsSubmitted} isSubmitted={isSubmitted} fetchKickoff={fetchKickoff} kickoffType={KickoffType.UECL}/>
 
                 <TeamCard team={awayTeam} title='UEFA CONFERENCE LEAGUE' competitionLogo={competitionLogo} 
-                side='right' competition={competition}/>
+                position='right' competition={competition}/>
               </div>
 
               <RerollTeam setKickoff={setKickoff} kickoff={kickoff} setIsSubmitted={setIsSubmitted} rerollEndpoint={'api/clubs/random-team'} competition={competition}/>

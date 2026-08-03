@@ -1,17 +1,17 @@
 import './TeamCardTitle.css';
-import type { Side } from './TeamCard';
+import type { KickoffTeamPosition } from '../../types/clubTypes/KickoffTeamPosition.type';
 
 type TeamCardTitleProps = {
   title: string,
   competitionLogo: string,
-  side: Side
+  position: KickoffTeamPosition
 }
 
-function TeamCardTitle({ title, competitionLogo, side }: TeamCardTitleProps){
+function TeamCardTitle({ title, competitionLogo, position }: TeamCardTitleProps){
   
   return(
-    <div className={`subtitle-div-competition ${side}`}>
-      {side === 'left' ? (
+    <div className={`subtitle-div-competition ${position}`}>
+      {position === 'left' ? (
         <>
           <div>
             <p className="kickoff-subtitle">{title}</p>

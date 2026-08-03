@@ -140,13 +140,13 @@ function ClubLeagueKickoff(){
         {kickoff && (
           <>
            <div className="kickoff-container">
-             <TeamCard team={homeTeam} league={homeTeam.league} side='left' competitionLogo={competitionLogo} 
+             <TeamCard team={homeTeam} league={homeTeam.league} position='left' competitionLogo={competitionLogo} 
               homeLeagueLogo={homeLeagueLogo} currentHomeLeague={currentHomeLeague} changeHomeLeague={changeHomeLeague}/>
             
              <KickoffActions isSubmitted={isSubmitted} setIsSubmitted={setIsSubmitted} fetchKickoff={fetchKickoff} kickoff={kickoff} 
               kickoffType={KickoffType.CLUB_LEAGUES} generateLeagueKickoff={generateLeagueKickoff}/>
 
-             <TeamCard team={awayTeam} league={awayTeam.league} side='right' competitionLogo={competitionLogo} awayLeagueLogo={awayLeagueLogo} 
+             <TeamCard team={awayTeam} league={awayTeam.league} position='right' competitionLogo={competitionLogo} awayLeagueLogo={awayLeagueLogo} 
               currentAwayLeague={currentAwayLeague} changeAwayLeague={changeAwayLeague} />
            </div>
         

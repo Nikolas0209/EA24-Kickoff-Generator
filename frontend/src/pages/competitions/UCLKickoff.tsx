@@ -31,13 +31,13 @@ function UCLKickoff(){
               <div className="kickoff-container">
  
                <TeamCard team={homeTeam} title='UEFA CHAMPIONS LEAGUE' competition={competition} 
-                competitionLogo={competitionLogo} side='left'/>
+                competitionLogo={competitionLogo} position='left'/>
 
                <KickoffActions isSubmitted={isSubmitted} setIsSubmitted={setIsSubmitted} kickoff={kickoff} 
                 kickoffType={KickoffType.UCL} fetchKickoff={fetchKickoff} />
 
                <TeamCard team={awayTeam} title='UEFA CHAMPIONS LEAGUE' competition={competition} 
-                competitionLogo={competitionLogo} side='right'/>
+                competitionLogo={competitionLogo} position='right'/>
               </div>
 
               <RerollTeam setIsSubmitted={setIsSubmitted} setKickoff={setKickoff} kickoff={kickoff} 

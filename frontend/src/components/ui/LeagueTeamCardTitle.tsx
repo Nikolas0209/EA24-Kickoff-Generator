@@ -1,23 +1,23 @@
-import type { Direction, League } from '../../pages/clubs/ClubLeagueKickoff';
+import type { League, Direction } from '../../types/clubTypes/leagueNavigation.type';
 import './LeagueTeamCardTitle.css';
-import type { Side } from './TeamCard';
+import type { KickoffTeamPosition } from '../../types/clubTypes/KickoffTeamPosition.type';
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 type TeamCardTitleProps = {
   homeLeagueLogo: string,
   awayLeagueLogo: string,
-  side: Side,
+  position: KickoffTeamPosition,
   currentHomeLeague: League,
   currentAwayLeague: League,
   changeHomeLeague: (direction: Direction) => Promise<void>,
   changeAwayLeague: (direction: Direction) => Promise<void>,
 }
 
-function LeagueTeamCardTitle({ side, homeLeagueLogo, awayLeagueLogo, currentHomeLeague, currentAwayLeague, changeHomeLeague, changeAwayLeague }: TeamCardTitleProps){
+function LeagueTeamCardTitle({ position, homeLeagueLogo, awayLeagueLogo, currentHomeLeague, currentAwayLeague, changeHomeLeague, changeAwayLeague }: TeamCardTitleProps){
   
   return(
-    <div className={`subtitle-div-league ${side}`}>
-      {side === 'left' ? (
+    <div className={`subtitle-div-league ${position}`}>
+      {position === 'left' ? (
         <>
           <div className="arrow-wrapper-left" onClick={() => changeHomeLeague('previous')}>
              <ChevronLeft />
