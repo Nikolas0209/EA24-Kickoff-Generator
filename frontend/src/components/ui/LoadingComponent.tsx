@@ -5,7 +5,7 @@ function LoadingComponent(){
   
   return(
     <div className="loading-spinner-container">
-       <img src={loadingSpinner} className="loading-spinner" alt="spinner" />  
+       <img src={loadingSpinner} className="loading-spinner" alt="Loading Spinner" />  
     </div>
   )
 }
