@@ -5,4 +5,14 @@ export type League = {
  
 export type Direction = 'next' | 'previous';
 
-export type Side = 'left' | 'right';
+export type LeagueSwitcher = {
+ leagueLogo: string,
+ currentLeague: League
+ changeLeague: (direction: Direction) => Promise<void>
+}
+
+export type KickoffLeagueSwitchers = {
+  home: LeagueSwitcher,
+  away: LeagueSwitcher
+}
+

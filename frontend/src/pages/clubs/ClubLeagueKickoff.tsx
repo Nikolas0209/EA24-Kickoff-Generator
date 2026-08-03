@@ -13,7 +13,7 @@ import axios from 'axios';
 import { getRequest } from '../../api/getRequest';
 import ErrorComponent from '../../components/ui/ErrorComponent';
 import type { LeagueTeamSelection } from '../../types/clubTypes/leagueTeamSelection.type';
-import type { League, Direction } from '../../types/clubTypes/leagueNavigation.type';
+import type { League, Direction, KickoffLeagueSwitchers } from '../../types/clubTypes/leagueNavigation.type';
 
 function ClubLeagueKickoff(){
   const { kickoff, setKickoff, fetchKickoff, isLoading, hasError, retryFetch } = useKickoff<ClubKickoff>('/api/clubs', false);
@@ -130,6 +130,19 @@ function ClubLeagueKickoff(){
    })
   };
 
+  const leagueSwitchers: KickoffLeagueSwitchers = {
+    home: {
+      leagueLogo: homeLeagueLogo,
+      currentLeague: currentHomeLeague,
+      changeLeague: changeHomeLeague
+    },
+    away: {
+      leagueLogo: awayLeagueLogo,
+      currentLeague: currentAwayLeague,
+      changeLeague: changeAwayLeague
+    }
+  }
+
   return(
     <div className="page-background">
     {leagues.length === 0 || (isLoading && kickoff === null) ? (<LoadingComponent/>) : hasError ?
@@ -140,14 +153,14 @@ function ClubLeagueKickoff(){
         {kickoff && (
           <>
            <div className="kickoff-container">
-             <TeamCard team={homeTeam} league={homeTeam.league} position='left' competitionLogo={competitionLogo} 
-              homeLeagueLogo={homeLeagueLogo} currentHomeLeague={currentHomeLeague} changeHomeLeague={changeHomeLeague}/>
+             <TeamCard team={homeTeam} league={homeTeam.league} position='left' competitionLogo={competitionLogo}
+              leagueSwitcher={leagueSwitchers.home}/>
             
              <KickoffActions isSubmitted={isSubmitted} setIsSubmitted={setIsSubmitted} fetchKickoff={fetchKickoff} kickoff={kickoff} 
               kickoffType={KickoffType.CLUB_LEAGUES} generateLeagueKickoff={generateLeagueKickoff}/>
 
-             <TeamCard team={awayTeam} league={awayTeam.league} position='right' competitionLogo={competitionLogo} awayLeagueLogo={awayLeagueLogo} 
-              currentAwayLeague={currentAwayLeague} changeAwayLeague={changeAwayLeague} />
+             <TeamCard team={awayTeam} league={awayTeam.league} position='right' competitionLogo={competitionLogo} 
+              leagueSwitcher={leagueSwitchers.away} />
            </div>
         
            <RerollTeam setIsSubmitted={setIsSubmitted} kickoff={kickoff} setKickoff={setKickoff} rerollEndpoint='/api/clubs/random-team' mode='club-league'/>
