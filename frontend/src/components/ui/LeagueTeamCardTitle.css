@@ -6,7 +6,6 @@
   width: 100%;
   max-width: 500px;
   border-bottom: 1px solid white;
-  
 }
 
 .league-logo {
@@ -37,7 +36,6 @@
 
 .kickoff-subtitle-wrapper{
   width: 250px;
-  justify-self: center;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -58,6 +56,11 @@
   justify-content: center;
   align-items: center;
 }
+
+.arrow-wrapper-left, .arrow-wrapper-right {
+  transition: 0.3s;
+}
+
 
 .arrow-wrapper-left:hover, .arrow-wrapper-right:hover{
   opacity: 0.5;
