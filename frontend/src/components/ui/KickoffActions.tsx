@@ -6,7 +6,7 @@ import type { CountryKickoff } from '../../types/internationalTypes/countryKicko
 import { createKickoffUI } from '../../data/createKickoffUI';
 import type { ClubKickoff } from '../../types/clubTypes/clubKickoff.type';
 
-type Actions = {
+type KickoffActionsProps = {
  isSubmitted: boolean,
  kickoff: CountryKickoff | ClubKickoff,
  fetchKickoff: () => Promise<void>,
@@ -15,7 +15,7 @@ type Actions = {
  generateLeagueKickoff?: () => Promise<void>
 }
 
-function KickoffActions({ isSubmitted, setIsSubmitted, kickoff, fetchKickoff, kickoffType, generateLeagueKickoff }: Actions){
+function KickoffActions({ isSubmitted, setIsSubmitted, kickoff, fetchKickoff, kickoffType, generateLeagueKickoff }: KickoffActionsProps){
   const {homeTeam, awayTeam} = createKickoffUI(kickoff);
 
   useEffect(() => {
@@ -23,15 +23,15 @@ function KickoffActions({ isSubmitted, setIsSubmitted, kickoff, fetchKickoff, ki
   
     const timer = setTimeout(() => {
       setIsSubmitted(false);
-    }, 3000)
+    }, 3000);
   
-    return () => clearTimeout(timer)
+    return () => clearTimeout(timer);
    }, [isSubmitted]);
 
   const generateKickOff = async (): Promise<void> => {
     try{
       if(generateLeagueKickoff){
-        generateLeagueKickoff()
+       await generateLeagueKickoff();
       } else {
         await fetchKickoff();
       }
@@ -41,7 +41,7 @@ function KickoffActions({ isSubmitted, setIsSubmitted, kickoff, fetchKickoff, ki
     }
   }; 
   
-  const isSubmittedButton = async(kickoffType: KickoffType ): Promise<void> => {
+  const submitKickoff = async(): Promise<void> => {
     if(isSubmitted) return;
    
     try{
@@ -62,7 +62,7 @@ function KickoffActions({ isSubmitted, setIsSubmitted, kickoff, fetchKickoff, ki
       <button className="generate-button" onClick={generateKickOff}>
         GENERATE
       </button>
-      <button className="submit-button" onClick={() => isSubmittedButton(kickoffType)}>
+      <button className="submit-button" onClick={submitKickoff}>
         {isSubmitted ? 'Submitted' : 'Submit Kickoff'}
       </button>
     </div>
