@@ -19,7 +19,7 @@ export function createKickoffUI(kickoff: CountryKickoff | ClubKickoff | null){
     id: home._id,
     name: 'club' in home ? home.club : home.country,
     logo: getLogoPath(home.logo),
-    stars: kickoff.homeTeam.stars,
+    stars: home.stars,
     type: 'club' in home ? 'club' : 'international', 
     league: 'club' in home ? home.leagueName : undefined,
     leagueId: 'club' in home ? home.league : undefined
@@ -29,7 +29,7 @@ export function createKickoffUI(kickoff: CountryKickoff | ClubKickoff | null){
     id: away._id,
     name: 'club' in away ? away.club : away.country, 
     logo: getLogoPath(away.logo),
-    stars: kickoff.awayTeam.stars,
+    stars: away.stars,
     type: 'club' in away ? 'club' : 'international',
     league: 'club' in away ? away.leagueName : undefined,
     leagueId: 'club' in away ? away.league : undefined
