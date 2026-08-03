@@ -1,4 +1,4 @@
-import './InternationalKickoff.css';
+import '../KickoffContainer.css';
 import { useKickoff } from '../../hooks/useKickoff';
 import NavigationHeader from '../../components/navigation/NavigationHeader';
 import KickoffActions from '../../components/ui/KickoffActions';
