@@ -11,15 +11,15 @@ import LoadingComponent from '../../components/ui/LoadingComponent';
 import { useState, useEffect, useCallback, useRef } from 'react';
 import axios from 'axios';
 import { getRequest } from '../../api/getRequest';
-import type { TeamReroll } from '../../types/teamReroll.type';
 import ErrorComponent from '../../components/ui/ErrorComponent';
+import type { LeagueTeamSelection } from '../../types/clubTypes/leagueTeamSelection.type';
 
-export type League = {
-  league: string,
-  leagueId: string,
-}
+type League = {
+ league: string,
+ leagueId: string,
+};
 
-export type Direction = 'next' | 'previous';
+type Direction = 'next' | 'previous';
 
 function ClubLeagueKickoff(){
   const { kickoff, setKickoff, fetchKickoff, isLoading, hasError, retryFetch } = useKickoff<ClubKickoff>('/api/clubs', false);
@@ -36,12 +36,15 @@ function ClubLeagueKickoff(){
 
   useEffect(() => {
    const fetchLeague = async() => {
-    const response = await axios.get('/api/clubs/leagues');
-    setLeagues(response.data);
+    try{
+      const response = await axios.get('/api/clubs/leagues');
+      setLeagues(response.data);
+    } catch (error){
+      console.log('Leagues could not be fetched.', error)
+    }
    }
 
   fetchLeague();
-
   }, []);
 
   const generateLeagueKickoff = useCallback(async() => {  
@@ -51,7 +54,7 @@ function ClubLeagueKickoff(){
   }, [leagues, currentAwayLeague, currentHomeLeague, fetchKickoff]);
    
   const rerollTeamFromLeague = useCallback(async (excludeId: string, leagueId: string) => {
-    return await getRequest<TeamReroll>(`/api/clubs/random-team/reroll?baseTeamId=${excludeId}&leagueId=${leagueId}`)
+    return await getRequest<LeagueTeamSelection>(`/api/clubs/random-team/reroll?baseTeamId=${excludeId}&leagueId=${leagueId}`)
   }, []);
 
   useEffect(() => {
@@ -69,13 +72,7 @@ function ClubLeagueKickoff(){
     homeRequestId.current += 1;
     const requestId = homeRequestId.current;
     const excludeId = awayTeam.id;
-    let movement: number;
-
-    if(direction === 'next'){
-      movement = 1
-    } else{
-      movement = -1
-    };
+    const movement = direction === 'next' ? 1 : -1;
 
     let targetLeagueIndex = homeLeagueIndex + movement;
 
@@ -101,7 +98,7 @@ function ClubLeagueKickoff(){
         ...prev,
         homeTeam: rerolledTeam.team,
         homeLeagueLogo: rerolledTeam.leagueLogo
-      } as typeof prev
+      } 
     })
   };
 
@@ -109,13 +106,7 @@ function ClubLeagueKickoff(){
    awayRequestId.current += 1;
    const requestId = awayRequestId.current;
    const excludeId = homeTeam.id;
-   let movement: number;
-
-   if(direction === 'next'){
-    movement = 1;
-   } else{
-    movement = -1;
-   }
+   const movement = direction === 'next' ? 1 : -1;
 
    let targetLeagueIndex = awayLeagueIndex + movement;
 
@@ -141,7 +132,7 @@ function ClubLeagueKickoff(){
       ...prev, 
       awayTeam: rerolledTeam.team,
       awayLeagueLogo: rerolledTeam.leagueLogo
-     } as typeof prev
+     } 
    })
   };
 
