@@ -1,10 +1,10 @@
 import './ErrorComponent.css';
 
-type ErrorProp = {
+type ErrorComponentProp = {
   retryFetch: () => Promise<void>
 }
 
-function ErrorComponent({ retryFetch }: ErrorProp){
+function ErrorComponent({ retryFetch }: ErrorComponentProp){
 
   return(
     <div className='error-div-container'>
@@ -22,4 +22,3 @@ function ErrorComponent({ retryFetch }: ErrorProp){
 
 export default ErrorComponent;
 
-//<div className='page-background'>     </div>
