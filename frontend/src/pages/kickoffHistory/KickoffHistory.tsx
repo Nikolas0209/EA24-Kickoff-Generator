@@ -4,7 +4,7 @@ import axios from 'axios';
 import dayjs from 'dayjs';
 import NavigationHeader from '../../components/navigation/NavigationHeader';
 import LoadingComponent from '../../components/ui/LoadingComponent';
-import EmptyKickoffHistory from '../../components/ui/EmptyKickoffHistory';
+import EmptyKickoffHistory from './EmptyKickoffHistory';
 import ConfirmationPopup from './ConfirmationPopup';
 import { KickoffType } from '../../enums/kickoffType.enum';
 import KickoffHistoryToolbar from './KickoffHistoryToolbar';
