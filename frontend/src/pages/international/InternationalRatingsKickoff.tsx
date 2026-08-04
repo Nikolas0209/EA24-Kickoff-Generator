@@ -1,9 +1,9 @@
 import '../KickoffContainer.css';
 import { useKickoff } from '../../hooks/useKickoff';
 import NavigationHeader from '../../components/navigation/NavigationHeader';
-import KickoffActions from '../../components/ui/KickoffActions';
+import KickoffActions from '../../components/kickoff/KickoffActions';
 import TeamCard from '../../components/ui/teamCard/TeamCard';
-import RerollTeam from '../../components/ui/RerollTeam'
+import RerollTeam from '../../components/kickoff/RerollTeam'
 import type { CountryKickoff } from '../../types/internationalTypes/countryKickoff.type';
 import { createKickoffUI } from '../../utils/createKickoffUI';
 import { KickoffType } from '../../enums/kickoffType.enum';
