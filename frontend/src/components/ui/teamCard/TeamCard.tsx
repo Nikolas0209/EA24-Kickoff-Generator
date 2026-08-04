@@ -1,10 +1,10 @@
 import './TeamCard.css';
-import { starRatings } from '../../utils/starRatings';
-import type { UITeam } from '../../types/uiTeam.types';
+import { starRatings } from '../../../utils/starRatings';
+import type { UITeam } from '../../../types/uiTeam.types';
 import TeamCardTitle from './TeamCardTitle';
 import LeagueTeamCardTitle from './LeagueTeamCardTitle';
-import type { LeagueSwitcher } from '../../types/clubTypes/leagueNavigation.type';
-import type { KickoffTeamPosition } from '../../types/clubTypes/KickoffTeamPosition.type';
+import type { LeagueSwitcher } from '../../../types/clubTypes/leagueNavigation.type';
+import type { KickoffTeamPosition } from '../../../types/clubTypes/KickoffTeamPosition.type';
 
 type teamDetailsProps = {
   team: UITeam,
