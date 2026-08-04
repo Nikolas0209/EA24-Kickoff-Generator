@@ -1,6 +1,6 @@
 import './CompetitionKickoff.css';
 import { useKickoff } from '../../hooks/useKickoff';
-import { createKickoffUI } from '../../data/createKickoffUI';
+import { createKickoffUI } from '../../utils/createKickoffUI';
 import NavigationHeader from '../../components/navigation/NavigationHeader';
 import type { ClubKickoff } from '../../types/clubTypes/clubKickoff.type';
 import TeamCard from '../../components/ui/TeamCard';

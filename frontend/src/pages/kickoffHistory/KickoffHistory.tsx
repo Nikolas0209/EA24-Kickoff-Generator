@@ -10,7 +10,6 @@ import { KickoffType } from '../../enums/kickoffType.enum';
 import KickoffHistoryToolbar from './KickoffHistoryToolbar';
 import type { HistoryKickoff } from '../../types/historyKickoff.type';
 
-
 function KickoffHistory(){
   const [kickoffHistory, setKickoffHistory] = useState <HistoryKickoff[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);

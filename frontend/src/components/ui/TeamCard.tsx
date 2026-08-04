@@ -1,5 +1,5 @@
 import './TeamCard.css';
-import { starRatings } from '../../data/starRatings';
+import { starRatings } from '../../utils/starRatings';
 import type { UITeam } from '../../types/uiTeam.types';
 import TeamCardTitle from './TeamCardTitle';
 import LeagueTeamCardTitle from './LeagueTeamCardTitle';

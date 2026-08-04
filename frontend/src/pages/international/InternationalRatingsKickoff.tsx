@@ -5,7 +5,7 @@ import KickoffActions from '../../components/ui/KickoffActions';
 import TeamCard from '../../components/ui/TeamCard';
 import RerollTeam from '../../components/ui/RerollTeam'
 import type { CountryKickoff } from '../../types/internationalTypes/countryKickoff.type';
-import { createKickoffUI } from '../../data/createKickoffUI';
+import { createKickoffUI } from '../../utils/createKickoffUI';
 import { KickoffType } from '../../enums/kickoffType.enum';
 import LoadingComponent from '../../components/ui/LoadingComponent';
 import { useState } from 'react';

@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { KickoffType } from '../../enums/kickoffType.enum';
 import axios from 'axios';
 import type { CountryKickoff } from '../../types/internationalTypes/countryKickoff.type';
-import { createKickoffUI } from '../../data/createKickoffUI';
+import { createKickoffUI } from '../../utils/createKickoffUI';
 import type { ClubKickoff } from '../../types/clubTypes/clubKickoff.type';
 
 type KickoffActionsProps = {
