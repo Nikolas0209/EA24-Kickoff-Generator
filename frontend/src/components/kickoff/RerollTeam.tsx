@@ -1,15 +1,15 @@
 import './RerollTeam.css';
 import { getRequest } from '../../api/getRequest';
 import type { TeamReroll } from '../../types/teamReroll.type';
-import type { CountryKickoff } from '../../types/internationalTypes/countryKickoff.type';
+import type { InternationalKickoff } from '../../types/internationalTypes/internationalKickoff.type';
 import { createKickoffUI } from '../../utils/createKickoffUI';
 import type { ClubKickoff } from '../../types/clubTypes/clubKickoff.type';
 
 type Reroll = {
   setIsSubmitted: React.Dispatch<React.SetStateAction<boolean>>;
-  setKickoff: React.Dispatch<React.SetStateAction<ClubKickoff | CountryKickoff>>;
+  setKickoff: React.Dispatch<React.SetStateAction<ClubKickoff | InternationalKickoff>>;
   rerollEndpoint: string;
-  kickoff: CountryKickoff | ClubKickoff;
+  kickoff: InternationalKickoff | ClubKickoff;
   competition?: string;
   mode?: 'club-league';
 }

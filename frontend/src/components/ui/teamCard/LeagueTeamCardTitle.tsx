@@ -1,6 +1,6 @@
-import type { LeagueSwitcher } from '../../types/clubTypes/leagueNavigation.type';
+import type { LeagueSwitcher } from '../../../types/clubTypes/leagueNavigation.type';
 import './LeagueTeamCardTitle.css';
-import type { KickoffTeamPosition } from '../../types/clubTypes/KickoffTeamPosition.type';
+import type { KickoffTeamPosition } from '../../../types/clubTypes/KickoffTeamPosition.type';
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 type TeamCardTitleProps = {

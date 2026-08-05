@@ -4,7 +4,7 @@ import NavigationHeader from '../../components/navigation/NavigationHeader';
 import KickoffActions from '../../components/kickoff/KickoffActions';
 import TeamCard from '../../components/ui/teamCard/TeamCard';
 import RerollTeam from '../../components/kickoff/RerollTeam'
-import type { CountryKickoff } from '../../types/internationalTypes/countryKickoff.type';
+import type { InternationalKickoff } from '../../types/internationalTypes/internationalKickoff.type';
 import { createKickoffUI } from '../../utils/createKickoffUI';
 import { KickoffType } from '../../enums/kickoffType.enum';
 import LoadingComponent from '../../components/ui/LoadingComponent';
@@ -12,7 +12,7 @@ import { useState } from 'react';
 import ErrorComponent from '../../components/ui/ErrorComponent';
 
 function InternationalRatingsKickoff(){
-  const { kickoff, setKickoff, fetchKickoff, isLoading, hasError, retryFetch } = useKickoff<CountryKickoff>('/api/countries/country-ratings');
+  const { kickoff, setKickoff, fetchKickoff, isLoading, hasError, retryFetch } = useKickoff<InternationalKickoff>('/api/countries/country-ratings');
   const {homeTeam, awayTeam} = createKickoffUI(kickoff);
   const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
 

@@ -1,5 +1,5 @@
 import './TeamCardTitle.css';
-import type { KickoffTeamPosition } from '../../types/clubTypes/KickoffTeamPosition.type';
+import type { KickoffTeamPosition } from '../../../types/clubTypes/KickoffTeamPosition.type';
 
 type TeamCardTitleProps = {
   title: string,
