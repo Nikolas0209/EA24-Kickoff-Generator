@@ -2,20 +2,20 @@ import '../HomePage.css';
 import { useNavigate } from 'react-router-dom';
 import NavigationHeader from '../../components/navigation/NavigationHeader';
 
-function CountryKickoffSelector(){
+function InternationalKickoffSelector(){
  const navigate = useNavigate();
  
  const navigateRandomKickoff = ():void => {
-  navigate('/countries-random')
+  navigate('/internationals-random')
  };
  
  const navigateRatingsMode = ():void => {
-  navigate('/countries-ratings-mode')
+  navigate('/internationals-ratings-mode')
  }
 
  return(
   <div className="page-background">
-   <NavigationHeader title='Country Kickoff'/>
+   <NavigationHeader title='International Kickoff'/>
 
    <div className="main-buttons-div">
     <button className="kickoff-button" onClick={navigateRandomKickoff}>
@@ -29,4 +29,4 @@ function CountryKickoffSelector(){
   )
 }
 
-export default CountryKickoffSelector;
+export default InternationalKickoffSelector;
