@@ -11,7 +11,7 @@ import LoadingComponent from '../../components/ui/LoadingComponent';
 import { useState } from 'react';
 import ErrorComponent from '../../components/ui/ErrorComponent';
 
-function InternationalKickoff(){
+function InternationalRandomKickoff(){
  const { kickoff, setKickoff, fetchKickoff, isLoading, hasError, retryFetch } = useKickoff<CountryKickoff>('/api/countries');
  const {homeTeam, awayTeam} = createKickoffUI(kickoff);
  const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
@@ -44,4 +44,4 @@ function InternationalKickoff(){
  )
 }
 
-export default InternationalKickoff;
+export default InternationalRandomKickoff;

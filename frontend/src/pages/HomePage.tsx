@@ -5,7 +5,7 @@ function HomePage(){
   const navigate = useNavigate();
   
   const navigatePageInternationals = (): void => {
-    navigate('/countries')
+    navigate('/internationals')
   }
 
   const navigatePageClubs = ():void => {
