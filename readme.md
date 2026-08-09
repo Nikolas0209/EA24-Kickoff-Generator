@@ -312,7 +312,6 @@ The frontend communicates with the Express API, while the backend handles:
 Potential future improvements include:
 
 * Further mobile responsiveness refinements
-* Additional matchmaking modes
 * Additional UI/UX refinements
 * Production deployment
 
