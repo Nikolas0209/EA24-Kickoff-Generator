@@ -19,10 +19,10 @@ function InternationalKickoffSelector(){
 
    <div className="main-buttons-div">
     <button className="kickoff-button" onClick={navigateRandomKickoff}>
-      Random Kick-off 
+      Random Kickoff 
     </button>
     <button className="kickoff-button" onClick={navigateRatingsMode}>
-      Ratings Mode Kick-off
+      Ratings Mode Kickoff
     </button>  
    </div>
   </div>
