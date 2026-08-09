@@ -1,29 +1,28 @@
 .delete-button{
- cursor: pointer;
- background-color: black;
- color: white;
- border-radius: 5px;
- border: solid 1px white;
- font-size: 15px;
- font-weight: bold;
- padding: 10px;
- transition: transform 0.1s ease;
+  cursor: pointer;
+  background-color: black;
+  color: white;
+  border-radius: 5px;
+  border: solid 1px white;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 10px;
+  transition: transform 0.1s ease;
 }
  
 .delete-button:hover{
- transform: scale(1.05);
+  transform: scale(1.05);
 }
  
 .delete-button:active{
- box-shadow: 0px 7px 15px rgb(70, 70, 70);
+  box-shadow: 0px 7px 15px rgb(70, 70, 70);
 }
 
 .kickoff-history-div{
-
- color: white; 
- max-width: 1000px;
- width: 80%;
- margin: 0 auto; 
+  color: white; 
+  max-width: 1000px;
+  width: 80%;
+  margin: 0 auto; 
 }
 
 .kickoff-history-list{
@@ -45,22 +44,22 @@
 
 .kickoff-list-wrapper{
   overflow-y: auto;
-  height: 400px;
+  max-height: 400px;
   margin-top: 30px;
 }
 
 .kickoff-team-div{
-  flex: 1fr;
-  min-width: 400px;
+  flex: 1;
+  min-width: 0;
 }
 
 .kickoff-date-div{
- width: 300px;
- font-size: 20px;
+  width: 300px;
+  font-size: 20px;
 }
 
 .delete-one-btn-div{
- padding-right: 15px;
+  padding-right: 15px;
 }
 
 .disable-button{
@@ -82,16 +81,90 @@
 }
 
 .kickoff-history-title-div{
- background: rgba(0, 0, 0, 0.5);
- backdrop-filter: blur(3px);
- padding: 7px 10px;
- border-radius: 10px;
- margin-top: 20px;
- display: flex;
- align-items: center;
- justify-content: space-between;
- position: relative;
- z-index: 2;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(3px);
+  padding: 7px 10px;
+  border-radius: 10px;
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  z-index: 2;
+}
+
+.kickoff-stats{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
 }
 
 
+@media (max-width: 768px){ 
+  .kickoff-history-title-div{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding-bottom: 15px;
+  }
+
+  .kickoff-history-list{
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 20px;
+    padding-bottom: 15px;
+  }
+
+  .kickoff{
+    padding-left: 0;
+  }
+
+  .kickoff-date{
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  .kickoff-stats{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .kickoff-list-wrapper{
+    max-height: 290px;
+  }
+}
+
+
+@media (max-width: 1000px) and (min-width: 769px){
+  .kickoff-stats{
+    justify-content: flex-start;
+  }
+
+  .kickoff-date-div{
+    width: auto;
+    padding-right: 10px;
+  }
+
+  .kickoff{
+    width: auto;
+  }
+}
+
+
+@media(max-width: 870px){
+  .kickoff-history-title-div{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding-bottom: 15px;
+  }
+
+  .kickoff-list-wrapper{
+    max-height: 290px;
+  }
+}

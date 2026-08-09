@@ -154,13 +154,13 @@ function ClubLeagueKickoff(){
           <>
            <div className="kickoff-container">
              <TeamCard team={homeTeam} league={homeTeam.league} position='left' competitionLogo={competitionLogo}
-              leagueSwitcher={leagueSwitchers.home}/>
+              leagueSwitcher={leagueSwitchers.home} variant='league'/>
             
              <KickoffActions isSubmitted={isSubmitted} setIsSubmitted={setIsSubmitted} fetchKickoff={fetchKickoff} kickoff={kickoff} 
               kickoffType={KickoffType.CLUB_LEAGUES} generateLeagueKickoff={generateLeagueKickoff}/>
 
              <TeamCard team={awayTeam} league={awayTeam.league} position='right' competitionLogo={competitionLogo} 
-              leagueSwitcher={leagueSwitchers.away} />
+              leagueSwitcher={leagueSwitchers.away} variant='league' />
            </div>
         
            <RerollTeam setIsSubmitted={setIsSubmitted} kickoff={kickoff} setKickoff={setKickoff} rerollEndpoint='/api/clubs/random-team' mode='club-league'/>

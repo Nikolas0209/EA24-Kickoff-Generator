@@ -54,3 +54,28 @@
   padding-top: 100px;
   flex-direction: row;
 }
+
+@media (max-width: 768px){
+  .main-buttons-div{
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    padding-top: 15vh;
+  }
+
+  .kickoff-button{
+    width: 90%;
+    max-width: 320px;
+  }
+
+  .kickoff-container{
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: 40px;
+    padding-top: 30px;
+  }
+
+  .competition-button-div{
+    padding-top: 25px; 
+  }
+}

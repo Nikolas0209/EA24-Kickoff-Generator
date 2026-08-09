@@ -119,14 +119,18 @@ function KickoffHistory(){
                       {`${kickoff.homeTeam} - ${kickoff.awayTeam}`}
                     </p>
                   </div>
-                  <div className="kickoff-date-div">
-                    <p>{dayjs(kickoff.createdAt).format('DD/MM/YYYY')}</p>
-                  </div>
-                  <div className="delete-one-btn-div">
-                    <button className="delete-button"
-                      onClick={() => deleteOneButton(kickoff._id)}>
-                        Delete
-                    </button>
+                  <div className="kickoff-stats">
+                    <div className="kickoff-date-div">
+                      <p className="kickoff-date">
+                        {dayjs(kickoff.createdAt).format('DD/MM/YYYY')}
+                      </p>
+                    </div>
+                    <div className="delete-one-btn-div">
+                      <button className="delete-button"
+                        onClick={() => deleteOneButton(kickoff._id)}>
+                          Delete
+                      </button>
+                    </div>
                   </div>
                 </div>   
                 )

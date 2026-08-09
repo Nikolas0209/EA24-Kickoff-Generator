@@ -117,3 +117,21 @@
 .header-section-3:hover .hide-tooltip{
   opacity: 0;
 }
+
+@media (max-width: 805px) {
+  .header-section-1 {
+      display: none;
+  }
+
+  .header-div {
+    display: flex;
+    justify-content: space-between;
+  }
+
+}
+
+@media (max-width: 1150px) and (min-width: 805px){
+  .header-div{
+   padding-bottom: 10px;
+  }
+}

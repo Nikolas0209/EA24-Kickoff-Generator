@@ -14,7 +14,7 @@ function TeamCardTitle({ title, competitionLogo, position }: TeamCardTitleProps)
       {position === 'left' ? (
         <>
           <div>
-            <p className="kickoff-subtitle">{title}</p>
+            <p className="kickoff-subtitle left-subtitle">{title}</p>
           </div>
           <div>
           <div className='competition-logo-wrapper'>
@@ -29,7 +29,7 @@ function TeamCardTitle({ title, competitionLogo, position }: TeamCardTitleProps)
             <img src={competitionLogo} alt="Competition Logo" className='competition-logo'/>
           </div>
           <div>
-            <p className="kickoff-subtitle">{title}</p>
+            <p className="kickoff-subtitle right-subtitle">{title}</p>
           </div>
       
         </>

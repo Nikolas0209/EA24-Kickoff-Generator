@@ -1,4 +1,4 @@
-.subtitle-div-competition {
+.subtitle-div-competition{
   position: relative;
   display: flex;
   justify-content: center;
@@ -7,16 +7,15 @@
   max-width: 500px;
   border-bottom: 1px solid white;
   filter: brightness(0) invert(1);
-  padding-left: 10px;
 }
 
-.competition-logo {
+.competition-logo{
   width: 55px;
   height: 55px;
   object-fit: contain;
 }
 
-.competition-logo-wrapper {
+.competition-logo-wrapper{
   position: absolute;
   width: 55px;
   display: flex;
@@ -27,11 +26,39 @@
   border-radius: 5px;
 }
 
-.subtitle-div-competition.left .competition-logo-wrapper {
+.subtitle-div-competition.left .competition-logo-wrapper{
   right: 0;
 }
 
-.subtitle-div-competition.right .competition-logo-wrapper {
+.subtitle-div-competition.right .competition-logo-wrapper{
   left: 0;
 }
 
+@media (max-width: 805px){
+  .subtitle-div-competition{
+    padding-left: 30px;
+    padding-right: 50px;
+  }
+  
+  .competition-kickoff-team{
+    padding-left: 80px;
+    padding-right: 80px;
+    padding-top: 5px;
+    max-width: 550px;
+  }
+
+  .kickoff-subtitle{
+    white-space: nowrap;
+  }
+}
+
+@media(max-width: 450px){
+  .left-subtitle{
+    font-size: 18px;
+  }
+
+  .right-subtitle{
+    padding-left: 40px;
+    font-size: 18px;
+  }
+}

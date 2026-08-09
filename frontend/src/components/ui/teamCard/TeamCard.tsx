@@ -13,13 +13,14 @@ type teamDetailsProps = {
   position?: KickoffTeamPosition,
   competition?: string,
   league?: string,
-  leagueSwitcher?: LeagueSwitcher
+  leagueSwitcher?: LeagueSwitcher,
+  variant?: string
 }
 
-function TeamCard({ team, title, competitionLogo, position, competition, league, leagueSwitcher }: teamDetailsProps){
+function TeamCard({ team, title, competitionLogo, position, competition, league, leagueSwitcher, variant }: teamDetailsProps){
 
   return(
-    <div className="kickoff-team">
+    <div className={`kickoff-team ${variant ?? ''} competition-kickoff-team`}>
       {competition ? (<TeamCardTitle title={title} competitionLogo={competitionLogo} position={position} />) :
         league ? <LeagueTeamCardTitle position={position} leagueSwitcher={leagueSwitcher} /> : (
         <div className="subtitle-div">
