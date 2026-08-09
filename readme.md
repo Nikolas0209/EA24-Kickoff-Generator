@@ -263,7 +263,7 @@ PORT=3000
 Start the backend:
 
 ``` bash
-npm start
+node src/server.js
 ```
 
 ### Frontend
@@ -273,7 +273,7 @@ Open another terminal:
 ``` bash
 cd frontend
 npm install
-node src/server.js
+npm run dev
 ```
 
 The frontend will then be available through the Vite development server.
