@@ -29,7 +29,7 @@ function TeamCard({ team, title, competitionLogo, position, competition, league,
       )}
    
       <div className="team-image-container">
-        <img src={team.logo} className="team-image" alt={`${team.name} logo`} />
+        <img src={team.logo} key={team.logo} className="team-image" alt={`${team.name} logo`} />
       </div>
       <div className="rating-container">
         <img src={starRatings[team.stars]} alt={team.stars.toString()} />
