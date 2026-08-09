@@ -16,11 +16,11 @@
   font-weight: bold;
 }
 
-.country-image-container{
+.team-image-container{
   padding-top: 15px;
 }
  
-.country-image{
+.team-image{
   width: 200px;
   height: 200px;
   object-fit: contain;
@@ -31,7 +31,7 @@
   padding-top: 20px;
 }
 
-.country-name{
+.team-name{
   font-weight: bold;
   padding-top: 10px;
   font-size: 23px;

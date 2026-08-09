@@ -62,34 +62,34 @@
    border-radius: 30px;
   }
 
-  .country-image{
+  .team-image{
     width: 50px;
     height: 50px;
   }
 }
 
 @media (max-width: 1150px) and (min-width: 805px){
-  .kickoff-container {
+  .kickoff-container{
     justify-items: center;
     padding-top: 25px;
     grid-template-columns: 1fr 100px 1fr;
   }
 
-  .kickoff-team {
+  .kickoff-team{
     max-width: 300px;
   }
 
-  .country-image {
+  .team-image{
     width: 160px;
     height: 160px;
   }
 
-  .country-name {
+  .team-name{
     font-size: 20px;
     padding-top: 5px;
   }
 
-  .rating-container {
+  .rating-container{
     padding-top: 15px;
   }
 
@@ -110,7 +110,7 @@
     padding: 0;
   }
 
-  .league-logo-wrapper {
+  .league-logo-wrapper{
     display: none !important; 
   }
 
