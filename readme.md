@@ -1,239 +1,325 @@
-# Kickoff Generator 
+# EA24 Kickoff Generator
+
+A full-stack football matchup generator inspired by EA SPORTS FC 24, allowing users to generate matchups between football clubs and national teams using random or rating-based matchmaking.
+
+The project is organized as a monorepo containing separate frontend and backend applications.
 
 ## Overview
 
-Kickoff Generator is a full-stack football matchup generator that allows users to generate random football matches between clubs and national teams.
-This project is structured as a monorepo containing both frontend and backend applications.
+EA24 Kickoff Generator supports:
 
-The application supports:
-- Random club kickoffs
-- Random country kickoffs
-- Rating-based matchmaking
-- Team reroll functionality
-- Competition and league filtering
-- Kickoff history tracking and management
+* Random club matchups
+* Rating-based club matchmaking
+* Random national-team matchups
+* Rating-based national-team matchmaking
+* Competition and league filtering
+* Team rerolling
+* Kickoff history tracking and management
 
-The project consists of:
-- Frontend (React + TypeScript) *(currently in development)*
-- Backend (Node.js + Express + MongoDB)
+# Applications
 
----
+* Frontend — React + TypeScript + Vite
+* Backend — Node.js + Express + MongoDB
+
+⸻
 
 ## Tech Stack
 
-Frontend:
-- React
-- Vite
-- TypeScript
-- CSS
+### Frontend
 
-Backend:
-- Node.js
-- Express.js
-- MongoDB (Native Driver)
-- JavaScript (ES Modules)
+* React
+* TypeScript
+* Vite
+* CSS
+* Axios
+* React Router
+* Lucide React
 
----
+### Backend
+
+* Node.js
+* Express.js
+* MongoDB Native Driver
+* JavaScript ES Modules
+
+⸻
 
 ## Project Structure
 
-frontend/
-backend/
+```bash
+ EA24-Kickoff-Generator/
+│
+├── frontend/
+│   ├── public/
+│   ├── src/
+│   │   ├── assets/
+│   │   ├── components/
+│   │   ├── pages/
+│   │   └── ...
+│   ├── index.html
+│   └── package.json
+│
+├── backend/
+│   ├── src/
+│   │   ├── assets/
+│   │   ├── routes/
+│   │   ├── utils/
+│   │   ├── seed/
+│   │   ├── db.js
+│   │   └── server.js
+│   └── package.json
+│
+└── README.md 
+```
 
-backend/src/
-├── assets/
-│   ├── club logos
-│   ├── country logos
-│   └── league logos
-│
-├── routes/
-│   ├── club.routes.js
-│   ├── country.routes.js
-│   └── kickoffHistory.routes.js
-│
-├── utils/
-│   ├── applyFilters.js
-│   ├── getCollection.js
-│   ├── getRandomTeam.js
-│   └── getRandomTeamByRating.js
-│
-├── seed/
-│   ├── leagues/
-│   ├── seedClubs.js
-│   └── seedCountries.js
-│
-├── db.js
-└── server.js
-
-backend/
-├── .env
-├── package.json
-└── package-lock.json
-
----
+⸻
 
 ## Features
 
-Club kickoffs:
-- Random match generation
-- Rating-based match generation
-- Filtering by competition and league
-- Cross-league matches
-- Team reroll
+### Club Kickoffs
 
-Country kickoffs:
-- Random match generation
-- Rating-based match generation
-- Team reroll
+* Generate random club matchups
+* Generate rating-based matchups
+* Filter clubs by competition
+* Filter clubs by league
+* Generate cross-league matchups
+* Reroll individual teams
 
-Kickoff history:
-- Save generated matches
-- Retrieve history
-- Filter by type
-- Delete single entry
-- Delete all entries
+### Country Kickoffs
 
----
+* Generate random national-team matchups
+* Generate rating-based matchups
+* Reroll individual teams
 
-## API Documentation
+### Kickoff History
 
----
+* Save generated matchups
+* Retrieve previous matchups
+* Filter history by kickoff type
+* Delete individual history entries
+* Delete the entire history
 
-## Clubs
+⸻
 
-### GET /clubs
+## API
 
-Generate random club kickoff.
+The backend exposes REST endpoints for generating matchups, rerolling teams, and managing kickoff history.
 
-Query:
-- competition
-- league
-- homeLeague
-- awayLeague
+### Clubs
 
----
+#### GET /clubs
 
-### GET /clubs/club-ratings
+Generates a random club matchup.
 
-Generate rating-based club kickoff.
+Query parameters:
 
----
+* competition
+* league
+* homeLeague
+* awayLeague
 
-### GET /clubs/random-team/reroll
+#### GET /clubs/club-ratings
 
-Reroll a single club team.
+Generates a rating-based club matchup.
 
-Query:
-- competition
-- league
-- excludeId
+#### GET /clubs/random-team/reroll
 
----
+Rerolls a single club team.
 
-### GET /clubs/club-ratings/reroll
+Query parameters:
 
-Reroll rating-based club team.
+* competition
+* league
+* excludeId
 
-Query:
-- baseTeamId
+#### GET /clubs/club-ratings/reroll
 
----
+Rerolls a team while maintaining the rating-based matchmaking rules.
 
-## Countries
+Query parameters:
 
-### GET /countries
+* baseTeamId
 
-Generate random country kickoff.
+⸻
 
----
+### Countries
 
-### GET /countries/country-ratings
+#### GET /countries
 
-Generate rating-based country kickoff.
+Generates a random national-team matchup.
 
----
+#### GET /countries/country-ratings
 
-### GET /countries/random-team/reroll
+Generates a rating-based national-team matchup.
 
-Reroll a single country team.
+#### GET /countries/random-team/reroll
 
----
+Rerolls a single national team.
 
-### GET /countries/country-ratings/reroll
+#### GET /countries/country-ratings/reroll
 
-Reroll rating-based country team.
+Rerolls a team while maintaining the rating-based matchmaking rules.
 
-Query:
-- baseTeamId
+Query parameters:
 
----
+* baseTeamId
+
+⸻
 
 ## Kickoff History
 
-### GET /kickoff-history
+#### GET /kickoff-history
 
-Get all kickoff history entries.
+Retrieves kickoff history.
 
-Query:
-- type
+Query parameters:
 
----
+* type
 
-### POST /kickoff-history
+#### POST /kickoff-history
 
-Save a kickoff entry.
+Saves a generated kickoff.
 
-Body:
-- homeTeam
-- awayTeam
-- type
+Request body:
 
----
+``` json
+{
+  "homeTeam": "Team A",
+  "awayTeam": "Team B",
+  "type": "club-ratings"
+}
+```
 
-### DELETE /kickoff-history
+#### DELETE /kickoff-history
 
-Delete all kickoff history.
+Deletes all kickoff history entries.
 
----
+#### DELETE /kickoff-history/:id
 
-### DELETE /kickoff-history/:id
+Deletes a single kickoff history entry by ID.
 
-Delete single kickoff entry by id.
-
----
+⸻
 
 ## Error Handling
 
-- 400 → Bad request (invalid or missing data)
-- 404 → Not found
-- 500 → Server error
+The API uses standard HTTP status codes for errors.
 
-Common errors:
-- Not enough teams available
-- Base team not found
-- Invalid ObjectId format
+Status	Meaning
+400	Bad request / invalid input
+404	Resource not found
+500	Internal server error
 
----
+Common errors include:
+
+* Not enough teams available for the requested matchup
+* Base team not found during reroll
+* Invalid MongoDB ObjectId
+
+⸻
 
 ## Database
 
-MongoDB collections:
-- clubs
-- countries
-- kickoff-history
+The application uses MongoDB with the following collections:
 
----
+* clubs
+* countries
+* kickoff-history
+
+Club and country data is seeded into the database through the backend seed scripts.
+
+⸻
 
 ## Installation
 
-npm install  
-npm start
+### Prerequisites
 
----
+Make sure you have:
+
+* Node.js installed
+* A MongoDB database
+* Git
+
+Clone the repository
+
+``` bash
+git clone https://github.com/Nikolas0209/EA24-kickoff-Generator.git
+cd EA24-Kickoff-Generator
+```
+
+### Backend
+
+``` bash
+cd backend
+npm install
+```
+
+Create a .env file in the backend root:
+
+```env
+MONGO_URI=your_mongo_connection_string
+PORT=3000
+```
+
+Start the backend:
+
+``` bash
+npm start
+```
+
+### Frontend
+
+Open another terminal:
+
+``` bash
+cd frontend
+npm install
+node src/server.js
+```
+
+The frontend will then be available through the Vite development server.
+
+⸻
 
 ## Environment Variables
 
-Create a `.env` file in the backend root:
+The backend requires the following environment variables:
 
-MONGO_URI=your_mongo_connection_string  
-PORT=3000
+Variable	Description
+MONGO_URI	MongoDB connection string
+PORT	Port used by the Express server
+
+Do not commit the .env file to the repository.
+
+⸻
+
+## Development
+
+The frontend and backend are developed as separate applications inside the same repository.
+
+The frontend communicates with the Express API, while the backend handles:
+
+* Matchup generation
+* Team filtering
+* Rating-based matchmaking
+* Team rerolling
+* Kickoff history
+* MongoDB access
+
+⸻
+
+## Future Improvements
+
+Potential future improvements include:
+
+* Further mobile responsiveness refinements
+* Additional matchmaking modes
+* Additional UI/UX refinements
+* Production deployment
+
+⸻
+
+## Status
+
+The project is currently under active development.
+
+The core kickoff-generation functionality and responsive layouts are implemented, with further mobile refinement and portfolio presentation planned.
