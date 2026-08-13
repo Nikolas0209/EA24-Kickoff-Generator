@@ -18,9 +18,11 @@ function NavigationHeader({ title }: Navigation){
 
   return(
     <div className="go-back-button-container">
-     <button className="go-back-button" onClick={navigatePage}>
-       Go Back
-     </button>
+      <div className="back-button-wrapper">
+        <button className="go-back-button" onClick={navigatePage}>
+          Go Back
+        </button>
+      </div>
      {title && (
       <div className="title-wrapper">
          <h1 className="title">

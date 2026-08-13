@@ -5,6 +5,65 @@
   padding-top: 50px;
 }
 
+@media (max-width: 450px){
+  .kickoff-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    padding-top: 30px;
+    width: calc(100% - 30px);
+    margin: 0 auto;
+    overflow-x:hidden;
+  }
+
+  .page-background, .competition-page{
+    padding-top: 80px;
+  }
+
+  .kickoff-subtitle-wrapper{
+    width: 200px;
+  }
+
+  .kickoff-team{ 
+   border-radius: 30px;
+  }
+
+  .team-image{
+    width: 50px;
+    height: 50px;
+  }
+
+  .arrow-wrapper-left{
+    padding-right: 0 !important;
+    padding-left: 80px;
+  }
+
+  .arrow-wrapper-right{
+    padding-left: 0 !important;
+    padding-right: 80px;
+  }
+
+  .league-logo{
+    width: 35px !important;
+    height: 35px !important;
+   
+  }
+
+  .league-logo-wrapper{
+    width: 35px !important; 
+   
+  }
+
+  .subtitle-div-league.left .league-logo-wrapper{
+    right: 30px !important;
+  }
+
+  .subtitle-div-league.right .league-logo-wrapper{
+    left: 30px !important;
+  }
+}
+
 @media (max-width: 805px){
   .kickoff-container{
     grid-template-columns: 1fr;
@@ -39,32 +98,6 @@
   .kickoff-team.league{
     padding: 0;
     max-width: 400px;
-  }
-}
-
-@media (max-width: 450px){
-  .kickoff-container{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 40px;
-    padding-top: 30px;
-    width: calc(100% - 30px);
-    margin: 0 auto;
-    overflow-x:hidden;
-  }
-
-  .kickoff-subtitle-wrapper{
-    width: 200px;
-  }
-
-  .kickoff-team{ 
-   border-radius: 30px;
-  }
-
-  .team-image{
-    width: 50px;
-    height: 50px;
   }
 }
 

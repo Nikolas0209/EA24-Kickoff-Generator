@@ -1,4 +1,4 @@
-.subtitle-div-league {
+.subtitle-div-league{
   position: relative;
   display: flex;
   justify-content: center;
@@ -14,7 +14,7 @@
   object-fit: contain;
 }
 
-.league-logo-wrapper {
+.league-logo-wrapper{
   position: absolute;
   width: 55px;
   display: flex;

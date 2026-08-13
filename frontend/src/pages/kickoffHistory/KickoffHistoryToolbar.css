@@ -76,6 +76,15 @@
     justify-content: center;
     gap: 15px;
   }
+
+  .drop-down-menu{
+    width: 172px;
+  }
+
+  .dropdown-list{
+    max-height: 200px;
+    overflow-y: auto;
+  }
  }
  
  

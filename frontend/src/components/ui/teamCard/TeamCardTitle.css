@@ -61,4 +61,21 @@
     padding-left: 40px;
     font-size: 18px;
   }
+
+  .kickoff-subtitle{
+    font-size: 15px;
+  }
+
+  .competition-logo{
+    height: 40px;
+    width: 40px;
+  }
+
+  .subtitle-div-competition.left .competition-logo-wrapper{
+    right: 25px;
+  }
+  
+  .subtitle-div-competition.right .competition-logo-wrapper{
+    left: 25px;
+  }
 }

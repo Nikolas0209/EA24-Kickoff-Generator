@@ -100,7 +100,6 @@
   flex-shrink: 0;
 }
 
-
 @media (max-width: 768px){ 
   .kickoff-history-title-div{
     display: flex;
@@ -138,7 +137,6 @@
   }
 }
 
-
 @media (max-width: 1000px) and (min-width: 769px){
   .kickoff-stats{
     justify-content: flex-start;
@@ -155,16 +153,4 @@
 }
 
 
-@media(max-width: 870px){
-  .kickoff-history-title-div{
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    padding-bottom: 15px;
-  }
 
-  .kickoff-list-wrapper{
-    max-height: 290px;
-  }
-}

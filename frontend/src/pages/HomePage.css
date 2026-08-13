@@ -79,3 +79,12 @@
     padding-top: 25px; 
   }
 }
+
+@media(max-width: 450px){
+  .main-buttons-div{
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    padding-top: 10vh !important;
+  }
+}
