@@ -319,6 +319,4 @@ Potential future improvements include:
 
 ## Status
 
-The project is currently under active development.
-
-The core kickoff-generation functionality and responsive layouts are implemented, with further mobile refinement and portfolio presentation planned.
+Completed and ready for portfolio presentation.
