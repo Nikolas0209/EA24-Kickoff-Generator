@@ -50,15 +50,8 @@ export function addTeamAssets(homeTeam, awayTeam){
     competitionLogo = competitionAssets[homeTeam.competition];
   } 
 
-  if(homeTeam.league === awayTeam.league){
-    homeLeagueLogo = leagueAssets[homeTeam.league];
-    awayLeagueLogo = leagueAssets[awayTeam.league];
-  }
-
-  if(homeTeam.league !== awayTeam.league){
-    homeLeagueLogo = leagueAssets[homeTeam.league];
-    awayLeagueLogo = leagueAssets[awayTeam.league];
-  }
+  homeLeagueLogo = leagueAssets[homeTeam.league];
+  awayLeagueLogo = leagueAssets[awayTeam.league];
 
   return { homeTeam, awayTeam, competitionLogo, homeLeagueLogo, awayLeagueLogo }
 }
