@@ -1,10 +1,10 @@
 import type { ClubKickoff } from "../types/clubTypes/clubKickoff.type"
 import type { ClubTeam } from "../types/clubTypes/clubTeam.type";
-import type { CountryKickoff } from "../types/internationalTypes/internationalKickoff.type"
+import type { InternationalKickoff } from "../types/internationalTypes/internationalKickoff.type"
 import type { UITeam } from '../types/uiTeam.types';
 import type { InternationalTeam } from "../types/internationalTypes/internationalTeam.type";
 
-export function createKickoffUI(kickoff: CountryKickoff | ClubKickoff | null){
+export function createKickoffUI(kickoff: InternationalKickoff | ClubKickoff | null){
   const getLogoPath = (logo: string) => `/assets${logo}.svg`;
   
   if(!kickoff){

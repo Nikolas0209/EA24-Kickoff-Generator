@@ -10,7 +10,7 @@ import rating_4_5 from '../assets/starRatings/rating_4_5.png';
 import rating_5 from '../assets/starRatings/rating_5.png';
 import type { StarRating } from '../types/starRating.type';
 
-export const starRatings: Record<StarRating, string> ={
+export const starRatings: Record<StarRating, string> = {
   0.5: rating_05,
   1: rating_1,
   1.5: rating_1_5,
