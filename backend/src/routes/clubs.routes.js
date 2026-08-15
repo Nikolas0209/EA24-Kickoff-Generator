@@ -9,54 +9,57 @@ const router = express.Router();
 
 router.get('/', async (req, res) => {
   try{
-    const { competition, league, homeLeague, awayLeague } = req.query; 
+    const { competition, league, homeLeague, awayLeague } = req.query;
+
     let teams = await getCollection('clubs');
-    teams = applyFilters(teams, {competition, league});
-   
+    teams = applyFilters(teams, { competition, league });
+
+    let homeTeam;
+    let awayTeam;
+
     if(homeLeague && awayLeague){
-      let teamsHome = teams.filter(team => team.league === homeLeague);
-      let teamsAway = teams.filter(team => team.league === awayLeague);
+      const teamsHome = teams.filter(team => team.league === homeLeague);
+      const teamsAway = teams.filter(team => team.league === awayLeague);
 
       if(teamsHome.length < 1 || teamsAway.length < 1){
-       return res.status(400).json({error: 'Not enough teams in one of the leagues'});
-      }
-   
-      const homeTeam = getRandomTeam(teamsHome);
-      const awayTeam = getRandomTeam(teamsAway, homeTeam._id);
+        return res.status(400).json({
+          error: 'Not enough teams in one of the leagues'
+        });
+      };
 
-      const { homeTeam: enrichedHomeTeam, awayTeam: enrichedAwayTeam, homeLeagueLogo, awayLeagueLogo } = addTeamAssets(homeTeam, awayTeam);
+      homeTeam = getRandomTeam(teamsHome);
+      awayTeam = getRandomTeam(teamsAway, homeTeam._id);
 
-     const kickOffTeams = {
-       homeTeam: enrichedHomeTeam,
-       awayTeam: enrichedAwayTeam,
-       homeLeagueLogo,
-       awayLeagueLogo
-      }
+    } else{
+      if(teams.length < 2){
+        return res.status(400).json({ error: 'Not enough teams' })
+      };
 
-      return res.status(200).json(kickOffTeams);
-    };
-
-    if(teams.length < 2){
-      return res.status(400).json({error: 'Not enough teams'});
+      homeTeam = getRandomTeam(teams);
+      awayTeam = getRandomTeam(teams, homeTeam._id);
     }
 
-    const homeTeam = getRandomTeam(teams);
-    const awayTeam = getRandomTeam(teams, homeTeam._id);
-
-    const { homeTeam: enrichedHomeTeam, awayTeam: enrichedAwayTeam, competitionLogo, homeLeagueLogo, awayLeagueLogo } = addTeamAssets(homeTeam, awayTeam);
-
-    const kickOffTeams = {
-      homeTeam: enrichedHomeTeam, 
+    const {
+      homeTeam: enrichedHomeTeam,
       awayTeam: enrichedAwayTeam,
       competitionLogo,
       homeLeagueLogo,
       awayLeagueLogo
-    };
+    } = addTeamAssets(homeTeam, awayTeam);
 
-    res.status(200).json(kickOffTeams);
-  }catch(error){
-   res.status(500).json({error: 'The kick-off could not be generated.'});
-  }
+    return res.status(200).json({
+      homeTeam: enrichedHomeTeam,
+      awayTeam: enrichedAwayTeam,
+      competitionLogo,
+      homeLeagueLogo,
+      awayLeagueLogo
+    });
+
+  } catch(error){
+    return res.status(500).json({
+      error: 'The kick-off could not be generated.'
+    });
+  };
 });
 
 router.get('/club-ratings', async (req, res) => {
