@@ -74,7 +74,7 @@ function KickoffHistory(){
     }
   };
 
-  const openDropDownMenu = ():void => {
+  const toggleDropDownMenu = ():void => {
     setIsDropDown(prev => !prev)
   }
 
@@ -98,7 +98,7 @@ function KickoffHistory(){
            </p>
          <div className="filter-section">
            <KickoffHistoryToolbar kickoffHistory={kickoffHistory} isDropDown={isDropDown} 
-            openDropDownMenu={openDropDownMenu} filteredKickoffHistory={filteredKickoffHistory}
+            toggleDropDownMenu={toggleDropDownMenu} filteredKickoffHistory={filteredKickoffHistory}
             deleteAllButton={deleteAllButton} chooseFilter={chooseFilter}/>
          </div>
        

@@ -5,20 +5,20 @@ import { KickoffType } from '../../enums/kickoffType.enum';
 type Toolbar = {
   kickoffHistory: HistoryKickoff[],
   isDropDown: boolean,
-  openDropDownMenu: () => void,
+  toggleDropDownMenu: () => void,
   chooseFilter: (selectFilter: KickoffType) => void,
   deleteAllButton: () => void,
   filteredKickoffHistory: HistoryKickoff[]
 }
 
-function KickoffHistoryToolbar({ kickoffHistory, isDropDown, openDropDownMenu, chooseFilter, 
+function KickoffHistoryToolbar({ kickoffHistory, isDropDown, toggleDropDownMenu, chooseFilter, 
 deleteAllButton, filteredKickoffHistory }: Toolbar){
   return(
     <>
     <div className="drop-down-menu">
       <button disabled={kickoffHistory.length === 0} 
         className={`drop-down-button ${!isDropDown ? 'dropdown-closed' : ''} ${kickoffHistory.length === 0 ? 'disable-button' : ''}`}
-        onClick={openDropDownMenu}>
+        onClick={toggleDropDownMenu}>
           Filter
       </button>
       {isDropDown && (

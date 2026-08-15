@@ -21,7 +21,7 @@ export function useKickoff <T>(url: string, autofetch = true){
   }, [url]);
 
   const retryFetch = async (): Promise<void> => {
-    setKickoff(null)
+    setKickoff(null);
     await fetchKickoff();
   }
   
