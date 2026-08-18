@@ -313,10 +313,30 @@ Potential future improvements include:
 
 * Further mobile responsiveness refinements
 * Additional UI/UX refinements
-* Production deployment
 
 ⸻
 
-## Status
+## Screenshots
 
-Completed and ready for portfolio presentation.
+### Main Interface
+
+![Home Page](screenshots/home-page.png)
+![Club Kickoff Selector](screenshots/club-kickoff-selector.png)
+
+### UEFA Competitions
+
+![Champions League](screenshots/ucl-kickoff.png)
+![Europa League](screenshots/uel-kickoff.png)
+![Conference League](screenshots/uecl-kickoff.png)
+
+### Kickoff Modes
+
+![League Kickoff](screenshots/league-kickoff.png)
+![International Kickoff](screenshots/international-ratings-kickoff.png)
+![Club Kickoff](screenshots/club-random-kickoff.png)
+
+### Kickoff History
+
+![Kickoff History](screenshots/kickoff-history.png)
+![Empty History](screenshots/empty-kickoff-history.png)
+![History Popup](screenshots/delete-kickoff-history-popup.png)
