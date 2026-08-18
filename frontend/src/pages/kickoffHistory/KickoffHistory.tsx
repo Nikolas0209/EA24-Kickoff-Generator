@@ -88,7 +88,7 @@ function KickoffHistory(){
      <NavigationHeader />
 
      <div className="kickoff-history-div">
-      {isPopup && (
+      {isPopup && ( 
          <ConfirmationPopup yesPopupButton={yesPopupButton} noPopupButton={noPopupButton} errorMessage={errorMessage} />
       )}
   

@@ -2,17 +2,20 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 90vh;
+  padding-top: 225px;
+  z-index: 1000;
 }
 
 .loading-spinner{
-  width: 15%;
+  display: block;
+  width: 15%; 
+  height: 15%;
   object-fit: contain;
   animation: spin 0.7s linear infinite;
-  height: 15%;
+ 
 }
 
-@keyframes spin{
+@keyframes loading-spinner{
   from{
    transform: rotate(0deg);
   } 
@@ -20,3 +23,4 @@
    transform: rotate(360deg);
   }
 }
+
