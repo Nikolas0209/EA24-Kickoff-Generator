@@ -43,12 +43,8 @@ function KickoffHistory(){
   };
 
   const deleteAllKickoffs = async(): Promise<void> => {
-    try{
-      await axios.delete('/api/kickoff-history');
-      setKickoffHistory([]);
-     } catch(error){
-       console.log('Could not delete all data', error)
-     }
+    await axios.delete('/api/kickoff-history');
+    setKickoffHistory([]);     
   };
 
   const deleteOneButton = async(id:string): Promise<void> => {
@@ -69,7 +65,7 @@ function KickoffHistory(){
     try{
       await deleteAllKickoffs();
       setIsPopup(false);
-    } catch(err){
+    } catch{
       setErrorMessage('Delete failed. Please try again.');
     }
   };
